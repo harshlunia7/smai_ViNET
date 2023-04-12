@@ -143,9 +143,11 @@ class Decoder(nn.Module):
         z = z.view(z.size(0), z.size(3), z.size(4))
         return z
 
+
 class S3D_Encoder(nn.Module):
     """
     The forward method of the encoder should return 4 feature tensors y0, y1, y2, y3.
     """
+
     def __init__(self):
         super().__init__()
