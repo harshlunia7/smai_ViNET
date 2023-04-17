@@ -1,7 +1,7 @@
 # Basic packages
 import argparse
 import os
-
+import torch
 # 3rd part utility packages
 from tqdm import tqdm
 
@@ -59,3 +59,42 @@ model = ViNet(
     num_clips=args.clip_size,
 )
 print(model)
+
+
+S3D_weight_file = "./S3D_kinetics400.pt"
+
+load_encoder_weights = False
+
+if load_encoder_weights:
+    if os.path.isfile(S3D_weight_file):
+        print ('loading weight file')
+        weight_dict = torch.load(S3D_weight_file)#,map_location=torch.device('cpu'))
+        model_dict = model.backbone_encoder.state_dict()
+        for key, value in weight_dict.items():
+            if 'module' in key:
+                key = '.'.join(key.split('.')[1:])
+
+            if 'base.' in key:
+                base_num = int(key.split('.')[1])
+                sn_list = [0, 5, 8, 14]
+                sn = sn_list[0]
+                if base_num >= sn_list[1] and base_num < sn_list[2]:
+                    sn = sn_list[1]
+                elif base_num >= sn_list[2] and base_num < sn_list[3]:
+                    sn = sn_list[2]
+                elif base_num >= sn_list[3]:
+                    sn = sn_list[3]
+                key = '.'.join(key.split('.')[2:])
+                key = 'base%d.%d.'%(sn_list.index(sn)+1, base_num-sn)+key
+            
+            if key in model_dict:
+                if value.size() == model_dict[key].size():
+                        model_dict[key].copy_(value)
+                else:
+                    print (' size? ' + key, value.size(), model_dict[key].size())
+            else:
+                print (' name? ' + key)
+            print (' loaded')
+            model.backbone_encoder.load_state_dict(model_dict)
+    else:
+            print ('weight file?')

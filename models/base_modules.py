@@ -145,9 +145,59 @@ class Decoder(nn.Module):
 
 
 class S3D_Encoder(nn.Module):
-    """
-    The forward method of the encoder should return 4 feature tensors y0, y1, y2, y3.
-    """
+	"""
+	The forward method of the encoder should return 4 feature tensors y0, y1, y2, y3.
+	"""
+	def __init__(self):
+		super(S3D_Encoder, self).__init__()
+		
+		self.base1 = nn.Sequential(
+			SepConv3d(3, 64, kernel_size=7, stride=2, padding=3),
+			nn.MaxPool3d(kernel_size=(1,3,3), stride=(1,2,2), padding=(0,1,1)),
+			BasicConv3d(64, 64, kernel_size=1, stride=1),
+			SepConv3d(64, 192, kernel_size=3, stride=1, padding=1),
+		)
+		self.maxp2 = nn.MaxPool3d(kernel_size=(1,3,3), stride=(1,2,2), padding=(0,1,1))
+		self.base2 = nn.Sequential(
+			Mixed_3b(),
+			Mixed_3c(),
+		)
+		self.maxp3 = nn.MaxPool3d(kernel_size=(3,3,3), stride=(2,2,2), padding=(1,1,1))
+		self.base3 = nn.Sequential(
+			Mixed_4b(),
+			Mixed_4c(),
+			Mixed_4d(),
+			Mixed_4e(),
+			Mixed_4f(),
+		)
+		self.maxt4 = nn.MaxPool3d(kernel_size=(2,1,1), stride=(2,1,1), padding=(0,0,0))
+		self.maxp4 = nn.MaxPool3d(kernel_size=(1,2,2), stride=(1,2,2), padding=(0,0,0))
+		self.base4 = nn.Sequential(
+			Mixed_5b(),
+			Mixed_5c(),
+		)
 
-    def __init__(self):
-        super().__init__()
+	def forward(self, x):
+		# print('input', x.shape)
+		y3 = self.base1(x)
+		# print('base1', y3.shape)
+		
+		y = self.maxp2(y3)
+		# print('maxp2', y.shape)
+
+		y2 = self.base2(y)
+		# print('base2', y2.shape)
+
+		y = self.maxp3(y2)
+		# print('maxp3', y.shape)
+
+		y1 = self.base3(y)
+		# print('base3', y1.shape)
+
+		y = self.maxt4(y1)
+		y = self.maxp4(y)
+		# print('maxt4p4', y.shape)
+
+		y0 = self.base4(y)
+
+		return [y0, y1, y2, y3]
