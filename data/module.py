@@ -8,7 +8,7 @@ from data.datasets import DHF1KDataset
 
 
 class SaliencyDataModule(pl.LightningDataModule):
-    VISUAL_DATASET = "DHF1K"
+    VISUAL_DATASET = ["DHF1K"]
 
     def __init__(
         self,
@@ -76,7 +76,7 @@ class SaliencyDataModule(pl.LightningDataModule):
         return DataLoader(
             self.train_dataset,
             batch_size=self.batch_size,
-            shuffle=True,
+            shuffle=False,
             num_workers=self.num_workers,
         )
 
@@ -84,7 +84,7 @@ class SaliencyDataModule(pl.LightningDataModule):
         return DataLoader(
             self.val_dataset,
             batch_size=self.batch_size,
-            shuffle=True,
+            shuffle=False,
             num_workers=self.num_workers,
         )
 
@@ -92,6 +92,6 @@ class SaliencyDataModule(pl.LightningDataModule):
         return DataLoader(
             self.test_dataset,
             batch_size=self.batch_size,
-            shuffle=True,
+            shuffle=False,
             num_workers=self.num_workers,
         )
