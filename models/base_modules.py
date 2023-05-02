@@ -9,7 +9,7 @@ from torch.utils.data import random_split
 # pytorch lightning
 import pytorch_lightning as pl
 
-from models.base_modules_utils import *
+from models.utils import *
 
 
 class Decoder(nn.Module):

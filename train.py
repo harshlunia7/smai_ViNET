@@ -39,6 +39,7 @@ parser.add_argument("--kldiv_coeff", default=1.0, type=float)
 
 # Dataset Realted
 parser.add_argument("--dataset", default="DHF1KDataset", type=str)
+parser.add_argument("--experiment_name", default="ViNet_epoch_100", type=str)
 parser.add_argument(
     "--data_directory", default="/ssd_scratch/cvit/rafaelgetto", type=str
 )
@@ -56,7 +57,7 @@ parser.add_argument("--split", default=-1, type=int)
 args = parser.parse_args()
 print(args)
 
-logger = TensorBoardLogger("ViNet_Logs", name="ViNet_Logs_v1")
+logger = TensorBoardLogger("ViNet_Logs", name=f"ViNet_Logs_{args.experiment_name}")
 dm = SaliencyDataModule(
     dataset_name="DHF1K",
     root_data_dir=args.data_directory,
@@ -110,8 +111,8 @@ if args.load_encoder_weights:
         model.backbone_encoder.load_state_dict(model_dict)
     else:
         print("weight file?")
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 trainer = pl.Trainer(
-    accelerator="gpu", devices=1, logger=logger, min_epochs=1, max_epochs=5
+    accelerator="gpu", devices="auto", logger=logger, min_epochs=1, max_epochs=5, strategy="ddp"
 )
 trainer.fit(model, dm)

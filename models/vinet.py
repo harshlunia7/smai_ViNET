@@ -51,9 +51,10 @@ class ViNet(BaseSaliency):
         pred_sal = self.forward(img_clips)
         assert pred_sal.size() == gt_sal.size()
         loss = self.loss_module.compute_loss("KL_Divergence", pred_sal, gt_sal)
-        # cc_loss = self.loss_module.compute_loss("CC", pred_sal, gt_sal)
         l1_norm = self.loss_module.compute_loss("L1", pred_sal, gt_sal)
+        similarity = self.loss_module.compute_loss("similarity", pred_sal, gt_sal)
         # AUROC_loss = self.loss_module.compute_loss("AUROC", pred_sal, gt_sal)
+        cc_loss = self.loss_module.compute_loss("CC", pred_sal, gt_sal)
         # loss = self.loss(pred_sal.reshape((pred_sal.size(0), -1)), gt_sal.reshape((gt_sal.size(0), -1)))
-        self.log_dict({"Loss": loss, "L1 Norm": l1_norm}, on_epoch=True)
+        self.log_dict({"Loss": loss, "L1 Norm": l1_norm, "cc_loss": cc_loss, "similarity": similarity})
         return loss
