@@ -145,6 +145,7 @@ class Decoder(nn.Module):
 
 
 class S3D_Encoder(nn.Module):
+
 	"""
 	The forward method of the encoder should return 4 feature tensors y0, y1, y2, y3.
 	"""
@@ -201,3 +202,67 @@ class S3D_Encoder(nn.Module):
 		y0 = self.base4(y)
 
 		return [y0, y1, y2, y3]
+
+
+class SoundNet(nn.Module):
+    def __init__(self):
+        super(SoundNet, self).__init__()
+
+        self.al1 = nn.Sequential(
+            nn.Conv2d(1, 16, kernel_size=(64, 1), stride=(2, 1),padding=(32, 0)),
+            nn.BatchNorm2d(16, eps=1e-5, momentum=0.1),
+            nn.ReLU(True),
+            nn.MaxPool2d((8, 1), stride=(8, 1)),
+        )
+
+        self.al2 = nn.Sequential(
+            nn.Conv2d(16, 32, kernel_size=(32, 1), stride=(2, 1),padding=(16, 0)),
+            nn.BatchNorm2d(32, eps=1e-5, momentum=0.1),
+            nn.ReLU(True),
+            nn.MaxPool2d((8, 1), stride=(8, 1)),
+        )
+        
+        self.al3 = nn.Sequential(
+            nn.Conv2d(32, 64, kernel_size=(16, 1), stride=(2, 1),padding=(8, 0)),
+            nn.BatchNorm2d(64, eps=1e-5, momentum=0.1),
+            nn.ReLU(True),
+        )
+
+        self.al4 = nn.Sequential(
+            nn.Conv2d(64, 128, kernel_size=(8, 1), stride=(2, 1),padding=(4, 0)),
+            nn.BatchNorm2d(128, eps=1e-5, momentum=0.1),
+            nn.ReLU(True),
+        )
+
+        self.al5 = nn.Sequential(
+            nn.Conv2d(128, 256, kernel_size=(4, 1), stride=(2, 1),padding=(2, 0)),
+            nn.BatchNorm2d(256, eps=1e-5, momentum=0.1),
+            nn.ReLU(True),
+            nn.MaxPool2d((4, 1), stride=(4, 1)),
+        )
+
+        self.al6 = nn.Sequential(
+            nn.Conv2d(256, 512, kernel_size=(4, 1), stride=(2, 1),padding=(2, 0)),
+            nn.BatchNorm2d(512, eps=1e-5, momentum=0.1),
+            nn.ReLU(True),
+        )
+
+        self.al7 = nn.Sequential(
+            nn.Conv2d(512, 1024, kernel_size=(4, 1), stride=(2, 1),padding=(2, 0)),
+            nn.BatchNorm2d(1024, eps=1e-5, momentum=0.1),
+            nn.ReLU(True),
+        )
+
+        self.conv8_objs = nn.Conv2d(1024, 1000, kernel_size=(8, 1),stride=(2, 1))
+        self.conv8_scns = nn.Conv2d(1024, 401, kernel_size=(8, 1),stride=(2, 1))
+
+    def forward(self, input_audio):
+        audio_features = self.al1(audio_features)
+        audio_features = self.al2(audio_features)
+        audio_features = self.al3(audio_features)
+        audio_features = self.al4(audio_features)
+        audio_features = self.al5(audio_features)
+        audio_features = self.al6(audio_features)
+        audio_features = self.al7(audio_features)
+
+        return audio_features
