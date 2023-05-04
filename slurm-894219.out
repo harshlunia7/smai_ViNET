@@ -1,0 +1,1640 @@
+==========================================
+SLURM_JOB_ID = 894219
+SLURM_NODELIST = gnode026
+SLURM_JOB_GPUS = 0,1
+==========================================
+conda environment activated
+Starting Training
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/2
+initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/2
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 2 processes
+----------------------------------------------------------------------------------------------------
+
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]
+Set SLURM handle signals.
+Set SLURM handle signals.
+
+  | Name           | Type              | Params
+-----------------------------------------------------
+0 | loss_module    | Evaluation_Metric | 0     
+1 | visual_model   | ViNet             | 31.1 M
+2 | conv_in_1x1    | Conv3d            | 32.8 K
+3 | conv_out_1x1   | Conv3d            | 33.8 K
+4 | audio_conv_1x1 | Conv2d            | 32.8 K
+5 | audio_encoder  | SoundNet          | 14.4 M
+6 | transformer    | Transformer       | 2.0 M 
+7 | maxpool        | MaxPool3d         | 0     
+8 | bilinear       | Bilinear          | 42.7 K
+-----------------------------------------------------
+47.6 M    Trainable params
+0         Non-trainable params
+47.6 M    Total params
+190.546   Total estimated model params size (MB)
+Namespace(alternate=1, batch_size=2, clip_size=32, data_directory='/ssd_scratch/cvit/rafaelgetto/', dataset='DIEM', decoder_upsample=1, epochs=40, experiment_name='AViNet_epoch_100', frame_no='last', fusing_method='bilinear', kldiv=True, kldiv_coeff=1.0, l1=False, l1_coeff=1.0, load_encoder_weights=True, load_weight='ViNet_Logs/ViNet_Logs_ViNet_epoch_100/version_0/checkpoints/epoch=105-step=15899.ckpt', log_interval=5, lr=0.0001, lr_sched=False, no_workers=4, num_hier=3, optim='Adam', split=-1, use_sound=True, use_transformer=True)
+Loaded SoundNet Weights
+Validation sanity check: 0it [00:00, ?it/s]dataset loading [0/17]
+Validation sanity check:   0%|          | 0/2 [00:00<?, ?it/s]Namespace(alternate=1, batch_size=2, clip_size=32, data_directory='/ssd_scratch/cvit/rafaelgetto/', dataset='DIEM', decoder_upsample=1, epochs=40, experiment_name='AViNet_epoch_100', frame_no='last', fusing_method='bilinear', kldiv=True, kldiv_coeff=1.0, l1=False, l1_coeff=1.0, load_encoder_weights=True, load_weight='ViNet_Logs/ViNet_Logs_ViNet_epoch_100/version_0/checkpoints/epoch=105-step=15899.ckpt', log_interval=5, lr=0.0001, lr_sched=False, no_workers=4, num_hier=3, optim='Adam', split=-1, use_sound=True, use_transformer=True)
+Loaded SoundNet Weights
+dataset loading [0/17]
+Validation sanity check:  50%|#####     | 1/2 [00:01<00:01,  1.45s/it]Validation sanity check: 100%|##########| 2/2 [00:01<00:00,  1.50it/s]                                                                      /home2/rafaelgetto/miniconda3/envs/smai_proj/lib/python3.6/site-packages/torch/nn/functional.py:3635: UserWarning: Default upsampling behavior when mode=trilinear is changed to align_corners=False since 0.4.0. Please specify align_corners=True if the old behavior is desired. See the documentation of nn.Upsample for details.
+  "See the documentation of nn.Upsample for details.".format(mode)
+/home2/rafaelgetto/miniconda3/envs/smai_proj/lib/python3.6/site-packages/pytorch_lightning/trainer/data_loading.py:433: UserWarning: The number of training samples (16) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  f"The number of training samples ({self.num_training_batches}) is smaller than the logging interval"
+dataset loading [0/64]
+Audio file /ssd_scratch/cvit/rafaelgetto/DIEM/video_audio/ami_is1000a_closeup_720x576/ami_is1000a_closeup_720x576.wav does not exist!
+Audio file /ssd_scratch/cvit/rafaelgetto/DIEM/video_audio/ami_is1000a_left_720x576/ami_is1000a_left_720x576.wav does not exist!
+Audio file /ssd_scratch/cvit/rafaelgetto/DIEM/video_audio/news_newsnight_othello_720x416/news_newsnight_othello_720x416.wav does not exist!
+Training: 0it [00:00, ?it/s]dataset loading [0/64]
+Audio file /ssd_scratch/cvit/rafaelgetto/DIEM/video_audio/ami_is1000a_closeup_720x576/ami_is1000a_closeup_720x576.wav does not exist!
+Audio file /ssd_scratch/cvit/rafaelgetto/DIEM/video_audio/ami_is1000a_left_720x576/ami_is1000a_left_720x576.wav does not exist!
+Audio file /ssd_scratch/cvit/rafaelgetto/DIEM/video_audio/news_newsnight_othello_720x416/news_newsnight_othello_720x416.wav does not exist!
+/home2/rafaelgetto/miniconda3/envs/smai_proj/lib/python3.6/site-packages/torch/nn/functional.py:3635: UserWarning: Default upsampling behavior when mode=trilinear is changed to align_corners=False since 0.4.0. Please specify align_corners=True if the old behavior is desired. See the documentation of nn.Upsample for details.
+  "See the documentation of nn.Upsample for details.".format(mode)
+Training:   0%|          | 0/123 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/123 [00:00<?, ?it/s] Epoch 0:   1%|          | 1/123 [00:02<04:04,  2.00s/it]Epoch 0:   1%|          | 1/123 [00:02<04:04,  2.00s/it, loss=1.96, v_num=4]Epoch 0:   2%|1         | 2/123 [00:02<02:49,  1.40s/it, loss=1.96, v_num=4]Epoch 0:   2%|1         | 2/123 [00:02<02:49,  1.40s/it, loss=1.74, v_num=4]Epoch 0:   2%|2         | 3/123 [00:03<02:22,  1.19s/it, loss=1.74, v_num=4]Epoch 0:   2%|2         | 3/123 [00:03<02:22,  1.19s/it, loss=1.79, v_num=4]Epoch 0:   3%|3         | 4/123 [00:04<02:09,  1.09s/it, loss=1.79, v_num=4]Epoch 0:   3%|3         | 4/123 [00:04<02:09,  1.09s/it, loss=1.77, v_num=4]Epoch 0:   4%|4         | 5/123 [00:05<02:00,  1.03s/it, loss=1.77, v_num=4]Epoch 0:   4%|4         | 5/123 [00:05<02:00,  1.03s/it, loss=1.77, v_num=4]Epoch 0:   5%|4         | 6/123 [00:05<01:54,  1.02it/s, loss=1.77, v_num=4]Epoch 0:   5%|4         | 6/123 [00:05<01:54,  1.02it/s, loss=1.76, v_num=4]Epoch 0:   6%|5         | 7/123 [00:06<01:50,  1.05it/s, loss=1.76, v_num=4]Epoch 0:   6%|5         | 7/123 [00:06<01:50,  1.05it/s, loss=1.73, v_num=4]Epoch 0:   7%|6         | 8/123 [00:07<01:46,  1.08it/s, loss=1.73, v_num=4]Epoch 0:   7%|6         | 8/123 [00:07<01:46,  1.08it/s, loss=1.75, v_num=4]Epoch 0:   7%|7         | 9/123 [00:08<01:43,  1.10it/s, loss=1.75, v_num=4]Epoch 0:   7%|7         | 9/123 [00:08<01:43,  1.10it/s, loss=1.73, v_num=4]Epoch 0:   8%|8         | 10/123 [00:08<01:41,  1.11it/s, loss=1.73, v_num=4]Epoch 0:   8%|8         | 10/123 [00:08<01:41,  1.11it/s, loss=1.73, v_num=4]Epoch 0:   9%|8         | 11/123 [00:09<01:39,  1.13it/s, loss=1.73, v_num=4]Epoch 0:   9%|8         | 11/123 [00:09<01:39,  1.13it/s, loss=1.68, v_num=4]Epoch 0:  10%|9         | 12/123 [00:10<01:37,  1.14it/s, loss=1.68, v_num=4]Epoch 0:  10%|9         | 12/123 [00:10<01:37,  1.14it/s, loss=1.65, v_num=4]Epoch 0:  11%|#         | 13/123 [00:11<01:35,  1.15it/s, loss=1.65, v_num=4]Epoch 0:  11%|#         | 13/123 [00:11<01:35,  1.15it/s, loss=1.63, v_num=4]Epoch 0:  11%|#1        | 14/123 [00:12<01:33,  1.16it/s, loss=1.63, v_num=4]Epoch 0:  11%|#1        | 14/123 [00:12<01:33,  1.16it/s, loss=1.64, v_num=4]Epoch 0:  12%|#2        | 15/123 [00:12<01:32,  1.17it/s, loss=1.64, v_num=4]Epoch 0:  12%|#2        | 15/123 [00:12<01:32,  1.17it/s, loss=1.61, v_num=4]ami_is1000a_left_720x576 not present in data
+news_newsnight_othello_720x416 not present in data
+ami_is1000a_closeup_720x576 not present in data
+Epoch 0:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.61, v_num=4]Epoch 0:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.6, v_num=4] 
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:24,  1.36s/it][AEpoch 0:  15%|#4        | 18/123 [00:15<01:27,  1.19it/s, loss=1.6, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:07,  1.56it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:42,  2.43it/s][AEpoch 0:  16%|#6        | 20/123 [00:15<01:19,  1.30it/s, loss=1.6, v_num=4]
+Validating:   4%|3         | 4/107 [00:01<00:30,  3.36it/s][A
+Validating:   5%|4         | 5/107 [00:02<00:28,  3.52it/s][AEpoch 0:  18%|#7        | 22/123 [00:15<01:12,  1.40it/s, loss=1.6, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:23,  4.33it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:20,  4.89it/s][AEpoch 0:  20%|#9        | 24/123 [00:16<01:06,  1.50it/s, loss=1.6, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:18,  5.25it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:21,  4.48it/s][AEpoch 0:  21%|##1       | 26/123 [00:16<01:01,  1.58it/s, loss=1.6, v_num=4]
+Validating:   9%|9         | 10/107 [00:02<00:18,  5.13it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:17,  5.40it/s][AEpoch 0:  23%|##2       | 28/123 [00:16<00:56,  1.67it/s, loss=1.6, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:16,  5.88it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:19,  4.83it/s][AEpoch 0:  24%|##4       | 30/123 [00:17<00:53,  1.75it/s, loss=1.6, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:16,  5.49it/s][A
+Validating:  14%|#4        | 15/107 [00:03<00:16,  5.51it/s][AEpoch 0:  26%|##6       | 32/123 [00:17<00:49,  1.83it/s, loss=1.6, v_num=4]
+Validating:  15%|#4        | 16/107 [00:03<00:15,  5.76it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:15,  5.93it/s][AEpoch 0:  28%|##7       | 34/123 [00:17<00:46,  1.91it/s, loss=1.6, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:14,  6.11it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:18,  4.86it/s][AEpoch 0:  29%|##9       | 36/123 [00:18<00:44,  1.97it/s, loss=1.6, v_num=4]
+Validating:  19%|#8        | 20/107 [00:04<00:16,  5.13it/s][A
+Validating:  20%|#9        | 21/107 [00:04<00:15,  5.62it/s][AEpoch 0:  31%|###       | 38/123 [00:18<00:41,  2.05it/s, loss=1.6, v_num=4]
+Validating:  21%|##        | 22/107 [00:04<00:14,  5.99it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:14,  5.89it/s][AEpoch 0:  33%|###2      | 40/123 [00:18<00:39,  2.12it/s, loss=1.6, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:14,  5.89it/s][A
+Validating:  23%|##3       | 25/107 [00:05<00:13,  6.16it/s][AEpoch 0:  34%|###4      | 42/123 [00:19<00:37,  2.19it/s, loss=1.6, v_num=4]
+Validating:  24%|##4       | 26/107 [00:05<00:12,  6.26it/s][A
+Validating:  25%|##5       | 27/107 [00:05<00:12,  6.15it/s][AEpoch 0:  36%|###5      | 44/123 [00:19<00:35,  2.25it/s, loss=1.6, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:13,  5.80it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:12,  6.13it/s][AEpoch 0:  37%|###7      | 46/123 [00:19<00:33,  2.32it/s, loss=1.6, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:12,  6.33it/s][A
+Validating:  29%|##8       | 31/107 [00:06<00:11,  6.40it/s][AEpoch 0:  39%|###9      | 48/123 [00:20<00:31,  2.38it/s, loss=1.6, v_num=4]
+Validating:  30%|##9       | 32/107 [00:06<00:15,  4.96it/s][A
+Validating:  31%|###       | 33/107 [00:06<00:13,  5.49it/s][AEpoch 0:  41%|####      | 50/123 [00:20<00:30,  2.43it/s, loss=1.6, v_num=4]
+Validating:  32%|###1      | 34/107 [00:07<00:12,  6.03it/s][A
+Validating:  33%|###2      | 35/107 [00:07<00:11,  6.37it/s][AEpoch 0:  42%|####2     | 52/123 [00:20<00:28,  2.49it/s, loss=1.6, v_num=4]
+Validating:  34%|###3      | 36/107 [00:07<00:14,  4.89it/s][A
+Validating:  35%|###4      | 37/107 [00:07<00:12,  5.57it/s][AEpoch 0:  44%|####3     | 54/123 [00:21<00:27,  2.54it/s, loss=1.6, v_num=4]
+Validating:  36%|###5      | 38/107 [00:07<00:11,  6.03it/s][A
+Validating:  36%|###6      | 39/107 [00:07<00:10,  6.22it/s][AEpoch 0:  46%|####5     | 56/123 [00:21<00:25,  2.59it/s, loss=1.6, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:13,  5.12it/s][A
+Validating:  38%|###8      | 41/107 [00:08<00:11,  5.66it/s][AEpoch 0:  47%|####7     | 58/123 [00:21<00:24,  2.64it/s, loss=1.6, v_num=4]
+Validating:  39%|###9      | 42/107 [00:08<00:10,  6.14it/s][A
+Validating:  40%|####      | 43/107 [00:08<00:09,  6.53it/s][AEpoch 0:  49%|####8     | 60/123 [00:22<00:23,  2.70it/s, loss=1.6, v_num=4]
+Validating:  41%|####1     | 44/107 [00:08<00:11,  5.47it/s][A
+Validating:  42%|####2     | 45/107 [00:08<00:10,  6.08it/s][AEpoch 0:  50%|#####     | 62/123 [00:22<00:22,  2.74it/s, loss=1.6, v_num=4]
+Validating:  43%|####2     | 46/107 [00:09<00:09,  6.52it/s][A
+Validating:  44%|####3     | 47/107 [00:09<00:09,  6.50it/s][AEpoch 0:  52%|#####2    | 64/123 [00:22<00:21,  2.79it/s, loss=1.6, v_num=4]
+Validating:  45%|####4     | 48/107 [00:09<00:10,  5.73it/s][A
+Validating:  46%|####5     | 49/107 [00:09<00:09,  6.14it/s][AEpoch 0:  54%|#####3    | 66/123 [00:23<00:20,  2.84it/s, loss=1.6, v_num=4]
+Validating:  47%|####6     | 50/107 [00:09<00:08,  6.44it/s][A
+Validating:  48%|####7     | 51/107 [00:09<00:08,  6.50it/s][AEpoch 0:  55%|#####5    | 68/123 [00:23<00:19,  2.89it/s, loss=1.6, v_num=4]
+Validating:  49%|####8     | 52/107 [00:10<00:09,  5.96it/s][A
+Validating:  50%|####9     | 53/107 [00:10<00:08,  6.27it/s][AEpoch 0:  57%|#####6    | 70/123 [00:23<00:18,  2.93it/s, loss=1.6, v_num=4]
+Validating:  50%|#####     | 54/107 [00:10<00:08,  6.62it/s][A
+Validating:  51%|#####1    | 55/107 [00:10<00:07,  6.94it/s][AEpoch 0:  59%|#####8    | 72/123 [00:24<00:17,  2.98it/s, loss=1.6, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:10<00:10,  4.94it/s][A
+Validating:  53%|#####3    | 57/107 [00:10<00:09,  5.20it/s][AEpoch 0:  60%|######    | 74/123 [00:24<00:16,  3.00it/s, loss=1.6, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:11<00:08,  5.51it/s][A
+Validating:  55%|#####5    | 59/107 [00:11<00:07,  6.03it/s][AEpoch 0:  62%|######1   | 76/123 [00:24<00:15,  3.05it/s, loss=1.6, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:11<00:09,  4.81it/s][A
+Validating:  57%|#####7    | 61/107 [00:11<00:08,  5.38it/s][AEpoch 0:  63%|######3   | 78/123 [00:25<00:14,  3.07it/s, loss=1.6, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:11<00:07,  5.97it/s][A
+Validating:  59%|#####8    | 63/107 [00:11<00:06,  6.37it/s][AEpoch 0:  65%|######5   | 80/123 [00:25<00:13,  3.12it/s, loss=1.6, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:12<00:07,  5.41it/s][A
+Validating:  61%|######    | 65/107 [00:12<00:07,  5.84it/s][AEpoch 0:  67%|######6   | 82/123 [00:26<00:13,  3.15it/s, loss=1.6, v_num=4]
+Validating:  62%|######1   | 66/107 [00:12<00:06,  6.34it/s][A
+Validating:  63%|######2   | 67/107 [00:12<00:05,  6.68it/s][AEpoch 0:  68%|######8   | 84/123 [00:26<00:12,  3.20it/s, loss=1.6, v_num=4]
+Validating:  64%|######3   | 68/107 [00:12<00:07,  5.44it/s][A
+Validating:  64%|######4   | 69/107 [00:12<00:06,  6.01it/s][AEpoch 0:  70%|######9   | 86/123 [00:26<00:11,  3.22it/s, loss=1.6, v_num=4]
+Validating:  65%|######5   | 70/107 [00:13<00:05,  6.47it/s][A
+Validating:  66%|######6   | 71/107 [00:13<00:05,  6.80it/s][AEpoch 0:  72%|#######1  | 88/123 [00:26<00:10,  3.27it/s, loss=1.6, v_num=4]
+Validating:  67%|######7   | 72/107 [00:13<00:05,  5.86it/s][A
+Validating:  68%|######8   | 73/107 [00:13<00:05,  6.28it/s][AEpoch 0:  73%|#######3  | 90/123 [00:27<00:10,  3.30it/s, loss=1.6, v_num=4]
+Validating:  69%|######9   | 74/107 [00:13<00:05,  6.50it/s][A
+Validating:  70%|#######   | 75/107 [00:13<00:04,  6.82it/s][AEpoch 0:  75%|#######4  | 92/123 [00:27<00:09,  3.34it/s, loss=1.6, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:14<00:06,  4.97it/s][A
+Validating:  72%|#######1  | 77/107 [00:14<00:05,  5.26it/s][AEpoch 0:  76%|#######6  | 94/123 [00:28<00:08,  3.35it/s, loss=1.6, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:14<00:04,  5.87it/s][A
+Validating:  74%|#######3  | 79/107 [00:14<00:04,  6.24it/s][AEpoch 0:  78%|#######8  | 96/123 [00:28<00:07,  3.39it/s, loss=1.6, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:15<00:06,  4.29it/s][A
+Validating:  76%|#######5  | 81/107 [00:15<00:05,  4.93it/s][AEpoch 0:  80%|#######9  | 98/123 [00:28<00:07,  3.40it/s, loss=1.6, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:15<00:04,  5.43it/s][A
+Validating:  78%|#######7  | 83/107 [00:15<00:04,  5.80it/s][AEpoch 0:  81%|########1 | 100/123 [00:29<00:06,  3.43it/s, loss=1.6, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:15<00:04,  4.85it/s][A
+Validating:  79%|#######9  | 85/107 [00:15<00:04,  5.23it/s][AEpoch 0:  83%|########2 | 102/123 [00:29<00:06,  3.45it/s, loss=1.6, v_num=4]
+Validating:  80%|########  | 86/107 [00:16<00:03,  5.69it/s][A
+Validating:  81%|########1 | 87/107 [00:16<00:03,  6.19it/s][AEpoch 0:  85%|########4 | 104/123 [00:29<00:05,  3.48it/s, loss=1.6, v_num=4]
+Validating:  82%|########2 | 88/107 [00:16<00:03,  5.29it/s][A
+Validating:  83%|########3 | 89/107 [00:16<00:03,  5.81it/s][AEpoch 0:  86%|########6 | 106/123 [00:30<00:04,  3.51it/s, loss=1.6, v_num=4]
+Validating:  84%|########4 | 90/107 [00:16<00:02,  5.99it/s][A
+Validating:  85%|########5 | 91/107 [00:16<00:02,  6.34it/s][AEpoch 0:  88%|########7 | 108/123 [00:30<00:04,  3.54it/s, loss=1.6, v_num=4]
+Validating:  86%|########5 | 92/107 [00:17<00:02,  5.71it/s][A
+Validating:  87%|########6 | 93/107 [00:17<00:02,  6.15it/s][AEpoch 0:  89%|########9 | 110/123 [00:30<00:03,  3.56it/s, loss=1.6, v_num=4]
+Validating:  88%|########7 | 94/107 [00:17<00:02,  6.44it/s][A
+Validating:  89%|########8 | 95/107 [00:17<00:01,  6.30it/s][AEpoch 0:  91%|#########1| 112/123 [00:31<00:03,  3.59it/s, loss=1.6, v_num=4]
+Validating:  90%|########9 | 96/107 [00:17<00:01,  5.85it/s][A
+Validating:  91%|######### | 97/107 [00:17<00:01,  5.60it/s][AEpoch 0:  93%|#########2| 114/123 [00:31<00:02,  3.61it/s, loss=1.6, v_num=4]
+Validating:  92%|#########1| 98/107 [00:18<00:01,  5.93it/s][A
+Validating:  93%|#########2| 99/107 [00:18<00:01,  6.05it/s][AEpoch 0:  94%|#########4| 116/123 [00:31<00:01,  3.64it/s, loss=1.6, v_num=4]
+Validating:  93%|#########3| 100/107 [00:18<00:01,  6.50it/s][A
+Validating:  94%|#########4| 101/107 [00:18<00:00,  6.77it/s][AEpoch 0:  96%|#########5| 118/123 [00:32<00:01,  3.67it/s, loss=1.6, v_num=4]
+Validating:  95%|#########5| 102/107 [00:18<00:00,  6.99it/s][A
+Validating:  96%|#########6| 103/107 [00:18<00:00,  7.16it/s][AEpoch 0:  98%|#########7| 120/123 [00:32<00:00,  3.70it/s, loss=1.6, v_num=4]
+Validating:  97%|#########7| 104/107 [00:18<00:00,  6.96it/s][A
+Validating:  98%|#########8| 105/107 [00:18<00:00,  7.13it/s][AEpoch 0:  99%|#########9| 122/123 [00:32<00:00,  3.73it/s, loss=1.6, v_num=4]
+Validating:  99%|#########9| 106/107 [00:19<00:00,  7.32it/s][A
+Validating: 100%|##########| 107/107 [00:19<00:00,  6.75it/s][AEpoch 0: 100%|##########| 123/123 [00:34<00:00,  3.60it/s, loss=1.6, v_num=4]
+                                                             [AEpoch 0: 100%|##########| 123/123 [00:34<00:00,  3.60it/s, loss=1.6, v_num=4]Epoch 0:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.6, v_num=4]          Epoch 1:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.6, v_num=4]Epoch 1:   1%|          | 1/123 [00:01<03:16,  1.61s/it, loss=1.61, v_num=4]Epoch 1:   2%|1         | 2/123 [00:02<02:25,  1.20s/it, loss=1.61, v_num=4]Epoch 1:   2%|1         | 2/123 [00:02<02:25,  1.20s/it, loss=1.57, v_num=4]Epoch 1:   2%|2         | 3/123 [00:03<02:07,  1.06s/it, loss=1.56, v_num=4]Epoch 1:   3%|3         | 4/123 [00:03<01:58,  1.00it/s, loss=1.56, v_num=4]Epoch 1:   3%|3         | 4/123 [00:03<01:58,  1.00it/s, loss=1.55, v_num=4]Epoch 1:   4%|4         | 5/123 [00:04<01:52,  1.05it/s, loss=1.54, v_num=4]Epoch 1:   5%|4         | 6/123 [00:05<01:48,  1.08it/s, loss=1.54, v_num=4]Epoch 1:   5%|4         | 6/123 [00:05<01:48,  1.08it/s, loss=1.54, v_num=4]Epoch 1:   6%|5         | 7/123 [00:06<01:45,  1.10it/s, loss=1.5, v_num=4] Epoch 1:   7%|6         | 8/123 [00:07<01:42,  1.12it/s, loss=1.5, v_num=4]Epoch 1:   7%|6         | 8/123 [00:07<01:42,  1.12it/s, loss=1.5, v_num=4]Epoch 1:   7%|7         | 9/123 [00:07<01:39,  1.14it/s, loss=1.47, v_num=4]Epoch 1:   8%|8         | 10/123 [00:08<01:38,  1.15it/s, loss=1.47, v_num=4]Epoch 1:   8%|8         | 10/123 [00:08<01:38,  1.15it/s, loss=1.43, v_num=4]Epoch 1:   9%|8         | 11/123 [00:09<01:36,  1.16it/s, loss=1.42, v_num=4]Epoch 1:  10%|9         | 12/123 [00:10<01:34,  1.17it/s, loss=1.42, v_num=4]Epoch 1:  10%|9         | 12/123 [00:10<01:34,  1.17it/s, loss=1.39, v_num=4]Epoch 1:  11%|#         | 13/123 [00:11<01:33,  1.18it/s, loss=1.4, v_num=4] Epoch 1:  11%|#1        | 14/123 [00:11<01:31,  1.19it/s, loss=1.4, v_num=4]Epoch 1:  11%|#1        | 14/123 [00:11<01:31,  1.19it/s, loss=1.39, v_num=4]ami_is1000a_closeup_720x576 not present in data
+news_newsnight_othello_720x416 not present in data
+Epoch 1:  12%|#2        | 15/123 [00:12<01:30,  1.19it/s, loss=1.4, v_num=4] ami_is1000a_left_720x576 not present in data
+Epoch 1:  13%|#3        | 16/123 [00:13<01:30,  1.19it/s, loss=1.4, v_num=4]Epoch 1:  13%|#3        | 16/123 [00:13<01:30,  1.19it/s, loss=1.4, v_num=4]
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:15,  1.28s/it][AEpoch 1:  15%|#4        | 18/123 [00:14<01:26,  1.22it/s, loss=1.4, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:04,  1.63it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:41,  2.49it/s][AEpoch 1:  16%|#6        | 20/123 [00:15<01:17,  1.33it/s, loss=1.4, v_num=4]
+Validating:   4%|3         | 4/107 [00:01<00:35,  2.89it/s][A
+Validating:   5%|4         | 5/107 [00:01<00:27,  3.72it/s][AEpoch 1:  18%|#7        | 22/123 [00:15<01:10,  1.42it/s, loss=1.4, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:22,  4.45it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:19,  5.03it/s][AEpoch 1:  20%|#9        | 24/123 [00:15<01:04,  1.52it/s, loss=1.4, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:31,  3.19it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:25,  3.86it/s][AEpoch 1:  21%|##1       | 26/123 [00:16<01:01,  1.58it/s, loss=1.4, v_num=4]
+Validating:   9%|9         | 10/107 [00:03<00:23,  4.12it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:21,  4.56it/s][AEpoch 1:  23%|##2       | 28/123 [00:16<00:57,  1.67it/s, loss=1.4, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:20,  4.74it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:18,  5.06it/s][AEpoch 1:  24%|##4       | 30/123 [00:17<00:53,  1.75it/s, loss=1.4, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:17,  5.21it/s][A
+Validating:  14%|#4        | 15/107 [00:03<00:15,  5.82it/s][AEpoch 1:  26%|##6       | 32/123 [00:17<00:49,  1.83it/s, loss=1.4, v_num=4]
+Validating:  15%|#4        | 16/107 [00:04<00:14,  6.30it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:13,  6.64it/s][AEpoch 1:  28%|##7       | 34/123 [00:17<00:46,  1.92it/s, loss=1.4, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:12,  6.87it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:12,  6.95it/s][AEpoch 1:  29%|##9       | 36/123 [00:18<00:43,  2.00it/s, loss=1.4, v_num=4]
+Validating:  19%|#8        | 20/107 [00:04<00:19,  4.45it/s][A
+Validating:  20%|#9        | 21/107 [00:05<00:16,  5.07it/s][AEpoch 1:  31%|###       | 38/123 [00:18<00:41,  2.05it/s, loss=1.4, v_num=4]
+Validating:  21%|##        | 22/107 [00:05<00:14,  5.68it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:13,  6.15it/s][AEpoch 1:  33%|###2      | 40/123 [00:18<00:39,  2.13it/s, loss=1.4, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:15,  5.27it/s][A
+Validating:  23%|##3       | 25/107 [00:05<00:14,  5.80it/s][AEpoch 1:  34%|###4      | 42/123 [00:19<00:37,  2.19it/s, loss=1.4, v_num=4]
+Validating:  24%|##4       | 26/107 [00:05<00:12,  6.26it/s][A
+Validating:  25%|##5       | 27/107 [00:05<00:12,  6.57it/s][AEpoch 1:  36%|###5      | 44/123 [00:19<00:34,  2.26it/s, loss=1.4, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:17,  4.45it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:15,  5.12it/s][AEpoch 1:  37%|###7      | 46/123 [00:19<00:33,  2.30it/s, loss=1.4, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:13,  5.70it/s][A
+Validating:  29%|##8       | 31/107 [00:06<00:12,  6.19it/s][AEpoch 1:  39%|###9      | 48/123 [00:20<00:31,  2.37it/s, loss=1.4, v_num=4]
+Validating:  30%|##9       | 32/107 [00:07<00:15,  4.69it/s][A
+Validating:  31%|###       | 33/107 [00:07<00:13,  5.32it/s][AEpoch 1:  41%|####      | 50/123 [00:20<00:30,  2.42it/s, loss=1.4, v_num=4]
+Validating:  32%|###1      | 34/107 [00:07<00:13,  5.61it/s][A
+Validating:  33%|###2      | 35/107 [00:07<00:11,  6.12it/s][AEpoch 1:  42%|####2     | 52/123 [00:20<00:28,  2.48it/s, loss=1.4, v_num=4]
+Validating:  34%|###3      | 36/107 [00:07<00:14,  4.94it/s][A
+Validating:  35%|###4      | 37/107 [00:07<00:12,  5.57it/s][AEpoch 1:  44%|####3     | 54/123 [00:21<00:27,  2.52it/s, loss=1.4, v_num=4]
+Validating:  36%|###5      | 38/107 [00:08<00:11,  6.07it/s][A
+Validating:  36%|###6      | 39/107 [00:08<00:10,  6.36it/s][AEpoch 1:  46%|####5     | 56/123 [00:21<00:25,  2.58it/s, loss=1.4, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:20,  3.27it/s][A
+Validating:  38%|###8      | 41/107 [00:08<00:16,  3.94it/s][AEpoch 1:  47%|####7     | 58/123 [00:22<00:25,  2.58it/s, loss=1.4, v_num=4]
+Validating:  39%|###9      | 42/107 [00:09<00:14,  4.54it/s][A
+Validating:  40%|####      | 43/107 [00:09<00:12,  5.12it/s][AEpoch 1:  49%|####8     | 60/123 [00:22<00:23,  2.64it/s, loss=1.4, v_num=4]
+Validating:  41%|####1     | 44/107 [00:09<00:17,  3.60it/s][A
+Validating:  42%|####2     | 45/107 [00:09<00:14,  4.28it/s][AEpoch 1:  50%|#####     | 62/123 [00:23<00:22,  2.66it/s, loss=1.4, v_num=4]
+Validating:  43%|####2     | 46/107 [00:09<00:12,  4.96it/s][A
+Validating:  44%|####3     | 47/107 [00:10<00:10,  5.54it/s][AEpoch 1:  52%|#####2    | 64/123 [00:23<00:21,  2.71it/s, loss=1.4, v_num=4]
+Validating:  45%|####4     | 48/107 [00:10<00:12,  4.91it/s][A
+Validating:  46%|####5     | 49/107 [00:10<00:10,  5.49it/s][AEpoch 1:  54%|#####3    | 66/123 [00:23<00:20,  2.75it/s, loss=1.4, v_num=4]
+Validating:  47%|####6     | 50/107 [00:10<00:09,  6.03it/s][A
+Validating:  48%|####7     | 51/107 [00:10<00:08,  6.45it/s][AEpoch 1:  55%|#####5    | 68/123 [00:24<00:19,  2.80it/s, loss=1.4, v_num=4]
+Validating:  49%|####8     | 52/107 [00:11<00:10,  5.39it/s][A
+Validating:  50%|####9     | 53/107 [00:11<00:09,  5.91it/s][AEpoch 1:  57%|#####6    | 70/123 [00:24<00:18,  2.84it/s, loss=1.4, v_num=4]
+Validating:  50%|#####     | 54/107 [00:11<00:08,  6.38it/s][A
+Validating:  51%|#####1    | 55/107 [00:11<00:07,  6.65it/s][AEpoch 1:  59%|#####8    | 72/123 [00:24<00:17,  2.89it/s, loss=1.4, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:11<00:09,  5.65it/s][A
+Validating:  53%|#####3    | 57/107 [00:11<00:08,  6.13it/s][AEpoch 1:  60%|######    | 74/123 [00:25<00:16,  2.93it/s, loss=1.4, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:11<00:07,  6.18it/s][A
+Validating:  55%|#####5    | 59/107 [00:12<00:07,  6.53it/s][AEpoch 1:  62%|######1   | 76/123 [00:25<00:15,  2.97it/s, loss=1.4, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:12<00:09,  4.76it/s][A
+Validating:  57%|#####7    | 61/107 [00:12<00:08,  5.20it/s][AEpoch 1:  63%|######3   | 78/123 [00:26<00:15,  2.99it/s, loss=1.4, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:12<00:07,  5.71it/s][A
+Validating:  59%|#####8    | 63/107 [00:12<00:07,  6.19it/s][AEpoch 1:  65%|######5   | 80/123 [00:26<00:14,  3.04it/s, loss=1.4, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:13<00:07,  5.96it/s][A
+Validating:  61%|######    | 65/107 [00:13<00:07,  5.86it/s][AEpoch 1:  67%|######6   | 82/123 [00:26<00:13,  3.07it/s, loss=1.4, v_num=4]
+Validating:  62%|######1   | 66/107 [00:13<00:06,  6.14it/s][A
+Validating:  63%|######2   | 67/107 [00:13<00:06,  6.02it/s][AEpoch 1:  68%|######8   | 84/123 [00:26<00:12,  3.11it/s, loss=1.4, v_num=4]
+Validating:  64%|######3   | 68/107 [00:13<00:06,  5.62it/s][A
+Validating:  64%|######4   | 69/107 [00:13<00:06,  6.14it/s][AEpoch 1:  70%|######9   | 86/123 [00:27<00:11,  3.15it/s, loss=1.4, v_num=4]
+Validating:  65%|######5   | 70/107 [00:13<00:05,  6.53it/s][A
+Validating:  66%|######6   | 71/107 [00:14<00:05,  6.79it/s][AEpoch 1:  72%|#######1  | 88/123 [00:27<00:10,  3.19it/s, loss=1.4, v_num=4]
+Validating:  67%|######7   | 72/107 [00:14<00:05,  6.92it/s][A
+Validating:  68%|######8   | 73/107 [00:14<00:04,  7.16it/s][AEpoch 1:  73%|#######3  | 90/123 [00:27<00:10,  3.23it/s, loss=1.4, v_num=4]
+Validating:  69%|######9   | 74/107 [00:14<00:04,  7.25it/s][A
+Validating:  70%|#######   | 75/107 [00:14<00:04,  7.40it/s][AEpoch 1:  75%|#######4  | 92/123 [00:28<00:09,  3.27it/s, loss=1.4, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:14<00:04,  6.93it/s][A
+Validating:  72%|#######1  | 77/107 [00:14<00:04,  7.03it/s][AEpoch 1:  76%|#######6  | 94/123 [00:28<00:08,  3.31it/s, loss=1.4, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:15<00:04,  7.20it/s][A
+Validating:  74%|#######3  | 79/107 [00:15<00:03,  7.13it/s][AEpoch 1:  78%|#######8  | 96/123 [00:28<00:08,  3.35it/s, loss=1.4, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:15<00:03,  7.25it/s][A
+Validating:  76%|#######5  | 81/107 [00:15<00:03,  7.45it/s][AEpoch 1:  80%|#######9  | 98/123 [00:28<00:07,  3.38it/s, loss=1.4, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:15<00:03,  7.41it/s][A
+Validating:  78%|#######7  | 83/107 [00:15<00:03,  6.53it/s][AEpoch 1:  81%|########1 | 100/123 [00:29<00:06,  3.41it/s, loss=1.4, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:15<00:03,  6.21it/s][A
+Validating:  79%|#######9  | 85/107 [00:16<00:03,  6.60it/s][AEpoch 1:  83%|########2 | 102/123 [00:29<00:06,  3.45it/s, loss=1.4, v_num=4]
+Validating:  80%|########  | 86/107 [00:16<00:03,  6.84it/s][A
+Validating:  81%|########1 | 87/107 [00:16<00:03,  5.40it/s][AEpoch 1:  85%|########4 | 104/123 [00:30<00:05,  3.47it/s, loss=1.4, v_num=4]
+Validating:  82%|########2 | 88/107 [00:16<00:04,  3.99it/s][A
+Validating:  83%|########3 | 89/107 [00:17<00:04,  4.49it/s][AEpoch 1:  86%|########6 | 106/123 [00:30<00:04,  3.47it/s, loss=1.4, v_num=4]
+Validating:  84%|########4 | 90/107 [00:17<00:03,  4.88it/s][A
+Validating:  85%|########5 | 91/107 [00:17<00:02,  5.52it/s][AEpoch 1:  88%|########7 | 108/123 [00:30<00:04,  3.50it/s, loss=1.4, v_num=4]
+Validating:  86%|########5 | 92/107 [00:17<00:03,  3.86it/s][A
+Validating:  87%|########6 | 93/107 [00:17<00:03,  4.28it/s][AEpoch 1:  89%|########9 | 110/123 [00:31<00:03,  3.50it/s, loss=1.4, v_num=4]
+Validating:  88%|########7 | 94/107 [00:18<00:02,  4.71it/s][A
+Validating:  89%|########8 | 95/107 [00:18<00:02,  5.27it/s][AEpoch 1:  91%|#########1| 112/123 [00:31<00:03,  3.53it/s, loss=1.4, v_num=4]
+Validating:  90%|########9 | 96/107 [00:18<00:02,  5.08it/s][A
+Validating:  91%|######### | 97/107 [00:18<00:01,  5.62it/s][AEpoch 1:  93%|#########2| 114/123 [00:32<00:02,  3.55it/s, loss=1.4, v_num=4]
+Validating:  92%|#########1| 98/107 [00:18<00:01,  6.08it/s][A
+Validating:  93%|#########2| 99/107 [00:18<00:01,  6.47it/s][AEpoch 1:  94%|#########4| 116/123 [00:32<00:01,  3.58it/s, loss=1.4, v_num=4]
+Validating:  93%|#########3| 100/107 [00:19<00:01,  5.19it/s][A
+Validating:  94%|#########4| 101/107 [00:19<00:01,  5.77it/s][AEpoch 1:  96%|#########5| 118/123 [00:32<00:01,  3.60it/s, loss=1.4, v_num=4]
+Validating:  95%|#########5| 102/107 [00:19<00:00,  6.23it/s][A
+Validating:  96%|#########6| 103/107 [00:19<00:00,  6.50it/s][AEpoch 1:  98%|#########7| 120/123 [00:33<00:00,  3.63it/s, loss=1.4, v_num=4]
+Validating:  97%|#########7| 104/107 [00:19<00:00,  6.00it/s][A
+Validating:  98%|#########8| 105/107 [00:19<00:00,  6.45it/s][AEpoch 1:  99%|#########9| 122/123 [00:33<00:00,  3.65it/s, loss=1.4, v_num=4]
+Validating:  99%|#########9| 106/107 [00:20<00:00,  6.80it/s][A
+Validating: 100%|##########| 107/107 [00:20<00:00,  6.74it/s][AEpoch 1: 100%|##########| 123/123 [00:33<00:00,  3.64it/s, loss=1.4, v_num=4]
+                                                             [AEpoch 1: 100%|##########| 123/123 [00:33<00:00,  3.64it/s, loss=1.4, v_num=4]Epoch 1:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.4, v_num=4]          Epoch 2:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.4, v_num=4]Epoch 2:   1%|          | 1/123 [00:01<03:37,  1.78s/it, loss=1.4, v_num=4]Epoch 2:   2%|1         | 2/123 [00:02<02:37,  1.30s/it, loss=1.4, v_num=4]Epoch 2:   2%|1         | 2/123 [00:02<02:37,  1.30s/it, loss=1.39, v_num=4]Epoch 2:   2%|2         | 3/123 [00:03<02:15,  1.13s/it, loss=1.38, v_num=4]Epoch 2:   3%|3         | 4/123 [00:04<02:03,  1.04s/it, loss=1.38, v_num=4]Epoch 2:   3%|3         | 4/123 [00:04<02:03,  1.04s/it, loss=1.39, v_num=4]Epoch 2:   4%|4         | 5/123 [00:04<01:56,  1.01it/s, loss=1.34, v_num=4]Epoch 2:   5%|4         | 6/123 [00:05<01:51,  1.05it/s, loss=1.34, v_num=4]Epoch 2:   5%|4         | 6/123 [00:05<01:51,  1.05it/s, loss=1.34, v_num=4]Epoch 2:   6%|5         | 7/123 [00:06<01:47,  1.07it/s, loss=1.34, v_num=4]Epoch 2:   7%|6         | 8/123 [00:07<01:44,  1.10it/s, loss=1.34, v_num=4]Epoch 2:   7%|6         | 8/123 [00:07<01:44,  1.10it/s, loss=1.38, v_num=4]Epoch 2:   7%|7         | 9/123 [00:08<01:42,  1.11it/s, loss=1.33, v_num=4]Epoch 2:   8%|8         | 10/123 [00:08<01:39,  1.13it/s, loss=1.33, v_num=4]Epoch 2:   8%|8         | 10/123 [00:08<01:40,  1.13it/s, loss=1.33, v_num=4]Epoch 2:   9%|8         | 11/123 [00:09<01:38,  1.14it/s, loss=1.32, v_num=4]Epoch 2:  10%|9         | 12/123 [00:10<01:36,  1.15it/s, loss=1.32, v_num=4]Epoch 2:  10%|9         | 12/123 [00:10<01:36,  1.15it/s, loss=1.28, v_num=4]Epoch 2:  11%|#         | 13/123 [00:11<01:34,  1.16it/s, loss=1.3, v_num=4] Epoch 2:  11%|#1        | 14/123 [00:11<01:33,  1.17it/s, loss=1.3, v_num=4]Epoch 2:  11%|#1        | 14/123 [00:11<01:33,  1.17it/s, loss=1.31, v_num=4]Epoch 2:  12%|#2        | 15/123 [00:12<01:31,  1.18it/s, loss=1.31, v_num=4]ami_is1000a_closeup_720x576 not present in data
+ami_is1000a_left_720x576 not present in data
+news_newsnight_othello_720x416 not present in data
+Epoch 2:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.31, v_num=4]Epoch 2:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.3, v_num=4] 
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:27,  1.39s/it][AEpoch 2:  15%|#4        | 18/123 [00:15<01:27,  1.20it/s, loss=1.3, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:08,  1.53it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:43,  2.42it/s][AEpoch 2:  16%|#6        | 20/123 [00:15<01:18,  1.31it/s, loss=1.3, v_num=4]
+Validating:   4%|3         | 4/107 [00:02<00:40,  2.57it/s][A
+Validating:   5%|4         | 5/107 [00:02<00:30,  3.37it/s][AEpoch 2:  18%|#7        | 22/123 [00:15<01:12,  1.39it/s, loss=1.3, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:35,  2.87it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:27,  3.61it/s][AEpoch 2:  20%|#9        | 24/123 [00:16<01:07,  1.47it/s, loss=1.3, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:23,  4.30it/s][A
+Validating:   8%|8         | 9/107 [00:03<00:22,  4.31it/s][AEpoch 2:  21%|##1       | 26/123 [00:16<01:02,  1.55it/s, loss=1.3, v_num=4]
+Validating:   9%|9         | 10/107 [00:03<00:25,  3.74it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:21,  4.41it/s][AEpoch 2:  23%|##2       | 28/123 [00:17<00:58,  1.63it/s, loss=1.3, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:18,  5.08it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:16,  5.60it/s][AEpoch 2:  24%|##4       | 30/123 [00:17<00:54,  1.72it/s, loss=1.3, v_num=4]
+Validating:  13%|#3        | 14/107 [00:04<00:20,  4.44it/s][A
+Validating:  14%|#4        | 15/107 [00:04<00:18,  5.11it/s][AEpoch 2:  26%|##6       | 32/123 [00:17<00:51,  1.78it/s, loss=1.3, v_num=4]
+Validating:  15%|#4        | 16/107 [00:04<00:15,  5.69it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:19,  4.64it/s][AEpoch 2:  28%|##7       | 34/123 [00:18<00:48,  1.85it/s, loss=1.3, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:18,  4.89it/s][A
+Validating:  18%|#7        | 19/107 [00:05<00:16,  5.38it/s][AEpoch 2:  29%|##9       | 36/123 [00:18<00:45,  1.92it/s, loss=1.3, v_num=4]
+Validating:  19%|#8        | 20/107 [00:05<00:15,  5.52it/s][A
+Validating:  20%|#9        | 21/107 [00:05<00:14,  5.97it/s][AEpoch 2:  31%|###       | 38/123 [00:19<00:42,  2.00it/s, loss=1.3, v_num=4]
+Validating:  21%|##        | 22/107 [00:05<00:14,  5.81it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:13,  6.21it/s][AEpoch 2:  33%|###2      | 40/123 [00:19<00:40,  2.07it/s, loss=1.3, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:12,  6.58it/s][A
+Validating:  23%|##3       | 25/107 [00:06<00:15,  5.15it/s][AEpoch 2:  34%|###4      | 42/123 [00:19<00:38,  2.13it/s, loss=1.3, v_num=4]
+Validating:  24%|##4       | 26/107 [00:06<00:15,  5.30it/s][A
+Validating:  25%|##5       | 27/107 [00:06<00:13,  5.83it/s][AEpoch 2:  36%|###5      | 44/123 [00:20<00:36,  2.19it/s, loss=1.3, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:12,  6.32it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:19,  4.03it/s][AEpoch 2:  37%|###7      | 46/123 [00:20<00:34,  2.23it/s, loss=1.3, v_num=4]
+Validating:  28%|##8       | 30/107 [00:07<00:16,  4.75it/s][A
+Validating:  29%|##8       | 31/107 [00:07<00:14,  5.38it/s][AEpoch 2:  39%|###9      | 48/123 [00:20<00:32,  2.30it/s, loss=1.3, v_num=4]
+Validating:  30%|##9       | 32/107 [00:07<00:12,  5.83it/s][A
+Validating:  31%|###       | 33/107 [00:07<00:15,  4.82it/s][AEpoch 2:  41%|####      | 50/123 [00:21<00:31,  2.34it/s, loss=1.3, v_num=4]
+Validating:  32%|###1      | 34/107 [00:07<00:14,  5.07it/s][A
+Validating:  33%|###2      | 35/107 [00:07<00:13,  5.49it/s][AEpoch 2:  42%|####2     | 52/123 [00:21<00:29,  2.40it/s, loss=1.3, v_num=4]
+Validating:  34%|###3      | 36/107 [00:08<00:11,  5.95it/s][A
+Validating:  35%|###4      | 37/107 [00:08<00:14,  4.86it/s][AEpoch 2:  44%|####3     | 54/123 [00:22<00:28,  2.45it/s, loss=1.3, v_num=4]
+Validating:  36%|###5      | 38/107 [00:08<00:12,  5.33it/s][A
+Validating:  36%|###6      | 39/107 [00:08<00:11,  5.78it/s][AEpoch 2:  46%|####5     | 56/123 [00:22<00:26,  2.50it/s, loss=1.3, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:10,  6.23it/s][A
+Validating:  38%|###8      | 41/107 [00:08<00:10,  6.45it/s][AEpoch 2:  47%|####7     | 58/123 [00:22<00:25,  2.56it/s, loss=1.3, v_num=4]
+Validating:  39%|###9      | 42/107 [00:09<00:12,  5.18it/s][A
+Validating:  40%|####      | 43/107 [00:09<00:11,  5.61it/s][AEpoch 2:  49%|####8     | 60/123 [00:23<00:24,  2.60it/s, loss=1.3, v_num=4]
+Validating:  41%|####1     | 44/107 [00:09<00:10,  6.06it/s][A
+Validating:  42%|####2     | 45/107 [00:09<00:09,  6.54it/s][AEpoch 2:  50%|#####     | 62/123 [00:23<00:22,  2.66it/s, loss=1.3, v_num=4]
+Validating:  43%|####2     | 46/107 [00:09<00:09,  6.24it/s][A
+Validating:  44%|####3     | 47/107 [00:09<00:09,  6.44it/s][AEpoch 2:  52%|#####2    | 64/123 [00:23<00:21,  2.71it/s, loss=1.3, v_num=4]
+Validating:  45%|####4     | 48/107 [00:10<00:08,  6.78it/s][A
+Validating:  46%|####5     | 49/107 [00:10<00:08,  6.85it/s][AEpoch 2:  54%|#####3    | 66/123 [00:23<00:20,  2.76it/s, loss=1.3, v_num=4]
+Validating:  47%|####6     | 50/107 [00:10<00:08,  6.77it/s][A
+Validating:  48%|####7     | 51/107 [00:10<00:08,  6.79it/s][AEpoch 2:  55%|#####5    | 68/123 [00:24<00:19,  2.81it/s, loss=1.3, v_num=4]
+Validating:  49%|####8     | 52/107 [00:10<00:08,  6.41it/s][A
+Validating:  50%|####9     | 53/107 [00:10<00:08,  6.46it/s][AEpoch 2:  57%|#####6    | 70/123 [00:24<00:18,  2.85it/s, loss=1.3, v_num=4]
+Validating:  50%|#####     | 54/107 [00:11<00:07,  6.86it/s][A
+Validating:  51%|#####1    | 55/107 [00:11<00:07,  6.55it/s][AEpoch 2:  59%|#####8    | 72/123 [00:24<00:17,  2.90it/s, loss=1.3, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:11<00:11,  4.39it/s][A
+Validating:  53%|#####3    | 57/107 [00:11<00:09,  5.03it/s][AEpoch 2:  60%|######    | 74/123 [00:25<00:16,  2.92it/s, loss=1.3, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:11<00:08,  5.58it/s][A
+Validating:  55%|#####5    | 59/107 [00:11<00:07,  6.05it/s][AEpoch 2:  62%|######1   | 76/123 [00:25<00:15,  2.97it/s, loss=1.3, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:12<00:08,  5.33it/s][A
+Validating:  57%|#####7    | 61/107 [00:12<00:07,  5.84it/s][AEpoch 2:  63%|######3   | 78/123 [00:26<00:15,  3.00it/s, loss=1.3, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:12<00:07,  6.31it/s][A
+Validating:  59%|#####8    | 63/107 [00:12<00:06,  6.68it/s][AEpoch 2:  65%|######5   | 80/123 [00:26<00:14,  3.05it/s, loss=1.3, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:13<00:09,  4.49it/s][A
+Validating:  61%|######    | 65/107 [00:13<00:08,  5.07it/s][AEpoch 2:  67%|######6   | 82/123 [00:26<00:13,  3.06it/s, loss=1.3, v_num=4]
+Validating:  62%|######1   | 66/107 [00:13<00:07,  5.69it/s][A
+Validating:  63%|######2   | 67/107 [00:13<00:06,  6.20it/s][AEpoch 2:  68%|######8   | 84/123 [00:27<00:12,  3.11it/s, loss=1.3, v_num=4]
+Validating:  64%|######3   | 68/107 [00:13<00:07,  5.19it/s][A
+Validating:  64%|######4   | 69/107 [00:13<00:06,  5.73it/s][AEpoch 2:  70%|######9   | 86/123 [00:27<00:11,  3.13it/s, loss=1.3, v_num=4]
+Validating:  65%|######5   | 70/107 [00:13<00:05,  6.23it/s][A
+Validating:  66%|######6   | 71/107 [00:14<00:05,  6.60it/s][AEpoch 2:  72%|#######1  | 88/123 [00:27<00:11,  3.18it/s, loss=1.3, v_num=4]
+Validating:  67%|######7   | 72/107 [00:14<00:08,  4.15it/s][A
+Validating:  68%|######8   | 73/107 [00:14<00:07,  4.83it/s][AEpoch 2:  73%|#######3  | 90/123 [00:28<00:10,  3.18it/s, loss=1.3, v_num=4]
+Validating:  69%|######9   | 74/107 [00:14<00:06,  5.46it/s][A
+Validating:  70%|#######   | 75/107 [00:14<00:05,  5.88it/s][AEpoch 2:  75%|#######4  | 92/123 [00:28<00:09,  3.22it/s, loss=1.3, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:15<00:06,  4.78it/s][A
+Validating:  72%|#######1  | 77/107 [00:15<00:05,  5.07it/s][AEpoch 2:  76%|#######6  | 94/123 [00:29<00:08,  3.24it/s, loss=1.3, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:15<00:05,  5.66it/s][A
+Validating:  74%|#######3  | 79/107 [00:15<00:04,  6.08it/s][AEpoch 2:  78%|#######8  | 96/123 [00:29<00:08,  3.28it/s, loss=1.3, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:15<00:05,  5.26it/s][A
+Validating:  76%|#######5  | 81/107 [00:16<00:04,  5.80it/s][AEpoch 2:  80%|#######9  | 98/123 [00:29<00:07,  3.30it/s, loss=1.3, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:16<00:04,  6.12it/s][A
+Validating:  78%|#######7  | 83/107 [00:16<00:03,  6.41it/s][AEpoch 2:  81%|########1 | 100/123 [00:29<00:06,  3.34it/s, loss=1.3, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:16<00:05,  4.49it/s][A
+Validating:  79%|#######9  | 85/107 [00:16<00:04,  5.09it/s][AEpoch 2:  83%|########2 | 102/123 [00:30<00:06,  3.35it/s, loss=1.3, v_num=4]
+Validating:  80%|########  | 86/107 [00:16<00:03,  5.65it/s][A
+Validating:  81%|########1 | 87/107 [00:17<00:03,  5.84it/s][AEpoch 2:  85%|########4 | 104/123 [00:30<00:05,  3.38it/s, loss=1.3, v_num=4]
+Validating:  82%|########2 | 88/107 [00:17<00:03,  5.40it/s][A
+Validating:  83%|########3 | 89/107 [00:17<00:03,  5.91it/s][AEpoch 2:  86%|########6 | 106/123 [00:31<00:04,  3.41it/s, loss=1.3, v_num=4]
+Validating:  84%|########4 | 90/107 [00:17<00:02,  6.39it/s][A
+Validating:  85%|########5 | 91/107 [00:17<00:02,  6.68it/s][AEpoch 2:  88%|########7 | 108/123 [00:31<00:04,  3.44it/s, loss=1.3, v_num=4]
+Validating:  86%|########5 | 92/107 [00:18<00:04,  3.60it/s][A
+Validating:  87%|########6 | 93/107 [00:18<00:03,  4.11it/s][AEpoch 2:  89%|########9 | 110/123 [00:32<00:03,  3.43it/s, loss=1.3, v_num=4]
+Validating:  88%|########7 | 94/107 [00:18<00:02,  4.71it/s][A
+Validating:  89%|########8 | 95/107 [00:18<00:02,  5.28it/s][AEpoch 2:  91%|#########1| 112/123 [00:32<00:03,  3.46it/s, loss=1.3, v_num=4]
+Validating:  90%|########9 | 96/107 [00:18<00:02,  5.05it/s][A
+Validating:  91%|######### | 97/107 [00:19<00:01,  5.57it/s][AEpoch 2:  93%|#########2| 114/123 [00:32<00:02,  3.48it/s, loss=1.3, v_num=4]
+Validating:  92%|#########1| 98/107 [00:19<00:01,  6.06it/s][A
+Validating:  93%|#########2| 99/107 [00:19<00:01,  6.46it/s][AEpoch 2:  94%|#########4| 116/123 [00:32<00:01,  3.52it/s, loss=1.3, v_num=4]
+Validating:  93%|#########3| 100/107 [00:19<00:01,  5.49it/s][A
+Validating:  94%|#########4| 101/107 [00:19<00:01,  5.98it/s][AEpoch 2:  96%|#########5| 118/123 [00:33<00:01,  3.54it/s, loss=1.3, v_num=4]
+Validating:  95%|#########5| 102/107 [00:19<00:00,  6.37it/s][A
+Validating:  96%|#########6| 103/107 [00:19<00:00,  6.74it/s][AEpoch 2:  98%|#########7| 120/123 [00:33<00:00,  3.57it/s, loss=1.3, v_num=4]
+Validating:  97%|#########7| 104/107 [00:20<00:00,  6.99it/s][A
+Validating:  98%|#########8| 105/107 [00:20<00:00,  7.21it/s][AEpoch 2:  99%|#########9| 122/123 [00:33<00:00,  3.60it/s, loss=1.3, v_num=4]
+Validating:  99%|#########9| 106/107 [00:20<00:00,  7.38it/s][A
+Validating: 100%|##########| 107/107 [00:20<00:00,  7.03it/s][AEpoch 2: 100%|##########| 123/123 [00:34<00:00,  3.60it/s, loss=1.3, v_num=4]
+                                                             [AEpoch 2: 100%|##########| 123/123 [00:34<00:00,  3.60it/s, loss=1.3, v_num=4]Epoch 2:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.3, v_num=4]          Epoch 3:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.3, v_num=4]Epoch 3:   1%|          | 1/123 [00:01<03:22,  1.66s/it, loss=1.27, v_num=4]Epoch 3:   2%|1         | 2/123 [00:02<02:28,  1.22s/it, loss=1.27, v_num=4]Epoch 3:   2%|1         | 2/123 [00:02<02:28,  1.22s/it, loss=1.25, v_num=4]Epoch 3:   2%|2         | 3/123 [00:03<02:09,  1.08s/it, loss=1.27, v_num=4]Epoch 3:   3%|3         | 4/123 [00:04<02:00,  1.01s/it, loss=1.27, v_num=4]Epoch 3:   3%|3         | 4/123 [00:04<02:00,  1.01s/it, loss=1.28, v_num=4]Epoch 3:   4%|4         | 5/123 [00:04<01:53,  1.04it/s, loss=1.25, v_num=4]Epoch 3:   5%|4         | 6/123 [00:05<01:49,  1.07it/s, loss=1.25, v_num=4]Epoch 3:   5%|4         | 6/123 [00:05<01:49,  1.07it/s, loss=1.21, v_num=4]Epoch 3:   6%|5         | 7/123 [00:06<01:45,  1.09it/s, loss=1.22, v_num=4]Epoch 3:   7%|6         | 8/123 [00:07<01:43,  1.11it/s, loss=1.22, v_num=4]Epoch 3:   7%|6         | 8/123 [00:07<01:43,  1.11it/s, loss=1.2, v_num=4] Epoch 3:   7%|7         | 9/123 [00:07<01:40,  1.13it/s, loss=1.23, v_num=4]Epoch 3:   8%|8         | 10/123 [00:08<01:38,  1.14it/s, loss=1.23, v_num=4]Epoch 3:   8%|8         | 10/123 [00:08<01:38,  1.14it/s, loss=1.22, v_num=4]Epoch 3:   9%|8         | 11/123 [00:09<01:36,  1.16it/s, loss=1.24, v_num=4]Epoch 3:  10%|9         | 12/123 [00:10<01:35,  1.17it/s, loss=1.24, v_num=4]Epoch 3:  10%|9         | 12/123 [00:10<01:35,  1.17it/s, loss=1.18, v_num=4]Epoch 3:  11%|#         | 13/123 [00:11<01:33,  1.17it/s, loss=1.19, v_num=4]Epoch 3:  11%|#1        | 14/123 [00:11<01:32,  1.18it/s, loss=1.19, v_num=4]Epoch 3:  11%|#1        | 14/123 [00:11<01:32,  1.18it/s, loss=1.19, v_num=4]Epoch 3:  12%|#2        | 15/123 [00:12<01:30,  1.19it/s, loss=1.22, v_num=4]news_newsnight_othello_720x416 not present in data
+ami_is1000a_closeup_720x576 not present in data
+ami_is1000a_left_720x576 not present in data
+Epoch 3:  13%|#3        | 16/123 [00:13<01:30,  1.18it/s, loss=1.22, v_num=4]Epoch 3:  13%|#3        | 16/123 [00:13<01:30,  1.18it/s, loss=1.22, v_num=4]
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:29,  1.41s/it][AEpoch 3:  15%|#4        | 18/123 [00:14<01:27,  1.21it/s, loss=1.22, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:09,  1.50it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:44,  2.32it/s][AEpoch 3:  16%|#6        | 20/123 [00:15<01:18,  1.31it/s, loss=1.22, v_num=4]
+Validating:   4%|3         | 4/107 [00:02<00:39,  2.62it/s][A
+Validating:   5%|4         | 5/107 [00:02<00:29,  3.42it/s][AEpoch 3:  18%|#7        | 22/123 [00:15<01:11,  1.40it/s, loss=1.22, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:24,  4.17it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:20,  4.94it/s][AEpoch 3:  20%|#9        | 24/123 [00:15<01:05,  1.51it/s, loss=1.22, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:24,  4.01it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:21,  4.47it/s][AEpoch 3:  21%|##1       | 26/123 [00:16<01:01,  1.58it/s, loss=1.22, v_num=4]
+Validating:   9%|9         | 10/107 [00:03<00:18,  5.11it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:16,  5.69it/s][AEpoch 3:  23%|##2       | 28/123 [00:16<00:56,  1.68it/s, loss=1.22, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:20,  4.67it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:20,  4.52it/s][AEpoch 3:  24%|##4       | 30/123 [00:17<00:53,  1.74it/s, loss=1.22, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:18,  5.15it/s][A
+Validating:  14%|#4        | 15/107 [00:03<00:16,  5.68it/s][AEpoch 3:  26%|##6       | 32/123 [00:17<00:49,  1.83it/s, loss=1.22, v_num=4]
+Validating:  15%|#4        | 16/107 [00:04<00:15,  5.82it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:17,  5.27it/s][AEpoch 3:  28%|##7       | 34/123 [00:17<00:46,  1.90it/s, loss=1.22, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:15,  5.84it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:13,  6.31it/s][AEpoch 3:  29%|##9       | 36/123 [00:18<00:43,  1.98it/s, loss=1.22, v_num=4]
+Validating:  19%|#8        | 20/107 [00:04<00:13,  6.54it/s][A
+Validating:  20%|#9        | 21/107 [00:05<00:15,  5.68it/s][AEpoch 3:  31%|###       | 38/123 [00:18<00:41,  2.05it/s, loss=1.22, v_num=4]
+Validating:  21%|##        | 22/107 [00:05<00:13,  6.18it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:12,  6.55it/s][AEpoch 3:  33%|###2      | 40/123 [00:18<00:39,  2.13it/s, loss=1.22, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:12,  6.47it/s][A
+Validating:  23%|##3       | 25/107 [00:06<00:24,  3.33it/s][AEpoch 3:  34%|###4      | 42/123 [00:19<00:37,  2.14it/s, loss=1.22, v_num=4]
+Validating:  24%|##4       | 26/107 [00:06<00:20,  3.99it/s][A
+Validating:  25%|##5       | 27/107 [00:06<00:18,  4.31it/s][AEpoch 3:  36%|###5      | 44/123 [00:19<00:35,  2.21it/s, loss=1.22, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:16,  4.68it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:14,  5.21it/s][AEpoch 3:  37%|###7      | 46/123 [00:20<00:33,  2.27it/s, loss=1.22, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:13,  5.74it/s][A
+Validating:  29%|##8       | 31/107 [00:06<00:12,  6.02it/s][AEpoch 3:  39%|###9      | 48/123 [00:20<00:32,  2.34it/s, loss=1.22, v_num=4]
+Validating:  30%|##9       | 32/107 [00:07<00:11,  6.50it/s][A
+Validating:  31%|###       | 33/107 [00:07<00:14,  5.14it/s][AEpoch 3:  41%|####      | 50/123 [00:20<00:30,  2.39it/s, loss=1.22, v_num=4]
+Validating:  32%|###1      | 34/107 [00:07<00:12,  5.69it/s][A
+Validating:  33%|###2      | 35/107 [00:07<00:11,  6.10it/s][AEpoch 3:  42%|####2     | 52/123 [00:21<00:28,  2.45it/s, loss=1.22, v_num=4]
+Validating:  34%|###3      | 36/107 [00:07<00:11,  6.35it/s][A
+Validating:  35%|###4      | 37/107 [00:08<00:17,  3.92it/s][AEpoch 3:  44%|####3     | 54/123 [00:21<00:27,  2.47it/s, loss=1.22, v_num=4]
+Validating:  36%|###5      | 38/107 [00:08<00:15,  4.57it/s][A
+Validating:  36%|###6      | 39/107 [00:08<00:13,  5.21it/s][AEpoch 3:  46%|####5     | 56/123 [00:22<00:26,  2.54it/s, loss=1.22, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:11,  5.65it/s][A
+Validating:  38%|###8      | 41/107 [00:09<00:19,  3.37it/s][AEpoch 3:  47%|####7     | 58/123 [00:22<00:25,  2.54it/s, loss=1.22, v_num=4]
+Validating:  39%|###9      | 42/107 [00:09<00:16,  4.04it/s][A
+Validating:  40%|####      | 43/107 [00:09<00:14,  4.52it/s][AEpoch 3:  49%|####8     | 60/123 [00:23<00:24,  2.60it/s, loss=1.22, v_num=4]
+Validating:  41%|####1     | 44/107 [00:09<00:12,  5.14it/s][A
+Validating:  42%|####2     | 45/107 [00:10<00:13,  4.45it/s][AEpoch 3:  50%|#####     | 62/123 [00:23<00:23,  2.64it/s, loss=1.22, v_num=4]
+Validating:  43%|####2     | 46/107 [00:10<00:13,  4.64it/s][A
+Validating:  44%|####3     | 47/107 [00:10<00:12,  4.97it/s][AEpoch 3:  52%|#####2    | 64/123 [00:23<00:22,  2.68it/s, loss=1.22, v_num=4]
+Validating:  45%|####4     | 48/107 [00:10<00:11,  5.07it/s][A
+Validating:  46%|####5     | 49/107 [00:10<00:10,  5.62it/s][AEpoch 3:  54%|#####3    | 66/123 [00:24<00:20,  2.73it/s, loss=1.22, v_num=4]
+Validating:  47%|####6     | 50/107 [00:10<00:09,  6.11it/s][A
+Validating:  48%|####7     | 51/107 [00:10<00:08,  6.57it/s][AEpoch 3:  55%|#####5    | 68/123 [00:24<00:19,  2.78it/s, loss=1.22, v_num=4]
+Validating:  49%|####8     | 52/107 [00:11<00:08,  6.79it/s][A
+Validating:  50%|####9     | 53/107 [00:11<00:13,  4.11it/s][AEpoch 3:  57%|#####6    | 70/123 [00:25<00:18,  2.79it/s, loss=1.22, v_num=4]
+Validating:  50%|#####     | 54/107 [00:11<00:11,  4.80it/s][A
+Validating:  51%|#####1    | 55/107 [00:11<00:09,  5.42it/s][AEpoch 3:  59%|#####8    | 72/123 [00:25<00:17,  2.84it/s, loss=1.22, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:11<00:08,  5.93it/s][A
+Validating:  53%|#####3    | 57/107 [00:12<00:11,  4.41it/s][AEpoch 3:  60%|######    | 74/123 [00:25<00:17,  2.87it/s, loss=1.22, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:12<00:09,  5.04it/s][A
+Validating:  55%|#####5    | 59/107 [00:12<00:08,  5.59it/s][AEpoch 3:  62%|######1   | 76/123 [00:26<00:16,  2.91it/s, loss=1.22, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:12<00:07,  6.03it/s][A
+Validating:  57%|#####7    | 61/107 [00:13<00:13,  3.44it/s][AEpoch 3:  63%|######3   | 78/123 [00:26<00:15,  2.91it/s, loss=1.22, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:13<00:10,  4.14it/s][A
+Validating:  59%|#####8    | 63/107 [00:13<00:09,  4.79it/s][AEpoch 3:  65%|######5   | 80/123 [00:27<00:14,  2.96it/s, loss=1.22, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:13<00:07,  5.38it/s][A
+Validating:  61%|######    | 65/107 [00:14<00:10,  4.14it/s][AEpoch 3:  67%|######6   | 82/123 [00:27<00:13,  2.97it/s, loss=1.22, v_num=4]
+Validating:  62%|######1   | 66/107 [00:14<00:09,  4.45it/s][A
+Validating:  63%|######2   | 67/107 [00:14<00:08,  4.94it/s][AEpoch 3:  68%|######8   | 84/123 [00:27<00:12,  3.01it/s, loss=1.22, v_num=4]
+Validating:  64%|######3   | 68/107 [00:14<00:07,  5.50it/s][A
+Validating:  64%|######4   | 69/107 [00:14<00:09,  4.04it/s][AEpoch 3:  70%|######9   | 86/123 [00:28<00:12,  3.02it/s, loss=1.22, v_num=4]
+Validating:  65%|######5   | 70/107 [00:15<00:07,  4.69it/s][A
+Validating:  66%|######6   | 71/107 [00:15<00:06,  5.30it/s][AEpoch 3:  72%|#######1  | 88/123 [00:28<00:11,  3.07it/s, loss=1.22, v_num=4]
+Validating:  67%|######7   | 72/107 [00:15<00:06,  5.71it/s][A
+Validating:  68%|######8   | 73/107 [00:15<00:06,  5.59it/s][AEpoch 3:  73%|#######3  | 90/123 [00:29<00:10,  3.10it/s, loss=1.22, v_num=4]
+Validating:  69%|######9   | 74/107 [00:15<00:05,  5.96it/s][A
+Validating:  70%|#######   | 75/107 [00:15<00:05,  6.28it/s][AEpoch 3:  75%|#######4  | 92/123 [00:29<00:09,  3.14it/s, loss=1.22, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:15<00:04,  6.23it/s][A
+Validating:  72%|#######1  | 77/107 [00:16<00:05,  5.26it/s][AEpoch 3:  76%|#######6  | 94/123 [00:29<00:09,  3.16it/s, loss=1.22, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:16<00:05,  5.61it/s][A
+Validating:  74%|#######3  | 79/107 [00:16<00:04,  5.83it/s][AEpoch 3:  78%|#######8  | 96/123 [00:30<00:08,  3.20it/s, loss=1.22, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:16<00:04,  6.15it/s][A
+Validating:  76%|#######5  | 81/107 [00:16<00:04,  5.48it/s][AEpoch 3:  80%|#######9  | 98/123 [00:30<00:07,  3.22it/s, loss=1.22, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:17<00:04,  5.99it/s][A
+Validating:  78%|#######7  | 83/107 [00:17<00:03,  6.45it/s][AEpoch 3:  81%|########1 | 100/123 [00:30<00:07,  3.26it/s, loss=1.22, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:17<00:03,  6.68it/s][A
+Validating:  79%|#######9  | 85/107 [00:17<00:03,  5.98it/s][AEpoch 3:  83%|########2 | 102/123 [00:31<00:06,  3.29it/s, loss=1.22, v_num=4]
+Validating:  80%|########  | 86/107 [00:17<00:03,  6.38it/s][A
+Validating:  81%|########1 | 87/107 [00:17<00:02,  6.71it/s][AEpoch 3:  85%|########4 | 104/123 [00:31<00:05,  3.33it/s, loss=1.22, v_num=4]
+Validating:  82%|########2 | 88/107 [00:17<00:02,  7.02it/s][A
+Validating:  83%|########3 | 89/107 [00:18<00:03,  4.79it/s][AEpoch 3:  86%|########6 | 106/123 [00:31<00:05,  3.34it/s, loss=1.22, v_num=4]
+Validating:  84%|########4 | 90/107 [00:18<00:03,  5.41it/s][A
+Validating:  85%|########5 | 91/107 [00:18<00:02,  5.89it/s][AEpoch 3:  88%|########7 | 108/123 [00:32<00:04,  3.37it/s, loss=1.22, v_num=4]
+Validating:  86%|########5 | 92/107 [00:18<00:02,  6.31it/s][A
+Validating:  87%|########6 | 93/107 [00:19<00:03,  4.30it/s][AEpoch 3:  89%|########9 | 110/123 [00:32<00:03,  3.38it/s, loss=1.22, v_num=4]
+Validating:  88%|########7 | 94/107 [00:19<00:02,  4.98it/s][A
+Validating:  89%|########8 | 95/107 [00:19<00:02,  5.53it/s][AEpoch 3:  91%|#########1| 112/123 [00:32<00:03,  3.41it/s, loss=1.22, v_num=4]
+Validating:  90%|########9 | 96/107 [00:19<00:01,  6.08it/s][A
+Validating:  91%|######### | 97/107 [00:19<00:02,  4.42it/s][AEpoch 3:  93%|#########2| 114/123 [00:33<00:02,  3.42it/s, loss=1.22, v_num=4]
+Validating:  92%|#########1| 98/107 [00:19<00:01,  4.99it/s][A
+Validating:  93%|#########2| 99/107 [00:20<00:01,  5.58it/s][AEpoch 3:  94%|#########4| 116/123 [00:33<00:02,  3.45it/s, loss=1.22, v_num=4]
+Validating:  93%|#########3| 100/107 [00:20<00:01,  6.02it/s][A
+Validating:  94%|#########4| 101/107 [00:20<00:00,  6.44it/s][AEpoch 3:  96%|#########5| 118/123 [00:33<00:01,  3.48it/s, loss=1.22, v_num=4]
+Validating:  95%|#########5| 102/107 [00:20<00:00,  6.75it/s][A
+Validating:  96%|#########6| 103/107 [00:20<00:00,  7.00it/s][AEpoch 3:  98%|#########7| 120/123 [00:34<00:00,  3.52it/s, loss=1.22, v_num=4]
+Validating:  97%|#########7| 104/107 [00:20<00:00,  7.23it/s][A
+Validating:  98%|#########8| 105/107 [00:20<00:00,  7.34it/s][AEpoch 3:  99%|#########9| 122/123 [00:34<00:00,  3.55it/s, loss=1.22, v_num=4]
+Validating:  99%|#########9| 106/107 [00:20<00:00,  7.44it/s][A
+Validating: 100%|##########| 107/107 [00:21<00:00,  7.00it/s][AEpoch 3: 100%|##########| 123/123 [00:34<00:00,  3.54it/s, loss=1.22, v_num=4]
+                                                             [AEpoch 3: 100%|##########| 123/123 [00:34<00:00,  3.54it/s, loss=1.22, v_num=4]Epoch 3:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.22, v_num=4]          Epoch 4:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.22, v_num=4]Epoch 4:   1%|          | 1/123 [00:01<03:32,  1.74s/it, loss=1.2, v_num=4]Epoch 4:   2%|1         | 2/123 [00:02<02:32,  1.26s/it, loss=1.2, v_num=4]Epoch 4:   2%|1         | 2/123 [00:02<02:32,  1.26s/it, loss=1.24, v_num=4]Epoch 4:   2%|2         | 3/123 [00:03<02:11,  1.10s/it, loss=1.24, v_num=4]Epoch 4:   3%|3         | 4/123 [00:04<02:01,  1.02s/it, loss=1.24, v_num=4]Epoch 4:   3%|3         | 4/123 [00:04<02:01,  1.02s/it, loss=1.25, v_num=4]Epoch 4:   4%|4         | 5/123 [00:04<01:55,  1.02it/s, loss=1.27, v_num=4]Epoch 4:   5%|4         | 6/123 [00:05<01:50,  1.06it/s, loss=1.27, v_num=4]Epoch 4:   5%|4         | 6/123 [00:05<01:50,  1.06it/s, loss=1.27, v_num=4]Epoch 4:   6%|5         | 7/123 [00:06<01:47,  1.08it/s, loss=1.26, v_num=4]Epoch 4:   7%|6         | 8/123 [00:07<01:44,  1.10it/s, loss=1.26, v_num=4]Epoch 4:   7%|6         | 8/123 [00:07<01:44,  1.10it/s, loss=1.24, v_num=4]Epoch 4:   7%|7         | 9/123 [00:08<01:42,  1.12it/s, loss=1.25, v_num=4]Epoch 4:   8%|8         | 10/123 [00:08<01:39,  1.13it/s, loss=1.25, v_num=4]Epoch 4:   8%|8         | 10/123 [00:08<01:39,  1.13it/s, loss=1.3, v_num=4] Epoch 4:   9%|8         | 11/123 [00:09<01:37,  1.14it/s, loss=1.28, v_num=4]Epoch 4:  10%|9         | 12/123 [00:10<01:36,  1.15it/s, loss=1.28, v_num=4]Epoch 4:  10%|9         | 12/123 [00:10<01:36,  1.15it/s, loss=1.31, v_num=4]Epoch 4:  11%|#         | 13/123 [00:11<01:34,  1.16it/s, loss=1.29, v_num=4]Epoch 4:  11%|#1        | 14/123 [00:11<01:33,  1.17it/s, loss=1.29, v_num=4]Epoch 4:  11%|#1        | 14/123 [00:11<01:33,  1.17it/s, loss=1.31, v_num=4]Epoch 4:  12%|#2        | 15/123 [00:12<01:31,  1.18it/s, loss=1.27, v_num=4]news_newsnight_othello_720x416 not present in data
+ami_is1000a_closeup_720x576 not present in data
+ami_is1000a_left_720x576 not present in data
+Epoch 4:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.27, v_num=4]Epoch 4:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.27, v_num=4]
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:10,  1.24s/it][AEpoch 4:  15%|#4        | 18/123 [00:14<01:26,  1.21it/s, loss=1.27, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:03,  1.67it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:41,  2.50it/s][AEpoch 4:  16%|#6        | 20/123 [00:15<01:18,  1.31it/s, loss=1.27, v_num=4]
+Validating:   4%|3         | 4/107 [00:01<00:32,  3.19it/s][A
+Validating:   5%|4         | 5/107 [00:01<00:27,  3.65it/s][AEpoch 4:  18%|#7        | 22/123 [00:15<01:11,  1.41it/s, loss=1.27, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:22,  4.45it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:19,  5.13it/s][AEpoch 4:  20%|#9        | 24/123 [00:15<01:05,  1.51it/s, loss=1.27, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:18,  5.43it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:19,  5.02it/s][AEpoch 4:  21%|##1       | 26/123 [00:16<01:00,  1.60it/s, loss=1.27, v_num=4]
+Validating:   9%|9         | 10/107 [00:02<00:18,  5.36it/s][A
+Validating:  10%|#         | 11/107 [00:02<00:16,  5.92it/s][AEpoch 4:  23%|##2       | 28/123 [00:16<00:56,  1.69it/s, loss=1.27, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:18,  5.07it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:16,  5.65it/s][AEpoch 4:  24%|##4       | 30/123 [00:16<00:52,  1.77it/s, loss=1.27, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:15,  6.02it/s][A
+Validating:  14%|#4        | 15/107 [00:03<00:15,  5.86it/s][AEpoch 4:  26%|##6       | 32/123 [00:17<00:49,  1.85it/s, loss=1.27, v_num=4]
+Validating:  15%|#4        | 16/107 [00:03<00:15,  5.82it/s][A
+Validating:  16%|#5        | 17/107 [00:03<00:15,  5.78it/s][AEpoch 4:  28%|##7       | 34/123 [00:17<00:46,  1.93it/s, loss=1.27, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:14,  5.99it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:14,  5.94it/s][AEpoch 4:  29%|##9       | 36/123 [00:17<00:43,  2.01it/s, loss=1.27, v_num=4]
+Validating:  19%|#8        | 20/107 [00:04<00:14,  6.07it/s][A
+Validating:  20%|#9        | 21/107 [00:04<00:13,  6.48it/s][AEpoch 4:  31%|###       | 38/123 [00:18<00:40,  2.09it/s, loss=1.27, v_num=4]
+Validating:  21%|##        | 22/107 [00:04<00:12,  6.67it/s][A
+Validating:  21%|##1       | 23/107 [00:04<00:13,  6.45it/s][AEpoch 4:  33%|###2      | 40/123 [00:18<00:38,  2.16it/s, loss=1.27, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:13,  6.31it/s][A
+Validating:  23%|##3       | 25/107 [00:05<00:12,  6.35it/s][AEpoch 4:  34%|###4      | 42/123 [00:18<00:36,  2.23it/s, loss=1.27, v_num=4]
+Validating:  24%|##4       | 26/107 [00:05<00:12,  6.67it/s][A
+Validating:  25%|##5       | 27/107 [00:05<00:11,  6.83it/s][AEpoch 4:  36%|###5      | 44/123 [00:19<00:34,  2.30it/s, loss=1.27, v_num=4]
+Validating:  26%|##6       | 28/107 [00:05<00:14,  5.40it/s][A
+Validating:  27%|##7       | 29/107 [00:05<00:13,  5.61it/s][AEpoch 4:  37%|###7      | 46/123 [00:19<00:32,  2.35it/s, loss=1.27, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:12,  6.10it/s][A
+Validating:  29%|##8       | 31/107 [00:06<00:11,  6.54it/s][AEpoch 4:  39%|###9      | 48/123 [00:19<00:30,  2.42it/s, loss=1.27, v_num=4]
+Validating:  30%|##9       | 32/107 [00:06<00:14,  5.23it/s][A
+Validating:  31%|###       | 33/107 [00:06<00:12,  5.77it/s][AEpoch 4:  41%|####      | 50/123 [00:20<00:29,  2.47it/s, loss=1.27, v_num=4]
+Validating:  32%|###1      | 34/107 [00:06<00:11,  6.20it/s][A
+Validating:  33%|###2      | 35/107 [00:06<00:10,  6.56it/s][AEpoch 4:  42%|####2     | 52/123 [00:20<00:27,  2.54it/s, loss=1.27, v_num=4]
+Validating:  34%|###3      | 36/107 [00:07<00:12,  5.80it/s][A
+Validating:  35%|###4      | 37/107 [00:07<00:11,  6.30it/s][AEpoch 4:  44%|####3     | 54/123 [00:20<00:26,  2.59it/s, loss=1.27, v_num=4]
+Validating:  36%|###5      | 38/107 [00:07<00:10,  6.67it/s][A
+Validating:  36%|###6      | 39/107 [00:07<00:09,  6.89it/s][AEpoch 4:  46%|####5     | 56/123 [00:21<00:25,  2.65it/s, loss=1.27, v_num=4]
+Validating:  37%|###7      | 40/107 [00:07<00:11,  5.72it/s][A
+Validating:  38%|###8      | 41/107 [00:07<00:14,  4.69it/s][AEpoch 4:  47%|####7     | 58/123 [00:21<00:24,  2.68it/s, loss=1.27, v_num=4]
+Validating:  39%|###9      | 42/107 [00:08<00:12,  5.29it/s][A
+Validating:  40%|####      | 43/107 [00:08<00:10,  5.83it/s][AEpoch 4:  49%|####8     | 60/123 [00:21<00:22,  2.74it/s, loss=1.27, v_num=4]
+Validating:  41%|####1     | 44/107 [00:08<00:10,  6.30it/s][A
+Validating:  42%|####2     | 45/107 [00:08<00:10,  5.74it/s][AEpoch 4:  50%|#####     | 62/123 [00:22<00:21,  2.79it/s, loss=1.27, v_num=4]
+Validating:  43%|####2     | 46/107 [00:08<00:09,  6.14it/s][A
+Validating:  44%|####3     | 47/107 [00:08<00:09,  6.51it/s][AEpoch 4:  52%|#####2    | 64/123 [00:22<00:20,  2.84it/s, loss=1.27, v_num=4]
+Validating:  45%|####4     | 48/107 [00:08<00:08,  6.84it/s][A
+Validating:  46%|####5     | 49/107 [00:09<00:10,  5.75it/s][AEpoch 4:  54%|#####3    | 66/123 [00:22<00:19,  2.88it/s, loss=1.27, v_num=4]
+Validating:  47%|####6     | 50/107 [00:09<00:09,  6.17it/s][A
+Validating:  48%|####7     | 51/107 [00:09<00:08,  6.51it/s][AEpoch 4:  55%|#####5    | 68/123 [00:23<00:18,  2.94it/s, loss=1.27, v_num=4]
+Validating:  49%|####8     | 52/107 [00:09<00:08,  6.76it/s][A
+Validating:  50%|####9     | 53/107 [00:09<00:08,  6.75it/s][AEpoch 4:  57%|#####6    | 70/123 [00:23<00:17,  2.99it/s, loss=1.27, v_num=4]
+Validating:  50%|#####     | 54/107 [00:09<00:07,  7.02it/s][A
+Validating:  51%|#####1    | 55/107 [00:10<00:07,  7.25it/s][AEpoch 4:  59%|#####8    | 72/123 [00:23<00:16,  3.04it/s, loss=1.27, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:10<00:07,  6.47it/s][A
+Validating:  53%|#####3    | 57/107 [00:10<00:07,  6.33it/s][AEpoch 4:  60%|######    | 74/123 [00:24<00:15,  3.08it/s, loss=1.27, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:10<00:07,  6.37it/s][A
+Validating:  55%|#####5    | 59/107 [00:10<00:07,  6.35it/s][AEpoch 4:  62%|######1   | 76/123 [00:24<00:15,  3.12it/s, loss=1.27, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:10<00:07,  6.06it/s][A
+Validating:  57%|#####7    | 61/107 [00:11<00:07,  5.92it/s][AEpoch 4:  63%|######3   | 78/123 [00:24<00:14,  3.16it/s, loss=1.27, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:11<00:07,  6.11it/s][A
+Validating:  59%|#####8    | 63/107 [00:11<00:06,  6.53it/s][AEpoch 4:  65%|######5   | 80/123 [00:25<00:13,  3.20it/s, loss=1.27, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:11<00:06,  6.44it/s][A
+Validating:  61%|######    | 65/107 [00:11<00:07,  5.51it/s][AEpoch 4:  67%|######6   | 82/123 [00:25<00:12,  3.23it/s, loss=1.27, v_num=4]
+Validating:  62%|######1   | 66/107 [00:11<00:06,  6.02it/s][A
+Validating:  63%|######2   | 67/107 [00:12<00:06,  6.29it/s][AEpoch 4:  68%|######8   | 84/123 [00:25<00:11,  3.27it/s, loss=1.27, v_num=4]
+Validating:  64%|######3   | 68/107 [00:12<00:06,  6.11it/s][A
+Validating:  64%|######4   | 69/107 [00:12<00:06,  5.98it/s][AEpoch 4:  70%|######9   | 86/123 [00:26<00:11,  3.30it/s, loss=1.27, v_num=4]
+Validating:  65%|######5   | 70/107 [00:12<00:05,  6.35it/s][A
+Validating:  66%|######6   | 71/107 [00:12<00:05,  6.68it/s][AEpoch 4:  72%|#######1  | 88/123 [00:26<00:10,  3.35it/s, loss=1.27, v_num=4]
+Validating:  67%|######7   | 72/107 [00:12<00:05,  6.42it/s][A
+Validating:  68%|######8   | 73/107 [00:12<00:05,  6.44it/s][AEpoch 4:  73%|#######3  | 90/123 [00:26<00:09,  3.38it/s, loss=1.27, v_num=4]
+Validating:  69%|######9   | 74/107 [00:13<00:04,  6.67it/s][A
+Validating:  70%|#######   | 75/107 [00:13<00:04,  6.93it/s][AEpoch 4:  75%|#######4  | 92/123 [00:26<00:09,  3.42it/s, loss=1.27, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:13<00:05,  5.98it/s][A
+Validating:  72%|#######1  | 77/107 [00:13<00:04,  6.00it/s][AEpoch 4:  76%|#######6  | 94/123 [00:27<00:08,  3.45it/s, loss=1.27, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:13<00:04,  6.55it/s][A
+Validating:  74%|#######3  | 79/107 [00:13<00:04,  6.76it/s][AEpoch 4:  78%|#######8  | 96/123 [00:27<00:07,  3.49it/s, loss=1.27, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:14<00:04,  6.15it/s][A
+Validating:  76%|#######5  | 81/107 [00:14<00:04,  6.13it/s][AEpoch 4:  80%|#######9  | 98/123 [00:27<00:07,  3.51it/s, loss=1.27, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:14<00:03,  6.49it/s][A
+Validating:  78%|#######7  | 83/107 [00:14<00:03,  6.75it/s][AEpoch 4:  81%|########1 | 100/123 [00:28<00:06,  3.55it/s, loss=1.27, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:14<00:03,  6.12it/s][A
+Validating:  79%|#######9  | 85/107 [00:14<00:03,  6.13it/s][AEpoch 4:  83%|########2 | 102/123 [00:28<00:05,  3.58it/s, loss=1.27, v_num=4]
+Validating:  80%|########  | 86/107 [00:15<00:03,  6.18it/s][A
+Validating:  81%|########1 | 87/107 [00:15<00:03,  6.03it/s][AEpoch 4:  85%|########4 | 104/123 [00:28<00:05,  3.60it/s, loss=1.27, v_num=4]
+Validating:  82%|########2 | 88/107 [00:15<00:03,  5.98it/s][A
+Validating:  83%|########3 | 89/107 [00:15<00:02,  6.18it/s][AEpoch 4:  86%|########6 | 106/123 [00:29<00:04,  3.63it/s, loss=1.27, v_num=4]
+Validating:  84%|########4 | 90/107 [00:15<00:02,  6.62it/s][A
+Validating:  85%|########5 | 91/107 [00:15<00:02,  6.73it/s][AEpoch 4:  88%|########7 | 108/123 [00:29<00:04,  3.67it/s, loss=1.27, v_num=4]
+Validating:  86%|########5 | 92/107 [00:15<00:02,  6.49it/s][A
+Validating:  87%|########6 | 93/107 [00:16<00:02,  6.43it/s][AEpoch 4:  89%|########9 | 110/123 [00:29<00:03,  3.70it/s, loss=1.27, v_num=4]
+Validating:  88%|########7 | 94/107 [00:16<00:02,  6.49it/s][A
+Validating:  89%|########8 | 95/107 [00:16<00:01,  6.52it/s][AEpoch 4:  91%|#########1| 112/123 [00:30<00:02,  3.72it/s, loss=1.27, v_num=4]
+Validating:  90%|########9 | 96/107 [00:16<00:01,  6.90it/s][A
+Validating:  91%|######### | 97/107 [00:16<00:01,  5.95it/s][AEpoch 4:  93%|#########2| 114/123 [00:30<00:02,  3.75it/s, loss=1.27, v_num=4]
+Validating:  92%|#########1| 98/107 [00:16<00:01,  6.33it/s][A
+Validating:  93%|#########2| 99/107 [00:17<00:01,  6.45it/s][AEpoch 4:  94%|#########4| 116/123 [00:30<00:01,  3.78it/s, loss=1.27, v_num=4]
+Validating:  93%|#########3| 100/107 [00:17<00:01,  6.75it/s][A
+Validating:  94%|#########4| 101/107 [00:17<00:00,  6.59it/s][AEpoch 4:  96%|#########5| 118/123 [00:30<00:01,  3.81it/s, loss=1.27, v_num=4]
+Validating:  95%|#########5| 102/107 [00:17<00:00,  6.94it/s][A
+Validating:  96%|#########6| 103/107 [00:17<00:00,  7.18it/s][AEpoch 4:  98%|#########7| 120/123 [00:31<00:00,  3.84it/s, loss=1.27, v_num=4]
+Validating:  97%|#########7| 104/107 [00:17<00:00,  7.15it/s][A
+Validating:  98%|#########8| 105/107 [00:17<00:00,  6.37it/s][AEpoch 4:  99%|#########9| 122/123 [00:31<00:00,  3.86it/s, loss=1.27, v_num=4]
+Validating:  99%|#########9| 106/107 [00:18<00:00,  6.71it/s][A
+Validating: 100%|##########| 107/107 [00:18<00:00,  6.63it/s][AEpoch 4: 100%|##########| 123/123 [00:32<00:00,  3.76it/s, loss=1.27, v_num=4]
+                                                             [AEpoch 4: 100%|##########| 123/123 [00:32<00:00,  3.76it/s, loss=1.27, v_num=4]Epoch 4:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.27, v_num=4]          Epoch 5:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.27, v_num=4]Epoch 5:   1%|          | 1/123 [00:01<03:35,  1.77s/it, loss=1.28, v_num=4]Epoch 5:   2%|1         | 2/123 [00:02<02:34,  1.28s/it, loss=1.28, v_num=4]Epoch 5:   2%|1         | 2/123 [00:02<02:34,  1.28s/it, loss=1.23, v_num=4]Epoch 5:   2%|2         | 3/123 [00:03<02:13,  1.11s/it, loss=1.21, v_num=4]Epoch 5:   3%|3         | 4/123 [00:04<02:02,  1.03s/it, loss=1.21, v_num=4]Epoch 5:   3%|3         | 4/123 [00:04<02:02,  1.03s/it, loss=1.22, v_num=4]Epoch 5:   4%|4         | 5/123 [00:04<01:55,  1.02it/s, loss=1.21, v_num=4]Epoch 5:   5%|4         | 6/123 [00:05<01:51,  1.05it/s, loss=1.21, v_num=4]Epoch 5:   5%|4         | 6/123 [00:05<01:51,  1.05it/s, loss=1.16, v_num=4]Epoch 5:   6%|5         | 7/123 [00:06<01:48,  1.07it/s, loss=1.15, v_num=4]Epoch 5:   7%|6         | 8/123 [00:07<01:44,  1.10it/s, loss=1.15, v_num=4]Epoch 5:   7%|6         | 8/123 [00:07<01:44,  1.10it/s, loss=1.14, v_num=4]Epoch 5:   7%|7         | 9/123 [00:08<01:42,  1.11it/s, loss=1.13, v_num=4]Epoch 5:   8%|8         | 10/123 [00:08<01:40,  1.13it/s, loss=1.13, v_num=4]Epoch 5:   8%|8         | 10/123 [00:08<01:40,  1.13it/s, loss=1.11, v_num=4]Epoch 5:   9%|8         | 11/123 [00:09<01:38,  1.14it/s, loss=1.12, v_num=4]Epoch 5:  10%|9         | 12/123 [00:10<01:36,  1.15it/s, loss=1.12, v_num=4]Epoch 5:  10%|9         | 12/123 [00:10<01:36,  1.15it/s, loss=1.08, v_num=4]Epoch 5:  11%|#         | 13/123 [00:11<01:34,  1.16it/s, loss=1.13, v_num=4]Epoch 5:  11%|#1        | 14/123 [00:11<01:33,  1.17it/s, loss=1.13, v_num=4]Epoch 5:  11%|#1        | 14/123 [00:11<01:33,  1.17it/s, loss=1.09, v_num=4]Epoch 5:  12%|#2        | 15/123 [00:12<01:31,  1.18it/s, loss=1.12, v_num=4]news_newsnight_othello_720x416 not present in data
+ami_is1000a_left_720x576 not present in data
+ami_is1000a_closeup_720x576 not present in data
+Epoch 5:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.12, v_num=4]Epoch 5:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.11, v_num=4]
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:25,  1.37s/it][AEpoch 5:  15%|#4        | 18/123 [00:15<01:27,  1.20it/s, loss=1.11, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:07,  1.55it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:44,  2.36it/s][AEpoch 5:  16%|#6        | 20/123 [00:15<01:19,  1.30it/s, loss=1.11, v_num=4]
+Validating:   4%|3         | 4/107 [00:01<00:39,  2.61it/s][A
+Validating:   5%|4         | 5/107 [00:02<00:29,  3.45it/s][AEpoch 5:  18%|#7        | 22/123 [00:15<01:12,  1.39it/s, loss=1.11, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:24,  4.19it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:20,  4.79it/s][AEpoch 5:  20%|#9        | 24/123 [00:16<01:06,  1.49it/s, loss=1.11, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:24,  4.01it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:21,  4.56it/s][AEpoch 5:  21%|##1       | 26/123 [00:16<01:01,  1.57it/s, loss=1.11, v_num=4]
+Validating:   9%|9         | 10/107 [00:03<00:18,  5.21it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:19,  4.88it/s][AEpoch 5:  23%|##2       | 28/123 [00:16<00:57,  1.65it/s, loss=1.11, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:17,  5.42it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:16,  5.66it/s][AEpoch 5:  24%|##4       | 30/123 [00:17<00:53,  1.74it/s, loss=1.11, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:15,  6.07it/s][A
+Validating:  14%|#4        | 15/107 [00:04<00:23,  3.93it/s][AEpoch 5:  26%|##6       | 32/123 [00:17<00:50,  1.79it/s, loss=1.11, v_num=4]
+Validating:  15%|#4        | 16/107 [00:04<00:20,  4.44it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:17,  5.06it/s][AEpoch 5:  28%|##7       | 34/123 [00:18<00:47,  1.88it/s, loss=1.11, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:16,  5.56it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:22,  3.99it/s][AEpoch 5:  29%|##9       | 36/123 [00:18<00:45,  1.93it/s, loss=1.11, v_num=4]
+Validating:  19%|#8        | 20/107 [00:05<00:20,  4.24it/s][A
+Validating:  20%|#9        | 21/107 [00:05<00:17,  4.97it/s][AEpoch 5:  31%|###       | 38/123 [00:18<00:42,  2.00it/s, loss=1.11, v_num=4]
+Validating:  21%|##        | 22/107 [00:05<00:15,  5.40it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:16,  5.11it/s][AEpoch 5:  33%|###2      | 40/123 [00:19<00:40,  2.07it/s, loss=1.11, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:14,  5.59it/s][A
+Validating:  23%|##3       | 25/107 [00:05<00:13,  6.02it/s][AEpoch 5:  34%|###4      | 42/123 [00:19<00:37,  2.14it/s, loss=1.11, v_num=4]
+Validating:  24%|##4       | 26/107 [00:06<00:12,  6.36it/s][A
+Validating:  25%|##5       | 27/107 [00:06<00:14,  5.68it/s][AEpoch 5:  36%|###5      | 44/123 [00:19<00:35,  2.20it/s, loss=1.11, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:12,  6.18it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:11,  6.53it/s][AEpoch 5:  37%|###7      | 46/123 [00:20<00:33,  2.27it/s, loss=1.11, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:11,  6.84it/s][A
+Validating:  29%|##8       | 31/107 [00:06<00:14,  5.33it/s][AEpoch 5:  39%|###9      | 48/123 [00:20<00:32,  2.32it/s, loss=1.11, v_num=4]
+Validating:  30%|##9       | 32/107 [00:07<00:16,  4.54it/s][A
+Validating:  31%|###       | 33/107 [00:07<00:15,  4.89it/s][AEpoch 5:  41%|####      | 50/123 [00:21<00:30,  2.37it/s, loss=1.11, v_num=4]
+Validating:  32%|###1      | 34/107 [00:07<00:13,  5.26it/s][A
+Validating:  33%|###2      | 35/107 [00:07<00:12,  5.75it/s][AEpoch 5:  42%|####2     | 52/123 [00:21<00:29,  2.43it/s, loss=1.11, v_num=4]
+Validating:  34%|###3      | 36/107 [00:07<00:13,  5.36it/s][A
+Validating:  35%|###4      | 37/107 [00:08<00:12,  5.69it/s][AEpoch 5:  44%|####3     | 54/123 [00:21<00:27,  2.48it/s, loss=1.11, v_num=4]
+Validating:  36%|###5      | 38/107 [00:08<00:12,  5.72it/s][A
+Validating:  36%|###6      | 39/107 [00:08<00:11,  6.03it/s][AEpoch 5:  46%|####5     | 56/123 [00:22<00:26,  2.53it/s, loss=1.11, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:16,  4.17it/s][A
+Validating:  38%|###8      | 41/107 [00:08<00:13,  4.88it/s][AEpoch 5:  47%|####7     | 58/123 [00:22<00:25,  2.56it/s, loss=1.11, v_num=4]
+Validating:  39%|###9      | 42/107 [00:09<00:11,  5.45it/s][A
+Validating:  40%|####      | 43/107 [00:09<00:10,  5.96it/s][AEpoch 5:  49%|####8     | 60/123 [00:22<00:24,  2.62it/s, loss=1.11, v_num=4]
+Validating:  41%|####1     | 44/107 [00:09<00:11,  5.50it/s][A
+Validating:  42%|####2     | 45/107 [00:09<00:10,  6.04it/s][AEpoch 5:  50%|#####     | 62/123 [00:23<00:22,  2.67it/s, loss=1.11, v_num=4]
+Validating:  43%|####2     | 46/107 [00:09<00:09,  6.45it/s][A
+Validating:  44%|####3     | 47/107 [00:09<00:09,  6.62it/s][AEpoch 5:  52%|#####2    | 64/123 [00:23<00:21,  2.72it/s, loss=1.11, v_num=4]
+Validating:  45%|####4     | 48/107 [00:10<00:09,  6.07it/s][A
+Validating:  46%|####5     | 49/107 [00:10<00:08,  6.52it/s][AEpoch 5:  54%|#####3    | 66/123 [00:23<00:20,  2.77it/s, loss=1.11, v_num=4]
+Validating:  47%|####6     | 50/107 [00:10<00:08,  6.79it/s][A
+Validating:  48%|####7     | 51/107 [00:10<00:07,  7.04it/s][AEpoch 5:  55%|#####5    | 68/123 [00:24<00:19,  2.82it/s, loss=1.11, v_num=4]
+Validating:  49%|####8     | 52/107 [00:10<00:08,  6.74it/s][A
+Validating:  50%|####9     | 53/107 [00:10<00:08,  6.56it/s][AEpoch 5:  57%|#####6    | 70/123 [00:24<00:18,  2.86it/s, loss=1.11, v_num=4]
+Validating:  50%|#####     | 54/107 [00:10<00:07,  6.90it/s][A
+Validating:  51%|#####1    | 55/107 [00:11<00:07,  7.12it/s][AEpoch 5:  59%|#####8    | 72/123 [00:24<00:17,  2.92it/s, loss=1.11, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:11<00:07,  6.68it/s][A
+Validating:  53%|#####3    | 57/107 [00:11<00:07,  6.27it/s][AEpoch 5:  60%|######    | 74/123 [00:25<00:16,  2.95it/s, loss=1.11, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:11<00:07,  6.73it/s][A
+Validating:  55%|#####5    | 59/107 [00:11<00:06,  6.96it/s][AEpoch 5:  62%|######1   | 76/123 [00:25<00:15,  3.00it/s, loss=1.11, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:11<00:06,  7.05it/s][A
+Validating:  57%|#####7    | 61/107 [00:12<00:09,  4.66it/s][AEpoch 5:  63%|######3   | 78/123 [00:25<00:14,  3.02it/s, loss=1.11, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:12<00:08,  5.20it/s][A
+Validating:  59%|#####8    | 63/107 [00:12<00:07,  5.80it/s][AEpoch 5:  65%|######5   | 80/123 [00:26<00:14,  3.07it/s, loss=1.11, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:12<00:06,  6.28it/s][A
+Validating:  61%|######    | 65/107 [00:12<00:10,  4.10it/s][AEpoch 5:  67%|######6   | 82/123 [00:26<00:13,  3.08it/s, loss=1.11, v_num=4]
+Validating:  62%|######1   | 66/107 [00:13<00:08,  4.77it/s][A
+Validating:  63%|######2   | 67/107 [00:13<00:07,  5.39it/s][AEpoch 5:  68%|######8   | 84/123 [00:26<00:12,  3.12it/s, loss=1.11, v_num=4]
+Validating:  64%|######3   | 68/107 [00:13<00:06,  5.95it/s][A
+Validating:  64%|######4   | 69/107 [00:13<00:07,  5.23it/s][AEpoch 5:  70%|######9   | 86/123 [00:27<00:11,  3.15it/s, loss=1.11, v_num=4]
+Validating:  65%|######5   | 70/107 [00:13<00:06,  5.77it/s][A
+Validating:  66%|######6   | 71/107 [00:13<00:05,  6.20it/s][AEpoch 5:  72%|#######1  | 88/123 [00:27<00:10,  3.19it/s, loss=1.11, v_num=4]
+Validating:  67%|######7   | 72/107 [00:14<00:05,  6.53it/s][A
+Validating:  68%|######8   | 73/107 [00:14<00:06,  5.16it/s][AEpoch 5:  73%|#######3  | 90/123 [00:27<00:10,  3.22it/s, loss=1.11, v_num=4]
+Validating:  69%|######9   | 74/107 [00:14<00:05,  5.74it/s][A
+Validating:  70%|#######   | 75/107 [00:14<00:05,  6.19it/s][AEpoch 5:  75%|#######4  | 92/123 [00:28<00:09,  3.26it/s, loss=1.11, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:14<00:04,  6.53it/s][A
+Validating:  72%|#######1  | 77/107 [00:15<00:06,  4.86it/s][AEpoch 5:  76%|#######6  | 94/123 [00:28<00:08,  3.27it/s, loss=1.11, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:15<00:05,  5.38it/s][A
+Validating:  74%|#######3  | 79/107 [00:15<00:04,  5.88it/s][AEpoch 5:  78%|#######8  | 96/123 [00:28<00:08,  3.31it/s, loss=1.11, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:15<00:04,  6.37it/s][A
+Validating:  76%|#######5  | 81/107 [00:15<00:05,  4.46it/s][AEpoch 5:  80%|#######9  | 98/123 [00:29<00:07,  3.32it/s, loss=1.11, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:15<00:04,  5.09it/s][A
+Validating:  78%|#######7  | 83/107 [00:16<00:04,  5.68it/s][AEpoch 5:  81%|########1 | 100/123 [00:29<00:06,  3.36it/s, loss=1.11, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:16<00:03,  6.16it/s][A
+Validating:  79%|#######9  | 85/107 [00:16<00:03,  6.56it/s][AEpoch 5:  83%|########2 | 102/123 [00:30<00:06,  3.40it/s, loss=1.11, v_num=4]
+Validating:  80%|########  | 86/107 [00:16<00:03,  6.90it/s][A
+Validating:  81%|########1 | 87/107 [00:16<00:02,  7.12it/s][AEpoch 5:  85%|########4 | 104/123 [00:30<00:05,  3.44it/s, loss=1.11, v_num=4]
+Validating:  82%|########2 | 88/107 [00:16<00:02,  7.21it/s][A
+Validating:  83%|########3 | 89/107 [00:16<00:02,  6.52it/s][AEpoch 5:  86%|########6 | 106/123 [00:30<00:04,  3.47it/s, loss=1.11, v_num=4]
+Validating:  84%|########4 | 90/107 [00:17<00:02,  6.71it/s][A
+Validating:  85%|########5 | 91/107 [00:17<00:02,  7.06it/s][AEpoch 5:  88%|########7 | 108/123 [00:30<00:04,  3.50it/s, loss=1.11, v_num=4]
+Validating:  86%|########5 | 92/107 [00:17<00:02,  7.23it/s][A
+Validating:  87%|########6 | 93/107 [00:17<00:02,  6.70it/s][AEpoch 5:  89%|########9 | 110/123 [00:31<00:03,  3.53it/s, loss=1.11, v_num=4]
+Validating:  88%|########7 | 94/107 [00:17<00:02,  6.17it/s][A
+Validating:  89%|########8 | 95/107 [00:17<00:01,  6.44it/s][AEpoch 5:  91%|#########1| 112/123 [00:31<00:03,  3.56it/s, loss=1.11, v_num=4]
+Validating:  90%|########9 | 96/107 [00:17<00:01,  6.75it/s][A
+Validating:  91%|######### | 97/107 [00:18<00:01,  5.74it/s][AEpoch 5:  93%|#########2| 114/123 [00:31<00:02,  3.58it/s, loss=1.11, v_num=4]
+Validating:  92%|#########1| 98/107 [00:18<00:01,  5.72it/s][A
+Validating:  93%|#########2| 99/107 [00:18<00:01,  6.21it/s][AEpoch 5:  94%|#########4| 116/123 [00:32<00:01,  3.61it/s, loss=1.11, v_num=4]
+Validating:  93%|#########3| 100/107 [00:18<00:01,  6.36it/s][A
+Validating:  94%|#########4| 101/107 [00:18<00:00,  6.65it/s][AEpoch 5:  96%|#########5| 118/123 [00:32<00:01,  3.64it/s, loss=1.11, v_num=4]
+Validating:  95%|#########5| 102/107 [00:18<00:00,  6.24it/s][A
+Validating:  96%|#########6| 103/107 [00:19<00:00,  6.43it/s][AEpoch 5:  98%|#########7| 120/123 [00:32<00:00,  3.66it/s, loss=1.11, v_num=4]
+Validating:  97%|#########7| 104/107 [00:19<00:00,  5.74it/s][A
+Validating:  98%|#########8| 105/107 [00:19<00:00,  6.20it/s][AEpoch 5:  99%|#########9| 122/123 [00:33<00:00,  3.68it/s, loss=1.11, v_num=4]
+Validating:  99%|#########9| 106/107 [00:19<00:00,  6.52it/s][A
+Validating: 100%|##########| 107/107 [00:19<00:00,  6.51it/s][AEpoch 5: 100%|##########| 123/123 [00:34<00:00,  3.58it/s, loss=1.11, v_num=4]
+                                                             [AEpoch 5: 100%|##########| 123/123 [00:34<00:00,  3.58it/s, loss=1.11, v_num=4]Epoch 5:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.11, v_num=4]          Epoch 6:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.11, v_num=4]Epoch 6:   1%|          | 1/123 [00:01<03:17,  1.62s/it, loss=1.13, v_num=4]Epoch 6:   2%|1         | 2/123 [00:02<02:26,  1.21s/it, loss=1.13, v_num=4]Epoch 6:   2%|1         | 2/123 [00:02<02:26,  1.21s/it, loss=1.14, v_num=4]Epoch 6:   2%|2         | 3/123 [00:03<02:07,  1.07s/it, loss=1.18, v_num=4]Epoch 6:   3%|3         | 4/123 [00:04<01:59,  1.00s/it, loss=1.18, v_num=4]Epoch 6:   3%|3         | 4/123 [00:04<01:59,  1.00s/it, loss=1.21, v_num=4]Epoch 6:   4%|4         | 5/123 [00:04<01:53,  1.04it/s, loss=1.22, v_num=4]Epoch 6:   5%|4         | 6/123 [00:05<01:49,  1.07it/s, loss=1.22, v_num=4]Epoch 6:   5%|4         | 6/123 [00:05<01:49,  1.07it/s, loss=1.26, v_num=4]Epoch 6:   6%|5         | 7/123 [00:06<01:45,  1.10it/s, loss=1.29, v_num=4]Epoch 6:   7%|6         | 8/123 [00:07<01:42,  1.12it/s, loss=1.29, v_num=4]Epoch 6:   7%|6         | 8/123 [00:07<01:42,  1.12it/s, loss=1.32, v_num=4]Epoch 6:   7%|7         | 9/123 [00:07<01:40,  1.14it/s, loss=1.3, v_num=4] Epoch 6:   8%|8         | 10/123 [00:08<01:38,  1.15it/s, loss=1.3, v_num=4]Epoch 6:   8%|8         | 10/123 [00:08<01:38,  1.15it/s, loss=1.31, v_num=4]Epoch 6:   9%|8         | 11/123 [00:09<01:36,  1.16it/s, loss=1.3, v_num=4] Epoch 6:  10%|9         | 12/123 [00:10<01:34,  1.17it/s, loss=1.3, v_num=4]Epoch 6:  10%|9         | 12/123 [00:10<01:34,  1.17it/s, loss=1.29, v_num=4]Epoch 6:  11%|#         | 13/123 [00:11<01:33,  1.18it/s, loss=1.26, v_num=4]Epoch 6:  11%|#1        | 14/123 [00:11<01:32,  1.18it/s, loss=1.26, v_num=4]Epoch 6:  11%|#1        | 14/123 [00:11<01:32,  1.18it/s, loss=1.27, v_num=4]Epoch 6:  12%|#2        | 15/123 [00:12<01:30,  1.19it/s, loss=1.25, v_num=4]ami_is1000a_left_720x576 not present in data
+ami_is1000a_closeup_720x576 not present in data
+news_newsnight_othello_720x416 not present in data
+Epoch 6:  13%|#3        | 16/123 [00:13<01:30,  1.18it/s, loss=1.25, v_num=4]Epoch 6:  13%|#3        | 16/123 [00:13<01:30,  1.18it/s, loss=1.3, v_num=4] 
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:30,  1.42s/it][AEpoch 6:  15%|#4        | 18/123 [00:14<01:27,  1.20it/s, loss=1.3, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:10,  1.49it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:44,  2.33it/s][AEpoch 6:  16%|#6        | 20/123 [00:15<01:18,  1.31it/s, loss=1.3, v_num=4]
+Validating:   4%|3         | 4/107 [00:02<00:40,  2.57it/s][A
+Validating:   5%|4         | 5/107 [00:02<00:30,  3.35it/s][AEpoch 6:  18%|#7        | 22/123 [00:15<01:12,  1.40it/s, loss=1.3, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:24,  4.13it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:20,  4.86it/s][AEpoch 6:  20%|#9        | 24/123 [00:15<01:05,  1.50it/s, loss=1.3, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:20,  4.73it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:18,  5.37it/s][AEpoch 6:  21%|##1       | 26/123 [00:16<01:00,  1.59it/s, loss=1.3, v_num=4]
+Validating:   9%|9         | 10/107 [00:02<00:16,  5.94it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:15,  6.38it/s][AEpoch 6:  23%|##2       | 28/123 [00:16<00:56,  1.69it/s, loss=1.3, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:15,  6.15it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:14,  6.58it/s][AEpoch 6:  24%|##4       | 30/123 [00:16<00:52,  1.78it/s, loss=1.3, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:13,  6.82it/s][A
+Validating:  14%|#4        | 15/107 [00:03<00:15,  5.96it/s][AEpoch 6:  26%|##6       | 32/123 [00:17<00:49,  1.86it/s, loss=1.3, v_num=4]
+Validating:  15%|#4        | 16/107 [00:03<00:14,  6.44it/s][A
+Validating:  16%|#5        | 17/107 [00:03<00:13,  6.71it/s][AEpoch 6:  28%|##7       | 34/123 [00:17<00:45,  1.94it/s, loss=1.3, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:12,  6.96it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:21,  4.01it/s][AEpoch 6:  29%|##9       | 36/123 [00:18<00:43,  1.99it/s, loss=1.3, v_num=4]
+Validating:  19%|#8        | 20/107 [00:04<00:19,  4.49it/s][A
+Validating:  20%|#9        | 21/107 [00:04<00:16,  5.10it/s][AEpoch 6:  31%|###       | 38/123 [00:18<00:41,  2.06it/s, loss=1.3, v_num=4]
+Validating:  21%|##        | 22/107 [00:05<00:14,  5.67it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:16,  5.14it/s][AEpoch 6:  33%|###2      | 40/123 [00:18<00:38,  2.13it/s, loss=1.3, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:14,  5.76it/s][A
+Validating:  23%|##3       | 25/107 [00:05<00:13,  6.27it/s][AEpoch 6:  34%|###4      | 42/123 [00:19<00:36,  2.21it/s, loss=1.3, v_num=4]
+Validating:  24%|##4       | 26/107 [00:05<00:12,  6.60it/s][A
+Validating:  25%|##5       | 27/107 [00:05<00:15,  5.06it/s][AEpoch 6:  36%|###5      | 44/123 [00:19<00:34,  2.26it/s, loss=1.3, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:14,  5.63it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:12,  6.01it/s][AEpoch 6:  37%|###7      | 46/123 [00:19<00:33,  2.33it/s, loss=1.3, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:12,  6.03it/s][A
+Validating:  29%|##8       | 31/107 [00:06<00:13,  5.43it/s][AEpoch 6:  39%|###9      | 48/123 [00:20<00:31,  2.38it/s, loss=1.3, v_num=4]
+Validating:  30%|##9       | 32/107 [00:06<00:12,  5.95it/s][A
+Validating:  31%|###       | 33/107 [00:06<00:11,  6.35it/s][AEpoch 6:  41%|####      | 50/123 [00:20<00:29,  2.45it/s, loss=1.3, v_num=4]
+Validating:  32%|###1      | 34/107 [00:06<00:10,  6.73it/s][A
+Validating:  33%|###2      | 35/107 [00:07<00:12,  5.63it/s][AEpoch 6:  42%|####2     | 52/123 [00:20<00:28,  2.50it/s, loss=1.3, v_num=4]
+Validating:  34%|###3      | 36/107 [00:07<00:12,  5.49it/s][A
+Validating:  35%|###4      | 37/107 [00:07<00:11,  6.02it/s][AEpoch 6:  44%|####3     | 54/123 [00:21<00:26,  2.56it/s, loss=1.3, v_num=4]
+Validating:  36%|###5      | 38/107 [00:07<00:10,  6.44it/s][A
+Validating:  36%|###6      | 39/107 [00:07<00:10,  6.51it/s][AEpoch 6:  46%|####5     | 56/123 [00:21<00:25,  2.62it/s, loss=1.3, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:11,  5.81it/s][A
+Validating:  38%|###8      | 41/107 [00:08<00:10,  6.02it/s][AEpoch 6:  47%|####7     | 58/123 [00:21<00:24,  2.67it/s, loss=1.3, v_num=4]
+Validating:  39%|###9      | 42/107 [00:08<00:10,  6.30it/s][A
+Validating:  40%|####      | 43/107 [00:08<00:09,  6.43it/s][AEpoch 6:  49%|####8     | 60/123 [00:22<00:23,  2.72it/s, loss=1.3, v_num=4]
+Validating:  41%|####1     | 44/107 [00:08<00:10,  5.94it/s][A
+Validating:  42%|####2     | 45/107 [00:08<00:10,  5.80it/s][AEpoch 6:  50%|#####     | 62/123 [00:22<00:22,  2.77it/s, loss=1.3, v_num=4]
+Validating:  43%|####2     | 46/107 [00:09<00:14,  4.19it/s][A
+Validating:  44%|####3     | 47/107 [00:09<00:12,  4.84it/s][AEpoch 6:  52%|#####2    | 64/123 [00:22<00:21,  2.79it/s, loss=1.3, v_num=4]
+Validating:  45%|####4     | 48/107 [00:09<00:10,  5.48it/s][A
+Validating:  46%|####5     | 49/107 [00:09<00:10,  5.74it/s][AEpoch 6:  54%|#####3    | 66/123 [00:23<00:20,  2.84it/s, loss=1.3, v_num=4]
+Validating:  47%|####6     | 50/107 [00:10<00:14,  3.98it/s][A
+Validating:  48%|####7     | 51/107 [00:10<00:12,  4.48it/s][AEpoch 6:  55%|#####5    | 68/123 [00:23<00:19,  2.86it/s, loss=1.3, v_num=4]
+Validating:  49%|####8     | 52/107 [00:10<00:10,  5.21it/s][A
+Validating:  50%|####9     | 53/107 [00:10<00:09,  5.47it/s][AEpoch 6:  57%|#####6    | 70/123 [00:24<00:18,  2.91it/s, loss=1.3, v_num=4]
+Validating:  50%|#####     | 54/107 [00:10<00:10,  5.22it/s][A
+Validating:  51%|#####1    | 55/107 [00:10<00:09,  5.25it/s][AEpoch 6:  59%|#####8    | 72/123 [00:24<00:17,  2.94it/s, loss=1.3, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:11<00:09,  5.65it/s][A
+Validating:  53%|#####3    | 57/107 [00:11<00:08,  6.16it/s][AEpoch 6:  60%|######    | 74/123 [00:24<00:16,  2.99it/s, loss=1.3, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:11<00:09,  5.24it/s][A
+Validating:  55%|#####5    | 59/107 [00:11<00:08,  5.69it/s][AEpoch 6:  62%|######1   | 76/123 [00:25<00:15,  3.02it/s, loss=1.3, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:11<00:07,  6.16it/s][A
+Validating:  57%|#####7    | 61/107 [00:11<00:07,  6.53it/s][AEpoch 6:  63%|######3   | 78/123 [00:25<00:14,  3.07it/s, loss=1.3, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:12<00:08,  5.15it/s][A
+Validating:  59%|#####8    | 63/107 [00:12<00:07,  5.66it/s][AEpoch 6:  65%|######5   | 80/123 [00:25<00:13,  3.09it/s, loss=1.3, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:12<00:07,  6.10it/s][A
+Validating:  61%|######    | 65/107 [00:12<00:06,  6.44it/s][AEpoch 6:  67%|######6   | 82/123 [00:26<00:13,  3.14it/s, loss=1.3, v_num=4]
+Validating:  62%|######1   | 66/107 [00:12<00:08,  5.09it/s][A
+Validating:  63%|######2   | 67/107 [00:13<00:07,  5.58it/s][AEpoch 6:  68%|######8   | 84/123 [00:26<00:12,  3.16it/s, loss=1.3, v_num=4]
+Validating:  64%|######3   | 68/107 [00:13<00:06,  6.10it/s][A
+Validating:  64%|######4   | 69/107 [00:13<00:05,  6.42it/s][AEpoch 6:  70%|######9   | 86/123 [00:26<00:11,  3.21it/s, loss=1.3, v_num=4]
+Validating:  65%|######5   | 70/107 [00:13<00:06,  5.94it/s][A
+Validating:  66%|######6   | 71/107 [00:13<00:05,  6.38it/s][AEpoch 6:  72%|#######1  | 88/123 [00:27<00:10,  3.24it/s, loss=1.3, v_num=4]
+Validating:  67%|######7   | 72/107 [00:13<00:05,  6.67it/s][A
+Validating:  68%|######8   | 73/107 [00:13<00:04,  6.93it/s][AEpoch 6:  73%|#######3  | 90/123 [00:27<00:10,  3.28it/s, loss=1.3, v_num=4]
+Validating:  69%|######9   | 74/107 [00:14<00:05,  6.37it/s][A
+Validating:  70%|#######   | 75/107 [00:14<00:04,  6.77it/s][AEpoch 6:  75%|#######4  | 92/123 [00:27<00:09,  3.32it/s, loss=1.3, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:14<00:04,  7.04it/s][A
+Validating:  72%|#######1  | 77/107 [00:14<00:04,  7.24it/s][AEpoch 6:  76%|#######6  | 94/123 [00:27<00:08,  3.36it/s, loss=1.3, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:14<00:05,  5.39it/s][A
+Validating:  74%|#######3  | 79/107 [00:14<00:04,  5.94it/s][AEpoch 6:  78%|#######8  | 96/123 [00:28<00:07,  3.38it/s, loss=1.3, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:15<00:05,  5.28it/s][A
+Validating:  76%|#######5  | 81/107 [00:15<00:04,  5.82it/s][AEpoch 6:  80%|#######9  | 98/123 [00:28<00:07,  3.41it/s, loss=1.3, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:15<00:04,  5.60it/s][A
+Validating:  78%|#######7  | 83/107 [00:15<00:03,  6.11it/s][AEpoch 6:  81%|########1 | 100/123 [00:29<00:06,  3.44it/s, loss=1.3, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:15<00:04,  5.58it/s][A
+Validating:  79%|#######9  | 85/107 [00:15<00:03,  5.89it/s][AEpoch 6:  83%|########2 | 102/123 [00:29<00:06,  3.46it/s, loss=1.3, v_num=4]
+Validating:  80%|########  | 86/107 [00:16<00:03,  6.07it/s][A
+Validating:  81%|########1 | 87/107 [00:16<00:03,  6.26it/s][AEpoch 6:  85%|########4 | 104/123 [00:29<00:05,  3.49it/s, loss=1.3, v_num=4]
+Validating:  82%|########2 | 88/107 [00:16<00:03,  5.98it/s][A
+Validating:  83%|########3 | 89/107 [00:16<00:02,  6.28it/s][AEpoch 6:  86%|########6 | 106/123 [00:30<00:04,  3.52it/s, loss=1.3, v_num=4]
+Validating:  84%|########4 | 90/107 [00:16<00:02,  5.92it/s][A
+Validating:  85%|########5 | 91/107 [00:16<00:02,  5.95it/s][AEpoch 6:  88%|########7 | 108/123 [00:30<00:04,  3.55it/s, loss=1.3, v_num=4]
+Validating:  86%|########5 | 92/107 [00:17<00:02,  6.39it/s][A
+Validating:  87%|########6 | 93/107 [00:17<00:02,  6.47it/s][AEpoch 6:  89%|########9 | 110/123 [00:30<00:03,  3.58it/s, loss=1.3, v_num=4]
+Validating:  88%|########7 | 94/107 [00:17<00:02,  5.57it/s][A
+Validating:  89%|########8 | 95/107 [00:17<00:01,  6.07it/s][AEpoch 6:  91%|#########1| 112/123 [00:31<00:03,  3.60it/s, loss=1.3, v_num=4]
+Validating:  90%|########9 | 96/107 [00:17<00:01,  6.21it/s][A
+Validating:  91%|######### | 97/107 [00:17<00:01,  6.47it/s][AEpoch 6:  93%|#########2| 114/123 [00:31<00:02,  3.63it/s, loss=1.3, v_num=4]
+Validating:  92%|#########1| 98/107 [00:18<00:01,  4.77it/s][A
+Validating:  93%|#########2| 99/107 [00:18<00:01,  5.38it/s][AEpoch 6:  94%|#########4| 116/123 [00:31<00:01,  3.64it/s, loss=1.3, v_num=4]
+Validating:  93%|#########3| 100/107 [00:18<00:01,  5.64it/s][A
+Validating:  94%|#########4| 101/107 [00:18<00:00,  6.02it/s][AEpoch 6:  96%|#########5| 118/123 [00:32<00:01,  3.67it/s, loss=1.3, v_num=4]
+Validating:  95%|#########5| 102/107 [00:19<00:01,  4.27it/s][A
+Validating:  96%|#########6| 103/107 [00:19<00:00,  4.87it/s][AEpoch 6:  98%|#########7| 120/123 [00:32<00:00,  3.67it/s, loss=1.3, v_num=4]
+Validating:  97%|#########7| 104/107 [00:19<00:00,  5.42it/s][A
+Validating:  98%|#########8| 105/107 [00:19<00:00,  6.00it/s][AEpoch 6:  99%|#########9| 122/123 [00:32<00:00,  3.70it/s, loss=1.3, v_num=4]
+Validating:  99%|#########9| 106/107 [00:19<00:00,  6.36it/s][A
+Validating: 100%|##########| 107/107 [00:19<00:00,  6.19it/s][AEpoch 6: 100%|##########| 123/123 [00:33<00:00,  3.62it/s, loss=1.3, v_num=4]
+                                                             [AEpoch 6: 100%|##########| 123/123 [00:33<00:00,  3.62it/s, loss=1.3, v_num=4]Epoch 6:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.3, v_num=4]          Epoch 7:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.3, v_num=4]Epoch 7:   1%|          | 1/123 [00:01<03:07,  1.54s/it, loss=1.24, v_num=4]Epoch 7:   2%|1         | 2/123 [00:02<02:22,  1.18s/it, loss=1.24, v_num=4]Epoch 7:   2%|1         | 2/123 [00:02<02:22,  1.18s/it, loss=1.23, v_num=4]Epoch 7:   2%|2         | 3/123 [00:03<02:05,  1.05s/it, loss=1.22, v_num=4]Epoch 7:   3%|3         | 4/123 [00:03<01:57,  1.01it/s, loss=1.22, v_num=4]Epoch 7:   3%|3         | 4/123 [00:03<01:57,  1.01it/s, loss=1.22, v_num=4]Epoch 7:   4%|4         | 5/123 [00:04<01:51,  1.06it/s, loss=1.18, v_num=4]Epoch 7:   5%|4         | 6/123 [00:05<01:47,  1.08it/s, loss=1.18, v_num=4]Epoch 7:   5%|4         | 6/123 [00:05<01:47,  1.08it/s, loss=1.14, v_num=4]Epoch 7:   6%|5         | 7/123 [00:06<01:44,  1.11it/s, loss=1.11, v_num=4]Epoch 7:   7%|6         | 8/123 [00:07<01:42,  1.13it/s, loss=1.11, v_num=4]Epoch 7:   7%|6         | 8/123 [00:07<01:42,  1.13it/s, loss=1.1, v_num=4] Epoch 7:   7%|7         | 9/123 [00:07<01:39,  1.14it/s, loss=1.08, v_num=4]Epoch 7:   8%|8         | 10/123 [00:08<01:37,  1.15it/s, loss=1.08, v_num=4]Epoch 7:   8%|8         | 10/123 [00:08<01:37,  1.15it/s, loss=1.04, v_num=4]Epoch 7:   9%|8         | 11/123 [00:09<01:36,  1.16it/s, loss=1.06, v_num=4]Epoch 7:  10%|9         | 12/123 [00:10<01:34,  1.17it/s, loss=1.06, v_num=4]Epoch 7:  10%|9         | 12/123 [00:10<01:34,  1.17it/s, loss=1, v_num=4]   Epoch 7:  11%|#         | 13/123 [00:11<01:33,  1.18it/s, loss=1.02, v_num=4]Epoch 7:  11%|#1        | 14/123 [00:11<01:31,  1.19it/s, loss=1.02, v_num=4]Epoch 7:  11%|#1        | 14/123 [00:11<01:31,  1.19it/s, loss=1.04, v_num=4]ami_is1000a_left_720x576 not present in data
+Epoch 7:  12%|#2        | 15/123 [00:12<01:30,  1.19it/s, loss=1.07, v_num=4]ami_is1000a_closeup_720x576 not present in data
+news_newsnight_othello_720x416 not present in data
+Epoch 7:  13%|#3        | 16/123 [00:13<01:30,  1.19it/s, loss=1.07, v_num=4]Epoch 7:  13%|#3        | 16/123 [00:13<01:30,  1.19it/s, loss=1.08, v_num=4]
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:14,  1.27s/it][AEpoch 7:  15%|#4        | 18/123 [00:14<01:25,  1.22it/s, loss=1.08, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:02,  1.67it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:39,  2.61it/s][AEpoch 7:  16%|#6        | 20/123 [00:14<01:17,  1.33it/s, loss=1.08, v_num=4]
+Validating:   4%|3         | 4/107 [00:02<00:45,  2.25it/s][A
+Validating:   5%|4         | 5/107 [00:02<00:33,  3.03it/s][AEpoch 7:  18%|#7        | 22/123 [00:15<01:11,  1.41it/s, loss=1.08, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:26,  3.75it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:21,  4.55it/s][AEpoch 7:  20%|#9        | 24/123 [00:15<01:05,  1.51it/s, loss=1.08, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:25,  3.90it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:21,  4.67it/s][AEpoch 7:  21%|##1       | 26/123 [00:16<01:01,  1.59it/s, loss=1.08, v_num=4]
+Validating:   9%|9         | 10/107 [00:03<00:18,  5.25it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:16,  5.84it/s][AEpoch 7:  23%|##2       | 28/123 [00:16<00:56,  1.68it/s, loss=1.08, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:23,  4.00it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:20,  4.70it/s][AEpoch 7:  24%|##4       | 30/123 [00:17<00:53,  1.74it/s, loss=1.08, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:17,  5.33it/s][A
+Validating:  14%|#4        | 15/107 [00:03<00:15,  5.87it/s][AEpoch 7:  26%|##6       | 32/123 [00:17<00:49,  1.83it/s, loss=1.08, v_num=4]
+Validating:  15%|#4        | 16/107 [00:04<00:20,  4.35it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:18,  4.99it/s][AEpoch 7:  28%|##7       | 34/123 [00:17<00:47,  1.89it/s, loss=1.08, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:16,  5.53it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:14,  6.06it/s][AEpoch 7:  29%|##9       | 36/123 [00:18<00:44,  1.98it/s, loss=1.08, v_num=4]
+Validating:  19%|#8        | 20/107 [00:05<00:18,  4.83it/s][A
+Validating:  20%|#9        | 21/107 [00:05<00:15,  5.45it/s][AEpoch 7:  31%|###       | 38/123 [00:18<00:41,  2.04it/s, loss=1.08, v_num=4]
+Validating:  21%|##        | 22/107 [00:05<00:14,  5.98it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:13,  6.42it/s][AEpoch 7:  33%|###2      | 40/123 [00:18<00:39,  2.11it/s, loss=1.08, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:15,  5.27it/s][A
+Validating:  23%|##3       | 25/107 [00:05<00:14,  5.75it/s][AEpoch 7:  34%|###4      | 42/123 [00:19<00:37,  2.17it/s, loss=1.08, v_num=4]
+Validating:  24%|##4       | 26/107 [00:05<00:13,  6.18it/s][A
+Validating:  25%|##5       | 27/107 [00:06<00:12,  6.62it/s][AEpoch 7:  36%|###5      | 44/123 [00:19<00:35,  2.25it/s, loss=1.08, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:21,  3.71it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:17,  4.36it/s][AEpoch 7:  37%|###7      | 46/123 [00:20<00:33,  2.27it/s, loss=1.08, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:15,  5.04it/s][A
+Validating:  29%|##8       | 31/107 [00:07<00:13,  5.59it/s][AEpoch 7:  39%|###9      | 48/123 [00:20<00:32,  2.34it/s, loss=1.08, v_num=4]
+Validating:  30%|##9       | 32/107 [00:07<00:18,  4.12it/s][A
+Validating:  31%|###       | 33/107 [00:07<00:15,  4.80it/s][AEpoch 7:  41%|####      | 50/123 [00:21<00:30,  2.38it/s, loss=1.08, v_num=4]
+Validating:  32%|###1      | 34/107 [00:07<00:13,  5.35it/s][A
+Validating:  33%|###2      | 35/107 [00:07<00:13,  5.52it/s][AEpoch 7:  42%|####2     | 52/123 [00:21<00:29,  2.44it/s, loss=1.08, v_num=4]
+Validating:  34%|###3      | 36/107 [00:08<00:11,  5.98it/s][A
+Validating:  35%|###4      | 37/107 [00:08<00:11,  6.05it/s][AEpoch 7:  44%|####3     | 54/123 [00:21<00:27,  2.50it/s, loss=1.08, v_num=4]
+Validating:  36%|###5      | 38/107 [00:08<00:10,  6.33it/s][A
+Validating:  36%|###6      | 39/107 [00:08<00:11,  6.18it/s][AEpoch 7:  46%|####5     | 56/123 [00:21<00:26,  2.55it/s, loss=1.08, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:11,  5.94it/s][A
+Validating:  38%|###8      | 41/107 [00:08<00:10,  6.33it/s][AEpoch 7:  47%|####7     | 58/123 [00:22<00:24,  2.60it/s, loss=1.08, v_num=4]
+Validating:  39%|###9      | 42/107 [00:08<00:09,  6.64it/s][A
+Validating:  40%|####      | 43/107 [00:09<00:09,  6.74it/s][AEpoch 7:  49%|####8     | 60/123 [00:22<00:23,  2.66it/s, loss=1.08, v_num=4]
+Validating:  41%|####1     | 44/107 [00:09<00:14,  4.41it/s][A
+Validating:  42%|####2     | 45/107 [00:09<00:12,  4.86it/s][AEpoch 7:  50%|#####     | 62/123 [00:23<00:22,  2.68it/s, loss=1.08, v_num=4]
+Validating:  43%|####2     | 46/107 [00:09<00:11,  5.44it/s][A
+Validating:  44%|####3     | 47/107 [00:09<00:10,  5.77it/s][AEpoch 7:  52%|#####2    | 64/123 [00:23<00:21,  2.74it/s, loss=1.08, v_num=4]
+Validating:  45%|####4     | 48/107 [00:10<00:09,  6.27it/s][A
+Validating:  46%|####5     | 49/107 [00:10<00:09,  6.16it/s][AEpoch 7:  54%|#####3    | 66/123 [00:23<00:20,  2.78it/s, loss=1.08, v_num=4]
+Validating:  47%|####6     | 50/107 [00:10<00:09,  6.26it/s][A
+Validating:  48%|####7     | 51/107 [00:10<00:08,  6.61it/s][AEpoch 7:  55%|#####5    | 68/123 [00:23<00:19,  2.84it/s, loss=1.08, v_num=4]
+Validating:  49%|####8     | 52/107 [00:10<00:09,  5.71it/s][A
+Validating:  50%|####9     | 53/107 [00:10<00:08,  6.10it/s][AEpoch 7:  57%|#####6    | 70/123 [00:24<00:18,  2.88it/s, loss=1.08, v_num=4]
+Validating:  50%|#####     | 54/107 [00:11<00:08,  6.49it/s][A
+Validating:  51%|#####1    | 55/107 [00:11<00:07,  6.74it/s][AEpoch 7:  59%|#####8    | 72/123 [00:24<00:17,  2.93it/s, loss=1.08, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:11<00:09,  5.64it/s][A
+Validating:  53%|#####3    | 57/107 [00:11<00:08,  6.09it/s][AEpoch 7:  60%|######    | 74/123 [00:24<00:16,  2.96it/s, loss=1.08, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:11<00:07,  6.29it/s][A
+Validating:  55%|#####5    | 59/107 [00:11<00:07,  6.66it/s][AEpoch 7:  62%|######1   | 76/123 [00:25<00:15,  3.01it/s, loss=1.08, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:12<00:08,  5.73it/s][A
+Validating:  57%|#####7    | 61/107 [00:12<00:07,  6.17it/s][AEpoch 7:  63%|######3   | 78/123 [00:25<00:14,  3.04it/s, loss=1.08, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:12<00:07,  5.83it/s][A
+Validating:  59%|#####8    | 63/107 [00:12<00:06,  6.35it/s][AEpoch 7:  65%|######5   | 80/123 [00:25<00:13,  3.08it/s, loss=1.08, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:13<00:11,  3.76it/s][A
+Validating:  61%|######    | 65/107 [00:13<00:09,  4.42it/s][AEpoch 7:  67%|######6   | 82/123 [00:26<00:13,  3.08it/s, loss=1.08, v_num=4]
+Validating:  62%|######1   | 66/107 [00:13<00:08,  5.06it/s][A
+Validating:  63%|######2   | 67/107 [00:13<00:07,  5.65it/s][AEpoch 7:  68%|######8   | 84/123 [00:26<00:12,  3.13it/s, loss=1.08, v_num=4]
+Validating:  64%|######3   | 68/107 [00:13<00:08,  4.68it/s][A
+Validating:  64%|######4   | 69/107 [00:13<00:07,  5.32it/s][AEpoch 7:  70%|######9   | 86/123 [00:27<00:11,  3.15it/s, loss=1.08, v_num=4]
+Validating:  65%|######5   | 70/107 [00:13<00:06,  5.57it/s][A
+Validating:  66%|######6   | 71/107 [00:14<00:05,  6.12it/s][AEpoch 7:  72%|#######1  | 88/123 [00:27<00:10,  3.19it/s, loss=1.08, v_num=4]
+Validating:  67%|######7   | 72/107 [00:14<00:06,  5.46it/s][A
+Validating:  68%|######8   | 73/107 [00:14<00:05,  5.73it/s][AEpoch 7:  73%|#######3  | 90/123 [00:27<00:10,  3.22it/s, loss=1.08, v_num=4]
+Validating:  69%|######9   | 74/107 [00:14<00:05,  6.20it/s][A
+Validating:  70%|#######   | 75/107 [00:14<00:04,  6.53it/s][AEpoch 7:  75%|#######4  | 92/123 [00:28<00:09,  3.26it/s, loss=1.08, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:14<00:05,  5.95it/s][A
+Validating:  72%|#######1  | 77/107 [00:15<00:04,  6.34it/s][AEpoch 7:  76%|#######6  | 94/123 [00:28<00:08,  3.29it/s, loss=1.08, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:15<00:05,  5.55it/s][A
+Validating:  74%|#######3  | 79/107 [00:15<00:04,  5.85it/s][AEpoch 7:  78%|#######8  | 96/123 [00:28<00:08,  3.32it/s, loss=1.08, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:15<00:04,  6.16it/s][A
+Validating:  76%|#######5  | 81/107 [00:15<00:04,  6.27it/s][AEpoch 7:  80%|#######9  | 98/123 [00:29<00:07,  3.35it/s, loss=1.08, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:15<00:04,  5.58it/s][A
+Validating:  78%|#######7  | 83/107 [00:16<00:03,  6.07it/s][AEpoch 7:  81%|########1 | 100/123 [00:29<00:06,  3.38it/s, loss=1.08, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:16<00:03,  6.48it/s][A
+Validating:  79%|#######9  | 85/107 [00:16<00:03,  6.79it/s][AEpoch 7:  83%|########2 | 102/123 [00:29<00:06,  3.42it/s, loss=1.08, v_num=4]
+Validating:  80%|########  | 86/107 [00:16<00:03,  5.31it/s][A
+Validating:  81%|########1 | 87/107 [00:16<00:03,  5.87it/s][AEpoch 7:  85%|########4 | 104/123 [00:30<00:05,  3.44it/s, loss=1.08, v_num=4]
+Validating:  82%|########2 | 88/107 [00:17<00:03,  5.36it/s][A
+Validating:  83%|########3 | 89/107 [00:17<00:03,  5.92it/s][AEpoch 7:  86%|########6 | 106/123 [00:30<00:04,  3.46it/s, loss=1.08, v_num=4]
+Validating:  84%|########4 | 90/107 [00:17<00:03,  4.71it/s][A
+Validating:  85%|########5 | 91/107 [00:17<00:03,  5.26it/s][AEpoch 7:  88%|########7 | 108/123 [00:31<00:04,  3.48it/s, loss=1.08, v_num=4]
+Validating:  86%|########5 | 92/107 [00:17<00:02,  5.78it/s][A
+Validating:  87%|########6 | 93/107 [00:17<00:02,  6.26it/s][AEpoch 7:  89%|########9 | 110/123 [00:31<00:03,  3.51it/s, loss=1.08, v_num=4]
+Validating:  88%|########7 | 94/107 [00:18<00:02,  5.13it/s][A
+Validating:  89%|########8 | 95/107 [00:18<00:02,  5.66it/s][AEpoch 7:  91%|#########1| 112/123 [00:31<00:03,  3.53it/s, loss=1.08, v_num=4]
+Validating:  90%|########9 | 96/107 [00:18<00:02,  4.79it/s][A
+Validating:  91%|######### | 97/107 [00:18<00:01,  5.27it/s][AEpoch 7:  93%|#########2| 114/123 [00:32<00:02,  3.54it/s, loss=1.08, v_num=4]
+Validating:  92%|#########1| 98/107 [00:18<00:01,  4.92it/s][A
+Validating:  93%|#########2| 99/107 [00:19<00:01,  5.45it/s][AEpoch 7:  94%|#########4| 116/123 [00:32<00:01,  3.56it/s, loss=1.08, v_num=4]
+Validating:  93%|#########3| 100/107 [00:19<00:01,  5.79it/s][A
+Validating:  94%|#########4| 101/107 [00:19<00:00,  6.25it/s][AEpoch 7:  96%|#########5| 118/123 [00:32<00:01,  3.60it/s, loss=1.08, v_num=4]
+Validating:  95%|#########5| 102/107 [00:19<00:00,  5.65it/s][A
+Validating:  96%|#########6| 103/107 [00:19<00:00,  6.10it/s][AEpoch 7:  98%|#########7| 120/123 [00:33<00:00,  3.62it/s, loss=1.08, v_num=4]
+Validating:  97%|#########7| 104/107 [00:19<00:00,  6.55it/s][A
+Validating:  98%|#########8| 105/107 [00:19<00:00,  6.84it/s][AEpoch 7:  99%|#########9| 122/123 [00:33<00:00,  3.65it/s, loss=1.08, v_num=4]
+Validating:  99%|#########9| 106/107 [00:20<00:00,  7.03it/s][A
+Validating: 100%|##########| 107/107 [00:20<00:00,  6.82it/s][AEpoch 7: 100%|##########| 123/123 [00:33<00:00,  3.65it/s, loss=1.08, v_num=4]
+                                                             [AEpoch 7: 100%|##########| 123/123 [00:33<00:00,  3.64it/s, loss=1.08, v_num=4]Epoch 7:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.08, v_num=4]          Epoch 8:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.08, v_num=4]Epoch 8:   1%|          | 1/123 [00:01<03:28,  1.71s/it, loss=1.11, v_num=4]Epoch 8:   2%|1         | 2/123 [00:02<02:31,  1.25s/it, loss=1.11, v_num=4]Epoch 8:   2%|1         | 2/123 [00:02<02:31,  1.25s/it, loss=1.14, v_num=4]Epoch 8:   2%|2         | 3/123 [00:03<02:11,  1.10s/it, loss=1.13, v_num=4]Epoch 8:   3%|3         | 4/123 [00:04<02:01,  1.02s/it, loss=1.13, v_num=4]Epoch 8:   3%|3         | 4/123 [00:04<02:01,  1.02s/it, loss=1.17, v_num=4]Epoch 8:   4%|4         | 5/123 [00:04<01:55,  1.03it/s, loss=1.19, v_num=4]Epoch 8:   5%|4         | 6/123 [00:05<01:50,  1.06it/s, loss=1.19, v_num=4]Epoch 8:   5%|4         | 6/123 [00:05<01:50,  1.06it/s, loss=1.19, v_num=4]Epoch 8:   6%|5         | 7/123 [00:06<01:46,  1.09it/s, loss=1.22, v_num=4]Epoch 8:   7%|6         | 8/123 [00:07<01:43,  1.11it/s, loss=1.22, v_num=4]Epoch 8:   7%|6         | 8/123 [00:07<01:43,  1.11it/s, loss=1.24, v_num=4]Epoch 8:   7%|7         | 9/123 [00:08<01:41,  1.12it/s, loss=1.25, v_num=4]Epoch 8:   8%|8         | 10/123 [00:08<01:39,  1.14it/s, loss=1.25, v_num=4]Epoch 8:   8%|8         | 10/123 [00:08<01:39,  1.14it/s, loss=1.3, v_num=4] Epoch 8:   9%|8         | 11/123 [00:09<01:37,  1.15it/s, loss=1.33, v_num=4]Epoch 8:  10%|9         | 12/123 [00:10<01:35,  1.16it/s, loss=1.33, v_num=4]Epoch 8:  10%|9         | 12/123 [00:10<01:35,  1.16it/s, loss=1.32, v_num=4]Epoch 8:  11%|#         | 13/123 [00:11<01:34,  1.17it/s, loss=1.34, v_num=4]Epoch 8:  11%|#1        | 14/123 [00:11<01:32,  1.18it/s, loss=1.34, v_num=4]Epoch 8:  11%|#1        | 14/123 [00:11<01:32,  1.18it/s, loss=1.4, v_num=4] Epoch 8:  12%|#2        | 15/123 [00:12<01:31,  1.18it/s, loss=1.34, v_num=4]news_newsnight_othello_720x416 not present in data
+ami_is1000a_closeup_720x576 not present in data
+ami_is1000a_left_720x576 not present in data
+Epoch 8:  13%|#3        | 16/123 [00:13<01:30,  1.18it/s, loss=1.34, v_num=4]Epoch 8:  13%|#3        | 16/123 [00:13<01:30,  1.18it/s, loss=1.4, v_num=4] 
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:19,  1.31s/it][AEpoch 8:  15%|#4        | 18/123 [00:14<01:27,  1.21it/s, loss=1.4, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:26,  1.21it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:52,  1.97it/s][AEpoch 8:  16%|#6        | 20/123 [00:15<01:19,  1.29it/s, loss=1.4, v_num=4]
+Validating:   4%|3         | 4/107 [00:02<00:37,  2.73it/s][A
+Validating:   5%|4         | 5/107 [00:02<00:29,  3.51it/s][AEpoch 8:  18%|#7        | 22/123 [00:15<01:12,  1.39it/s, loss=1.4, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:41,  2.41it/s][A
+Validating:   7%|6         | 7/107 [00:03<00:31,  3.13it/s][AEpoch 8:  20%|#9        | 24/123 [00:16<01:08,  1.44it/s, loss=1.4, v_num=4]
+Validating:   7%|7         | 8/107 [00:03<00:25,  3.81it/s][A
+Validating:   8%|8         | 9/107 [00:03<00:21,  4.54it/s][AEpoch 8:  21%|##1       | 26/123 [00:16<01:02,  1.54it/s, loss=1.4, v_num=4]
+Validating:   9%|9         | 10/107 [00:03<00:22,  4.32it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:20,  4.61it/s][AEpoch 8:  23%|##2       | 28/123 [00:17<00:58,  1.62it/s, loss=1.4, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:18,  5.27it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:16,  5.85it/s][AEpoch 8:  24%|##4       | 30/123 [00:17<00:54,  1.71it/s, loss=1.4, v_num=4]
+Validating:  13%|#3        | 14/107 [00:04<00:21,  4.36it/s][A
+Validating:  14%|#4        | 15/107 [00:04<00:18,  5.02it/s][AEpoch 8:  26%|##6       | 32/123 [00:18<00:51,  1.77it/s, loss=1.4, v_num=4]
+Validating:  15%|#4        | 16/107 [00:04<00:16,  5.52it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:14,  6.10it/s][AEpoch 8:  28%|##7       | 34/123 [00:18<00:47,  1.85it/s, loss=1.4, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:15,  5.65it/s][A
+Validating:  18%|#7        | 19/107 [00:05<00:14,  6.18it/s][AEpoch 8:  29%|##9       | 36/123 [00:18<00:45,  1.93it/s, loss=1.4, v_num=4]
+Validating:  19%|#8        | 20/107 [00:05<00:13,  6.56it/s][A
+Validating:  20%|#9        | 21/107 [00:05<00:13,  6.60it/s][AEpoch 8:  31%|###       | 38/123 [00:18<00:42,  2.01it/s, loss=1.4, v_num=4]
+Validating:  21%|##        | 22/107 [00:05<00:21,  3.94it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:18,  4.64it/s][AEpoch 8:  33%|###2      | 40/123 [00:19<00:40,  2.04it/s, loss=1.4, v_num=4]
+Validating:  22%|##2       | 24/107 [00:06<00:16,  5.13it/s][A
+Validating:  23%|##3       | 25/107 [00:06<00:14,  5.61it/s][AEpoch 8:  34%|###4      | 42/123 [00:19<00:38,  2.12it/s, loss=1.4, v_num=4]
+Validating:  24%|##4       | 26/107 [00:06<00:25,  3.16it/s][A
+Validating:  25%|##5       | 27/107 [00:07<00:20,  3.81it/s][AEpoch 8:  36%|###5      | 44/123 [00:20<00:37,  2.13it/s, loss=1.4, v_num=4]
+Validating:  26%|##6       | 28/107 [00:07<00:17,  4.46it/s][A
+Validating:  27%|##7       | 29/107 [00:07<00:15,  5.07it/s][AEpoch 8:  37%|###7      | 46/123 [00:20<00:34,  2.20it/s, loss=1.4, v_num=4]
+Validating:  28%|##8       | 30/107 [00:07<00:21,  3.66it/s][A
+Validating:  29%|##8       | 31/107 [00:07<00:17,  4.31it/s][AEpoch 8:  39%|###9      | 48/123 [00:21<00:33,  2.23it/s, loss=1.4, v_num=4]
+Validating:  30%|##9       | 32/107 [00:08<00:15,  4.94it/s][A
+Validating:  31%|###       | 33/107 [00:08<00:13,  5.47it/s][AEpoch 8:  41%|####      | 50/123 [00:21<00:31,  2.30it/s, loss=1.4, v_num=4]
+Validating:  32%|###1      | 34/107 [00:08<00:16,  4.31it/s][A
+Validating:  33%|###2      | 35/107 [00:08<00:14,  4.89it/s][AEpoch 8:  42%|####2     | 52/123 [00:22<00:30,  2.34it/s, loss=1.4, v_num=4]
+Validating:  34%|###3      | 36/107 [00:08<00:13,  5.39it/s][A
+Validating:  35%|###4      | 37/107 [00:08<00:13,  5.34it/s][AEpoch 8:  44%|####3     | 54/123 [00:22<00:28,  2.39it/s, loss=1.4, v_num=4]
+Validating:  36%|###5      | 38/107 [00:09<00:12,  5.41it/s][A
+Validating:  36%|###6      | 39/107 [00:09<00:12,  5.45it/s][AEpoch 8:  46%|####5     | 56/123 [00:22<00:27,  2.44it/s, loss=1.4, v_num=4]
+Validating:  37%|###7      | 40/107 [00:09<00:11,  5.99it/s][A
+Validating:  38%|###8      | 41/107 [00:09<00:11,  5.77it/s][AEpoch 8:  47%|####7     | 58/123 [00:23<00:26,  2.49it/s, loss=1.4, v_num=4]
+Validating:  39%|###9      | 42/107 [00:09<00:10,  5.92it/s][A
+Validating:  40%|####      | 43/107 [00:09<00:09,  6.45it/s][AEpoch 8:  49%|####8     | 60/123 [00:23<00:24,  2.55it/s, loss=1.4, v_num=4]
+Validating:  41%|####1     | 44/107 [00:10<00:09,  6.81it/s][A
+Validating:  42%|####2     | 45/107 [00:10<00:08,  7.08it/s][AEpoch 8:  50%|#####     | 62/123 [00:23<00:23,  2.61it/s, loss=1.4, v_num=4]
+Validating:  43%|####2     | 46/107 [00:10<00:10,  5.70it/s][A
+Validating:  44%|####3     | 47/107 [00:10<00:11,  5.27it/s][AEpoch 8:  52%|#####2    | 64/123 [00:24<00:22,  2.64it/s, loss=1.4, v_num=4]
+Validating:  45%|####4     | 48/107 [00:10<00:10,  5.86it/s][A
+Validating:  46%|####5     | 49/107 [00:10<00:09,  6.32it/s][AEpoch 8:  54%|#####3    | 66/123 [00:24<00:21,  2.69it/s, loss=1.4, v_num=4]
+Validating:  47%|####6     | 50/107 [00:11<00:09,  5.88it/s][A
+Validating:  48%|####7     | 51/107 [00:11<00:15,  3.53it/s][AEpoch 8:  55%|#####5    | 68/123 [00:25<00:20,  2.69it/s, loss=1.4, v_num=4]
+Validating:  49%|####8     | 52/107 [00:11<00:13,  4.07it/s][A
+Validating:  50%|####9     | 53/107 [00:11<00:11,  4.66it/s][AEpoch 8:  57%|#####6    | 70/123 [00:25<00:19,  2.74it/s, loss=1.4, v_num=4]
+Validating:  50%|#####     | 54/107 [00:12<00:10,  5.27it/s][A
+Validating:  51%|#####1    | 55/107 [00:12<00:09,  5.65it/s][AEpoch 8:  59%|#####8    | 72/123 [00:25<00:18,  2.79it/s, loss=1.4, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:12<00:08,  5.84it/s][A
+Validating:  53%|#####3    | 57/107 [00:12<00:08,  6.19it/s][AEpoch 8:  60%|######    | 74/123 [00:26<00:17,  2.83it/s, loss=1.4, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:12<00:07,  6.42it/s][A
+Validating:  55%|#####5    | 59/107 [00:12<00:07,  6.74it/s][AEpoch 8:  62%|######1   | 76/123 [00:26<00:16,  2.88it/s, loss=1.4, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:12<00:06,  6.89it/s][A
+Validating:  57%|#####7    | 61/107 [00:13<00:08,  5.50it/s][AEpoch 8:  63%|######3   | 78/123 [00:26<00:15,  2.91it/s, loss=1.4, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:13<00:07,  5.79it/s][A
+Validating:  59%|#####8    | 63/107 [00:13<00:07,  5.78it/s][AEpoch 8:  65%|######5   | 80/123 [00:27<00:14,  2.95it/s, loss=1.4, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:13<00:06,  6.18it/s][A
+Validating:  61%|######    | 65/107 [00:13<00:08,  5.02it/s][AEpoch 8:  67%|######6   | 82/123 [00:27<00:13,  2.97it/s, loss=1.4, v_num=4]
+Validating:  62%|######1   | 66/107 [00:14<00:07,  5.50it/s][A
+Validating:  63%|######2   | 67/107 [00:14<00:06,  5.97it/s][AEpoch 8:  68%|######8   | 84/123 [00:27<00:12,  3.02it/s, loss=1.4, v_num=4]
+Validating:  64%|######3   | 68/107 [00:14<00:06,  6.41it/s][A
+Validating:  64%|######4   | 69/107 [00:14<00:06,  5.82it/s][AEpoch 8:  70%|######9   | 86/123 [00:28<00:12,  3.05it/s, loss=1.4, v_num=4]
+Validating:  65%|######5   | 70/107 [00:14<00:05,  6.32it/s][A
+Validating:  66%|######6   | 71/107 [00:14<00:05,  6.62it/s][AEpoch 8:  72%|#######1  | 88/123 [00:28<00:11,  3.09it/s, loss=1.4, v_num=4]
+Validating:  67%|######7   | 72/107 [00:15<00:07,  4.94it/s][A
+Validating:  68%|######8   | 73/107 [00:15<00:07,  4.76it/s][AEpoch 8:  73%|#######3  | 90/123 [00:28<00:10,  3.10it/s, loss=1.4, v_num=4]
+Validating:  69%|######9   | 74/107 [00:15<00:06,  5.38it/s][A
+Validating:  70%|#######   | 75/107 [00:15<00:05,  5.87it/s][AEpoch 8:  75%|#######4  | 92/123 [00:29<00:09,  3.14it/s, loss=1.4, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:16<00:07,  4.06it/s][A
+Validating:  72%|#######1  | 77/107 [00:16<00:06,  4.43it/s][AEpoch 8:  76%|#######6  | 94/123 [00:29<00:09,  3.15it/s, loss=1.4, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:16<00:05,  5.09it/s][A
+Validating:  74%|#######3  | 79/107 [00:16<00:04,  5.66it/s][AEpoch 8:  78%|#######8  | 96/123 [00:30<00:08,  3.19it/s, loss=1.4, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:17<00:07,  3.66it/s][A
+Validating:  76%|#######5  | 81/107 [00:17<00:05,  4.35it/s][AEpoch 8:  80%|#######9  | 98/123 [00:30<00:07,  3.19it/s, loss=1.4, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:17<00:05,  4.98it/s][A
+Validating:  78%|#######7  | 83/107 [00:17<00:04,  5.59it/s][AEpoch 8:  81%|########1 | 100/123 [00:31<00:07,  3.23it/s, loss=1.4, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:17<00:04,  4.86it/s][A
+Validating:  79%|#######9  | 85/107 [00:17<00:04,  5.48it/s][AEpoch 8:  83%|########2 | 102/123 [00:31<00:06,  3.25it/s, loss=1.4, v_num=4]
+Validating:  80%|########  | 86/107 [00:17<00:03,  5.94it/s][A
+Validating:  81%|########1 | 87/107 [00:18<00:03,  6.37it/s][AEpoch 8:  85%|########4 | 104/123 [00:31<00:05,  3.28it/s, loss=1.4, v_num=4]
+Validating:  82%|########2 | 88/107 [00:18<00:03,  5.67it/s][A
+Validating:  83%|########3 | 89/107 [00:18<00:02,  6.02it/s][AEpoch 8:  86%|########6 | 106/123 [00:32<00:05,  3.31it/s, loss=1.4, v_num=4]
+Validating:  84%|########4 | 90/107 [00:18<00:02,  5.74it/s][A
+Validating:  85%|########5 | 91/107 [00:18<00:02,  6.20it/s][AEpoch 8:  88%|########7 | 108/123 [00:32<00:04,  3.34it/s, loss=1.4, v_num=4]
+Validating:  86%|########5 | 92/107 [00:18<00:02,  6.02it/s][A
+Validating:  87%|########6 | 93/107 [00:19<00:02,  6.08it/s][AEpoch 8:  89%|########9 | 110/123 [00:32<00:03,  3.36it/s, loss=1.4, v_num=4]
+Validating:  88%|########7 | 94/107 [00:19<00:01,  6.56it/s][A
+Validating:  89%|########8 | 95/107 [00:19<00:01,  6.77it/s][AEpoch 8:  91%|#########1| 112/123 [00:32<00:03,  3.40it/s, loss=1.4, v_num=4]
+Validating:  90%|########9 | 96/107 [00:19<00:01,  6.36it/s][A
+Validating:  91%|######### | 97/107 [00:19<00:01,  6.73it/s][AEpoch 8:  93%|#########2| 114/123 [00:33<00:02,  3.43it/s, loss=1.4, v_num=4]
+Validating:  92%|#########1| 98/107 [00:19<00:01,  6.95it/s][A
+Validating:  93%|#########2| 99/107 [00:19<00:01,  7.10it/s][AEpoch 8:  94%|#########4| 116/123 [00:33<00:02,  3.46it/s, loss=1.4, v_num=4]
+Validating:  93%|#########3| 100/107 [00:20<00:01,  6.28it/s][A
+Validating:  94%|#########4| 101/107 [00:20<00:00,  6.61it/s][AEpoch 8:  96%|#########5| 118/123 [00:33<00:01,  3.48it/s, loss=1.4, v_num=4]
+Validating:  95%|#########5| 102/107 [00:20<00:00,  6.90it/s][A
+Validating:  96%|#########6| 103/107 [00:20<00:00,  7.09it/s][AEpoch 8:  98%|#########7| 120/123 [00:34<00:00,  3.52it/s, loss=1.4, v_num=4]
+Validating:  97%|#########7| 104/107 [00:20<00:00,  7.35it/s][A
+Validating:  98%|#########8| 105/107 [00:20<00:00,  7.49it/s][AEpoch 8:  99%|#########9| 122/123 [00:34<00:00,  3.55it/s, loss=1.4, v_num=4]
+Validating:  99%|#########9| 106/107 [00:20<00:00,  7.62it/s][A
+Validating: 100%|##########| 107/107 [00:21<00:00,  6.85it/s][AEpoch 8: 100%|##########| 123/123 [00:34<00:00,  3.54it/s, loss=1.4, v_num=4]
+                                                             [AEpoch 8: 100%|##########| 123/123 [00:34<00:00,  3.54it/s, loss=1.4, v_num=4]Epoch 8:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.4, v_num=4]          Epoch 9:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.4, v_num=4]Epoch 9:   1%|          | 1/123 [00:01<03:38,  1.79s/it, loss=1.43, v_num=4]Epoch 9:   2%|1         | 2/123 [00:02<02:37,  1.30s/it, loss=1.43, v_num=4]Epoch 9:   2%|1         | 2/123 [00:02<02:37,  1.30s/it, loss=1.42, v_num=4]Epoch 9:   2%|2         | 3/123 [00:03<02:15,  1.13s/it, loss=1.39, v_num=4]Epoch 9:   3%|3         | 4/123 [00:04<02:04,  1.05s/it, loss=1.39, v_num=4]Epoch 9:   3%|3         | 4/123 [00:04<02:04,  1.05s/it, loss=1.39, v_num=4]Epoch 9:   4%|4         | 5/123 [00:04<01:57,  1.00it/s, loss=1.37, v_num=4]Epoch 9:   5%|4         | 6/123 [00:05<01:52,  1.04it/s, loss=1.37, v_num=4]Epoch 9:   5%|4         | 6/123 [00:05<01:52,  1.04it/s, loss=1.35, v_num=4]Epoch 9:   6%|5         | 7/123 [00:06<01:48,  1.07it/s, loss=1.34, v_num=4]Epoch 9:   7%|6         | 8/123 [00:07<01:45,  1.09it/s, loss=1.34, v_num=4]Epoch 9:   7%|6         | 8/123 [00:07<01:45,  1.09it/s, loss=1.31, v_num=4]Epoch 9:   7%|7         | 9/123 [00:08<01:42,  1.11it/s, loss=1.3, v_num=4] Epoch 9:   8%|8         | 10/123 [00:08<01:40,  1.12it/s, loss=1.3, v_num=4]Epoch 9:   8%|8         | 10/123 [00:08<01:40,  1.12it/s, loss=1.34, v_num=4]Epoch 9:   9%|8         | 11/123 [00:09<01:38,  1.13it/s, loss=1.34, v_num=4]Epoch 9:  10%|9         | 12/123 [00:10<01:37,  1.14it/s, loss=1.34, v_num=4]Epoch 9:  10%|9         | 12/123 [00:10<01:37,  1.14it/s, loss=1.3, v_num=4] Epoch 9:  11%|#         | 13/123 [00:11<01:35,  1.15it/s, loss=1.33, v_num=4]Epoch 9:  11%|#1        | 14/123 [00:12<01:33,  1.16it/s, loss=1.33, v_num=4]Epoch 9:  11%|#1        | 14/123 [00:12<01:33,  1.16it/s, loss=1.29, v_num=4]Epoch 9:  12%|#2        | 15/123 [00:12<01:32,  1.17it/s, loss=1.28, v_num=4]ami_is1000a_left_720x576 not present in data
+news_newsnight_othello_720x416 not present in data
+ami_is1000a_closeup_720x576 not present in data
+Epoch 9:  13%|#3        | 16/123 [00:13<01:31,  1.16it/s, loss=1.28, v_num=4]Epoch 9:  13%|#3        | 16/123 [00:13<01:31,  1.16it/s, loss=1.25, v_num=4]
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:10,  1.23s/it][AEpoch 9:  15%|#4        | 18/123 [00:14<01:27,  1.20it/s, loss=1.25, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:00,  1.72it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:39,  2.66it/s][AEpoch 9:  16%|#6        | 20/123 [00:15<01:18,  1.31it/s, loss=1.25, v_num=4]
+Validating:   4%|3         | 4/107 [00:01<00:37,  2.72it/s][A
+Validating:   5%|4         | 5/107 [00:01<00:28,  3.54it/s][AEpoch 9:  18%|#7        | 22/123 [00:15<01:12,  1.40it/s, loss=1.25, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:23,  4.31it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:19,  5.08it/s][AEpoch 9:  20%|#9        | 24/123 [00:15<01:05,  1.50it/s, loss=1.25, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:32,  3.02it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:26,  3.71it/s][AEpoch 9:  21%|##1       | 26/123 [00:16<01:02,  1.55it/s, loss=1.25, v_num=4]
+Validating:   9%|9         | 10/107 [00:03<00:22,  4.40it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:19,  5.04it/s][AEpoch 9:  23%|##2       | 28/123 [00:17<00:57,  1.65it/s, loss=1.25, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:25,  3.77it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:21,  4.46it/s][AEpoch 9:  24%|##4       | 30/123 [00:17<00:54,  1.71it/s, loss=1.25, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:18,  5.07it/s][A
+Validating:  14%|#4        | 15/107 [00:04<00:16,  5.65it/s][AEpoch 9:  26%|##6       | 32/123 [00:17<00:50,  1.80it/s, loss=1.25, v_num=4]
+Validating:  15%|#4        | 16/107 [00:04<00:19,  4.64it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:17,  5.22it/s][AEpoch 9:  28%|##7       | 34/123 [00:18<00:47,  1.86it/s, loss=1.25, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:15,  5.72it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:14,  6.20it/s][AEpoch 9:  29%|##9       | 36/123 [00:18<00:44,  1.94it/s, loss=1.25, v_num=4]
+Validating:  19%|#8        | 20/107 [00:04<00:15,  5.71it/s][A
+Validating:  20%|#9        | 21/107 [00:05<00:13,  6.25it/s][AEpoch 9:  31%|###       | 38/123 [00:18<00:42,  2.01it/s, loss=1.25, v_num=4]
+Validating:  21%|##        | 22/107 [00:05<00:18,  4.54it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:16,  5.21it/s][AEpoch 9:  33%|###2      | 40/123 [00:19<00:40,  2.07it/s, loss=1.25, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:15,  5.20it/s][A
+Validating:  23%|##3       | 25/107 [00:05<00:15,  5.28it/s][AEpoch 9:  34%|###4      | 42/123 [00:19<00:38,  2.13it/s, loss=1.25, v_num=4]
+Validating:  24%|##4       | 26/107 [00:06<00:14,  5.64it/s][A
+Validating:  25%|##5       | 27/107 [00:06<00:13,  6.15it/s][AEpoch 9:  36%|###5      | 44/123 [00:20<00:35,  2.20it/s, loss=1.25, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:12,  6.42it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:11,  6.73it/s][AEpoch 9:  37%|###7      | 46/123 [00:20<00:33,  2.27it/s, loss=1.25, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:14,  5.41it/s][A
+Validating:  29%|##8       | 31/107 [00:06<00:12,  5.93it/s][AEpoch 9:  39%|###9      | 48/123 [00:20<00:32,  2.32it/s, loss=1.25, v_num=4]
+Validating:  30%|##9       | 32/107 [00:07<00:11,  6.36it/s][A
+Validating:  31%|###       | 33/107 [00:07<00:11,  6.68it/s][AEpoch 9:  41%|####      | 50/123 [00:20<00:30,  2.39it/s, loss=1.25, v_num=4]
+Validating:  32%|###1      | 34/107 [00:07<00:10,  6.83it/s][A
+Validating:  33%|###2      | 35/107 [00:07<00:10,  6.98it/s][AEpoch 9:  42%|####2     | 52/123 [00:21<00:28,  2.45it/s, loss=1.25, v_num=4]
+Validating:  34%|###3      | 36/107 [00:07<00:11,  6.04it/s][A
+Validating:  35%|###4      | 37/107 [00:07<00:11,  6.03it/s][AEpoch 9:  44%|####3     | 54/123 [00:21<00:27,  2.50it/s, loss=1.25, v_num=4]
+Validating:  36%|###5      | 38/107 [00:08<00:11,  6.03it/s][A
+Validating:  36%|###6      | 39/107 [00:08<00:10,  6.36it/s][AEpoch 9:  46%|####5     | 56/123 [00:21<00:26,  2.56it/s, loss=1.25, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:10,  6.25it/s][A
+Validating:  38%|###8      | 41/107 [00:08<00:11,  5.77it/s][AEpoch 9:  47%|####7     | 58/123 [00:22<00:24,  2.60it/s, loss=1.25, v_num=4]
+Validating:  39%|###9      | 42/107 [00:08<00:11,  5.57it/s][A
+Validating:  40%|####      | 43/107 [00:08<00:11,  5.48it/s][AEpoch 9:  49%|####8     | 60/123 [00:22<00:23,  2.65it/s, loss=1.25, v_num=4]
+Validating:  41%|####1     | 44/107 [00:09<00:10,  6.12it/s][A
+Validating:  42%|####2     | 45/107 [00:09<00:10,  5.90it/s][AEpoch 9:  50%|#####     | 62/123 [00:22<00:22,  2.70it/s, loss=1.25, v_num=4]
+Validating:  43%|####2     | 46/107 [00:09<00:11,  5.12it/s][A
+Validating:  44%|####3     | 47/107 [00:09<00:10,  5.49it/s][AEpoch 9:  52%|#####2    | 64/123 [00:23<00:21,  2.74it/s, loss=1.25, v_num=4]
+Validating:  45%|####4     | 48/107 [00:09<00:10,  5.68it/s][A
+Validating:  46%|####5     | 49/107 [00:09<00:09,  6.09it/s][AEpoch 9:  54%|#####3    | 66/123 [00:23<00:20,  2.79it/s, loss=1.25, v_num=4]
+Validating:  47%|####6     | 50/107 [00:10<00:10,  5.29it/s][A
+Validating:  48%|####7     | 51/107 [00:10<00:09,  5.81it/s][AEpoch 9:  55%|#####5    | 68/123 [00:24<00:19,  2.83it/s, loss=1.25, v_num=4]
+Validating:  49%|####8     | 52/107 [00:10<00:08,  6.23it/s][A
+Validating:  50%|####9     | 53/107 [00:10<00:08,  6.13it/s][AEpoch 9:  57%|#####6    | 70/123 [00:24<00:18,  2.88it/s, loss=1.25, v_num=4]
+Validating:  50%|#####     | 54/107 [00:10<00:08,  6.28it/s][A
+Validating:  51%|#####1    | 55/107 [00:10<00:07,  6.66it/s][AEpoch 9:  59%|#####8    | 72/123 [00:24<00:17,  2.92it/s, loss=1.25, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:10<00:07,  6.95it/s][A
+Validating:  53%|#####3    | 57/107 [00:11<00:08,  6.08it/s][AEpoch 9:  60%|######    | 74/123 [00:24<00:16,  2.96it/s, loss=1.25, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:11<00:08,  5.76it/s][A
+Validating:  55%|#####5    | 59/107 [00:11<00:07,  6.25it/s][AEpoch 9:  62%|######1   | 76/123 [00:25<00:15,  3.01it/s, loss=1.25, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:11<00:07,  6.62it/s][A
+Validating:  57%|#####7    | 61/107 [00:11<00:06,  6.57it/s][AEpoch 9:  63%|######3   | 78/123 [00:25<00:14,  3.05it/s, loss=1.25, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:12<00:07,  5.71it/s][A
+Validating:  59%|#####8    | 63/107 [00:12<00:07,  6.19it/s][AEpoch 9:  65%|######5   | 80/123 [00:25<00:13,  3.09it/s, loss=1.25, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:12<00:06,  6.61it/s][A
+Validating:  61%|######    | 65/107 [00:12<00:06,  6.56it/s][AEpoch 9:  67%|######6   | 82/123 [00:26<00:13,  3.13it/s, loss=1.25, v_num=4]
+Validating:  62%|######1   | 66/107 [00:12<00:07,  5.37it/s][A
+Validating:  63%|######2   | 67/107 [00:12<00:06,  5.90it/s][AEpoch 9:  68%|######8   | 84/123 [00:26<00:12,  3.16it/s, loss=1.25, v_num=4]
+Validating:  64%|######3   | 68/107 [00:12<00:06,  6.27it/s][A
+Validating:  64%|######4   | 69/107 [00:13<00:06,  6.28it/s][AEpoch 9:  70%|######9   | 86/123 [00:26<00:11,  3.20it/s, loss=1.25, v_num=4]
+Validating:  65%|######5   | 70/107 [00:13<00:08,  4.14it/s][A
+Validating:  66%|######6   | 71/107 [00:13<00:07,  4.81it/s][AEpoch 9:  72%|#######1  | 88/123 [00:27<00:10,  3.20it/s, loss=1.25, v_num=4]
+Validating:  67%|######7   | 72/107 [00:13<00:06,  5.42it/s][A
+Validating:  68%|######8   | 73/107 [00:13<00:05,  5.96it/s][AEpoch 9:  73%|#######3  | 90/123 [00:27<00:10,  3.25it/s, loss=1.25, v_num=4]
+Validating:  69%|######9   | 74/107 [00:14<00:08,  3.81it/s][A
+Validating:  70%|#######   | 75/107 [00:14<00:07,  4.39it/s][AEpoch 9:  75%|#######4  | 92/123 [00:28<00:09,  3.24it/s, loss=1.25, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:14<00:06,  4.99it/s][A
+Validating:  72%|#######1  | 77/107 [00:14<00:05,  5.51it/s][AEpoch 9:  76%|#######6  | 94/123 [00:28<00:08,  3.28it/s, loss=1.25, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:15<00:06,  4.50it/s][A
+Validating:  74%|#######3  | 79/107 [00:15<00:05,  5.10it/s][AEpoch 9:  78%|#######8  | 96/123 [00:29<00:08,  3.30it/s, loss=1.25, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:15<00:04,  5.67it/s][A
+Validating:  76%|#######5  | 81/107 [00:15<00:04,  6.16it/s][AEpoch 9:  80%|#######9  | 98/123 [00:29<00:07,  3.34it/s, loss=1.25, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:15<00:04,  5.14it/s][A
+Validating:  78%|#######7  | 83/107 [00:15<00:04,  5.75it/s][AEpoch 9:  81%|########1 | 100/123 [00:29<00:06,  3.36it/s, loss=1.25, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:16<00:03,  6.24it/s][A
+Validating:  79%|#######9  | 85/107 [00:16<00:03,  6.55it/s][AEpoch 9:  83%|########2 | 102/123 [00:29<00:06,  3.40it/s, loss=1.25, v_num=4]
+Validating:  80%|########  | 86/107 [00:16<00:04,  4.85it/s][A
+Validating:  81%|########1 | 87/107 [00:16<00:03,  5.44it/s][AEpoch 9:  85%|########4 | 104/123 [00:30<00:05,  3.41it/s, loss=1.25, v_num=4]
+Validating:  82%|########2 | 88/107 [00:16<00:03,  5.95it/s][A
+Validating:  83%|########3 | 89/107 [00:16<00:02,  6.32it/s][AEpoch 9:  86%|########6 | 106/123 [00:30<00:04,  3.45it/s, loss=1.25, v_num=4]
+Validating:  84%|########4 | 90/107 [00:17<00:03,  5.48it/s][A
+Validating:  85%|########5 | 91/107 [00:17<00:02,  5.91it/s][AEpoch 9:  88%|########7 | 108/123 [00:31<00:04,  3.47it/s, loss=1.25, v_num=4]
+Validating:  86%|########5 | 92/107 [00:17<00:02,  5.99it/s][A
+Validating:  87%|########6 | 93/107 [00:17<00:02,  6.36it/s][AEpoch 9:  89%|########9 | 110/123 [00:31<00:03,  3.50it/s, loss=1.25, v_num=4]
+Validating:  88%|########7 | 94/107 [00:18<00:03,  3.84it/s][A
+Validating:  89%|########8 | 95/107 [00:18<00:02,  4.38it/s][AEpoch 9:  91%|#########1| 112/123 [00:32<00:03,  3.49it/s, loss=1.25, v_num=4]
+Validating:  90%|########9 | 96/107 [00:18<00:02,  5.05it/s][A
+Validating:  91%|######### | 97/107 [00:18<00:01,  5.63it/s][AEpoch 9:  93%|#########2| 114/123 [00:32<00:02,  3.53it/s, loss=1.25, v_num=4]
+Validating:  92%|#########1| 98/107 [00:18<00:02,  4.48it/s][A
+Validating:  93%|#########2| 99/107 [00:19<00:01,  5.14it/s][AEpoch 9:  94%|#########4| 116/123 [00:32<00:01,  3.54it/s, loss=1.25, v_num=4]
+Validating:  93%|#########3| 100/107 [00:19<00:01,  5.71it/s][A
+Validating:  94%|#########4| 101/107 [00:19<00:00,  6.06it/s][AEpoch 9:  96%|#########5| 118/123 [00:33<00:01,  3.57it/s, loss=1.25, v_num=4]
+Validating:  95%|#########5| 102/107 [00:19<00:00,  5.34it/s][A
+Validating:  96%|#########6| 103/107 [00:19<00:00,  5.81it/s][AEpoch 9:  98%|#########7| 120/123 [00:33<00:00,  3.59it/s, loss=1.25, v_num=4]
+Validating:  97%|#########7| 104/107 [00:19<00:00,  6.21it/s][A
+Validating:  98%|#########8| 105/107 [00:19<00:00,  6.48it/s][AEpoch 9:  99%|#########9| 122/123 [00:33<00:00,  3.62it/s, loss=1.25, v_num=4]
+Validating:  99%|#########9| 106/107 [00:20<00:00,  6.80it/s][A
+Validating: 100%|##########| 107/107 [00:20<00:00,  6.72it/s][AEpoch 9: 100%|##########| 123/123 [00:34<00:00,  3.58it/s, loss=1.25, v_num=4]
+                                                             [AEpoch 9: 100%|##########| 123/123 [00:34<00:00,  3.58it/s, loss=1.25, v_num=4]Epoch 9:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.25, v_num=4]          Epoch 10:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.25, v_num=4]Epoch 10:   1%|          | 1/123 [00:01<03:34,  1.76s/it, loss=1.27, v_num=4]Epoch 10:   2%|1         | 2/123 [00:02<02:34,  1.28s/it, loss=1.27, v_num=4]Epoch 10:   2%|1         | 2/123 [00:02<02:34,  1.28s/it, loss=1.26, v_num=4]Epoch 10:   2%|2         | 3/123 [00:03<02:13,  1.12s/it, loss=1.26, v_num=4]Epoch 10:   3%|3         | 4/123 [00:04<02:03,  1.04s/it, loss=1.26, v_num=4]Epoch 10:   3%|3         | 4/123 [00:04<02:03,  1.04s/it, loss=1.25, v_num=4]Epoch 10:   4%|4         | 5/123 [00:04<01:56,  1.01it/s, loss=1.22, v_num=4]Epoch 10:   5%|4         | 6/123 [00:05<01:51,  1.05it/s, loss=1.22, v_num=4]Epoch 10:   5%|4         | 6/123 [00:05<01:51,  1.05it/s, loss=1.17, v_num=4]Epoch 10:   6%|5         | 7/123 [00:06<01:48,  1.07it/s, loss=1.15, v_num=4]Epoch 10:   7%|6         | 8/123 [00:07<01:45,  1.09it/s, loss=1.15, v_num=4]Epoch 10:   7%|6         | 8/123 [00:07<01:45,  1.09it/s, loss=1.13, v_num=4]Epoch 10:   7%|7         | 9/123 [00:08<01:42,  1.11it/s, loss=1.16, v_num=4]Epoch 10:   8%|8         | 10/123 [00:08<01:40,  1.13it/s, loss=1.16, v_num=4]Epoch 10:   8%|8         | 10/123 [00:08<01:40,  1.13it/s, loss=1.18, v_num=4]Epoch 10:   9%|8         | 11/123 [00:09<01:38,  1.14it/s, loss=1.2, v_num=4] Epoch 10:  10%|9         | 12/123 [00:10<01:36,  1.15it/s, loss=1.2, v_num=4]Epoch 10:  10%|9         | 12/123 [00:10<01:36,  1.15it/s, loss=1.18, v_num=4]Epoch 10:  11%|#         | 13/123 [00:11<01:34,  1.16it/s, loss=1.17, v_num=4]Epoch 10:  11%|#1        | 14/123 [00:12<01:33,  1.17it/s, loss=1.17, v_num=4]Epoch 10:  11%|#1        | 14/123 [00:12<01:33,  1.17it/s, loss=1.16, v_num=4]Epoch 10:  12%|#2        | 15/123 [00:12<01:32,  1.17it/s, loss=1.12, v_num=4]ami_is1000a_left_720x576 not present in data
+ami_is1000a_closeup_720x576 not present in data
+news_newsnight_othello_720x416 not present in data
+Epoch 10:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.12, v_num=4]Epoch 10:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.13, v_num=4]
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:06,  1.19s/it][AEpoch 10:  15%|#4        | 18/123 [00:14<01:26,  1.21it/s, loss=1.13, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:00,  1.73it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:38,  2.67it/s][AEpoch 10:  16%|#6        | 20/123 [00:15<01:18,  1.32it/s, loss=1.13, v_num=4]
+Validating:   4%|3         | 4/107 [00:01<00:37,  2.75it/s][A
+Validating:   5%|4         | 5/107 [00:01<00:28,  3.55it/s][AEpoch 10:  18%|#7        | 22/123 [00:15<01:11,  1.40it/s, loss=1.13, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:23,  4.33it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:20,  4.98it/s][AEpoch 10:  20%|#9        | 24/123 [00:15<01:05,  1.50it/s, loss=1.13, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:24,  4.04it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:20,  4.76it/s][AEpoch 10:  21%|##1       | 26/123 [00:16<01:01,  1.58it/s, loss=1.13, v_num=4]
+Validating:   9%|9         | 10/107 [00:02<00:18,  5.37it/s][A
+Validating:  10%|#         | 11/107 [00:02<00:16,  5.90it/s][AEpoch 10:  23%|##2       | 28/123 [00:16<00:56,  1.68it/s, loss=1.13, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:23,  4.10it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:19,  4.75it/s][AEpoch 10:  24%|##4       | 30/123 [00:17<00:53,  1.74it/s, loss=1.13, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:17,  5.38it/s][A
+Validating:  14%|#4        | 15/107 [00:03<00:15,  5.91it/s][AEpoch 10:  26%|##6       | 32/123 [00:17<00:49,  1.83it/s, loss=1.13, v_num=4]
+Validating:  15%|#4        | 16/107 [00:04<00:21,  4.32it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:17,  5.01it/s][AEpoch 10:  28%|##7       | 34/123 [00:17<00:47,  1.89it/s, loss=1.13, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:15,  5.61it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:14,  6.13it/s][AEpoch 10:  29%|##9       | 36/123 [00:18<00:44,  1.97it/s, loss=1.13, v_num=4]
+Validating:  19%|#8        | 20/107 [00:04<00:19,  4.55it/s][A
+Validating:  20%|#9        | 21/107 [00:05<00:16,  5.20it/s][AEpoch 10:  31%|###       | 38/123 [00:18<00:41,  2.03it/s, loss=1.13, v_num=4]
+Validating:  21%|##        | 22/107 [00:05<00:14,  5.78it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:13,  6.26it/s][AEpoch 10:  33%|###2      | 40/123 [00:18<00:39,  2.11it/s, loss=1.13, v_num=4]
+Validating:  22%|##2       | 24/107 [00:06<00:31,  2.64it/s][A
+Validating:  23%|##3       | 25/107 [00:06<00:24,  3.30it/s][AEpoch 10:  34%|###4      | 42/123 [00:20<00:38,  2.10it/s, loss=1.13, v_num=4]
+Validating:  24%|##4       | 26/107 [00:06<00:20,  3.99it/s][A
+Validating:  25%|##5       | 27/107 [00:06<00:19,  4.14it/s][AEpoch 10:  36%|###5      | 44/123 [00:20<00:36,  2.16it/s, loss=1.13, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:18,  4.27it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:15,  4.93it/s][AEpoch 10:  37%|###7      | 46/123 [00:20<00:34,  2.22it/s, loss=1.13, v_num=4]
+Validating:  28%|##8       | 30/107 [00:07<00:13,  5.50it/s][A
+Validating:  29%|##8       | 31/107 [00:07<00:12,  6.06it/s][AEpoch 10:  39%|###9      | 48/123 [00:20<00:32,  2.29it/s, loss=1.13, v_num=4]
+Validating:  30%|##9       | 32/107 [00:07<00:19,  3.83it/s][A
+Validating:  31%|###       | 33/107 [00:07<00:16,  4.46it/s][AEpoch 10:  41%|####      | 50/123 [00:21<00:31,  2.32it/s, loss=1.13, v_num=4]
+Validating:  32%|###1      | 34/107 [00:07<00:14,  5.14it/s][A
+Validating:  33%|###2      | 35/107 [00:08<00:12,  5.62it/s][AEpoch 10:  42%|####2     | 52/123 [00:21<00:29,  2.38it/s, loss=1.13, v_num=4]
+Validating:  34%|###3      | 36/107 [00:08<00:13,  5.43it/s][A
+Validating:  35%|###4      | 37/107 [00:08<00:11,  5.99it/s][AEpoch 10:  44%|####3     | 54/123 [00:22<00:28,  2.44it/s, loss=1.13, v_num=4]
+Validating:  36%|###5      | 38/107 [00:08<00:10,  6.43it/s][A
+Validating:  36%|###6      | 39/107 [00:08<00:10,  6.77it/s][AEpoch 10:  46%|####5     | 56/123 [00:22<00:26,  2.50it/s, loss=1.13, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:11,  5.85it/s][A
+Validating:  38%|###8      | 41/107 [00:09<00:10,  6.38it/s][AEpoch 10:  47%|####7     | 58/123 [00:22<00:25,  2.55it/s, loss=1.13, v_num=4]
+Validating:  39%|###9      | 42/107 [00:09<00:09,  6.75it/s][A
+Validating:  40%|####      | 43/107 [00:09<00:09,  6.79it/s][AEpoch 10:  49%|####8     | 60/123 [00:23<00:24,  2.60it/s, loss=1.13, v_num=4]
+Validating:  41%|####1     | 44/107 [00:09<00:11,  5.70it/s][A
+Validating:  42%|####2     | 45/107 [00:09<00:10,  6.08it/s][AEpoch 10:  50%|#####     | 62/123 [00:23<00:23,  2.65it/s, loss=1.13, v_num=4]
+Validating:  43%|####2     | 46/107 [00:09<00:09,  6.36it/s][A
+Validating:  44%|####3     | 47/107 [00:10<00:10,  6.00it/s][AEpoch 10:  52%|#####2    | 64/123 [00:23<00:21,  2.69it/s, loss=1.13, v_num=4]
+Validating:  45%|####4     | 48/107 [00:10<00:09,  5.98it/s][A
+Validating:  46%|####5     | 49/107 [00:10<00:10,  5.49it/s][AEpoch 10:  54%|#####3    | 66/123 [00:24<00:20,  2.73it/s, loss=1.13, v_num=4]
+Validating:  47%|####6     | 50/107 [00:10<00:09,  5.94it/s][A
+Validating:  48%|####7     | 51/107 [00:10<00:09,  6.01it/s][AEpoch 10:  55%|#####5    | 68/123 [00:24<00:19,  2.78it/s, loss=1.13, v_num=4]
+Validating:  49%|####8     | 52/107 [00:10<00:08,  6.41it/s][A
+Validating:  50%|####9     | 53/107 [00:10<00:08,  6.69it/s][AEpoch 10:  57%|#####6    | 70/123 [00:24<00:18,  2.83it/s, loss=1.13, v_num=4]
+Validating:  50%|#####     | 54/107 [00:11<00:07,  6.78it/s][A
+Validating:  51%|#####1    | 55/107 [00:11<00:07,  7.19it/s][AEpoch 10:  59%|#####8    | 72/123 [00:24<00:17,  2.88it/s, loss=1.13, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:11<00:06,  7.33it/s][A
+Validating:  53%|#####3    | 57/107 [00:11<00:12,  4.01it/s][AEpoch 10:  60%|######    | 74/123 [00:25<00:16,  2.89it/s, loss=1.13, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:12<00:10,  4.68it/s][A
+Validating:  55%|#####5    | 59/107 [00:12<00:09,  5.20it/s][AEpoch 10:  62%|######1   | 76/123 [00:25<00:16,  2.94it/s, loss=1.13, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:12<00:08,  5.72it/s][A
+Validating:  57%|#####7    | 61/107 [00:12<00:09,  4.80it/s][AEpoch 10:  63%|######3   | 78/123 [00:26<00:15,  2.96it/s, loss=1.13, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:12<00:08,  5.18it/s][A
+Validating:  59%|#####8    | 63/107 [00:12<00:07,  5.71it/s][AEpoch 10:  65%|######5   | 80/123 [00:26<00:14,  3.01it/s, loss=1.13, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:13<00:07,  6.13it/s][A
+Validating:  61%|######    | 65/107 [00:13<00:09,  4.49it/s][AEpoch 10:  67%|######6   | 82/123 [00:27<00:13,  3.03it/s, loss=1.13, v_num=4]
+Validating:  62%|######1   | 66/107 [00:13<00:08,  4.82it/s][A
+Validating:  63%|######2   | 67/107 [00:13<00:07,  5.40it/s][AEpoch 10:  68%|######8   | 84/123 [00:27<00:12,  3.07it/s, loss=1.13, v_num=4]
+Validating:  64%|######3   | 68/107 [00:13<00:06,  5.98it/s][A
+Validating:  64%|######4   | 69/107 [00:14<00:07,  4.89it/s][AEpoch 10:  70%|######9   | 86/123 [00:27<00:11,  3.09it/s, loss=1.13, v_num=4]
+Validating:  65%|######5   | 70/107 [00:14<00:06,  5.47it/s][A
+Validating:  66%|######6   | 71/107 [00:14<00:05,  6.01it/s][AEpoch 10:  72%|#######1  | 88/123 [00:28<00:11,  3.13it/s, loss=1.13, v_num=4]
+Validating:  67%|######7   | 72/107 [00:14<00:05,  6.44it/s][A
+Validating:  68%|######8   | 73/107 [00:14<00:07,  4.41it/s][AEpoch 10:  73%|#######3  | 90/123 [00:28<00:10,  3.15it/s, loss=1.13, v_num=4]
+Validating:  69%|######9   | 74/107 [00:15<00:06,  5.08it/s][A
+Validating:  70%|#######   | 75/107 [00:15<00:05,  5.68it/s][AEpoch 10:  75%|#######4  | 92/123 [00:28<00:09,  3.19it/s, loss=1.13, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:15<00:05,  6.10it/s][A
+Validating:  72%|#######1  | 77/107 [00:15<00:06,  4.48it/s][AEpoch 10:  76%|#######6  | 94/123 [00:29<00:09,  3.20it/s, loss=1.13, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:15<00:05,  4.98it/s][A
+Validating:  74%|#######3  | 79/107 [00:15<00:05,  5.57it/s][AEpoch 10:  78%|#######8  | 96/123 [00:29<00:08,  3.24it/s, loss=1.13, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:16<00:04,  6.09it/s][A
+Validating:  76%|#######5  | 81/107 [00:16<00:05,  4.39it/s][AEpoch 10:  80%|#######9  | 98/123 [00:30<00:07,  3.25it/s, loss=1.13, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:16<00:05,  4.89it/s][A
+Validating:  78%|#######7  | 83/107 [00:16<00:04,  5.55it/s][AEpoch 10:  81%|########1 | 100/123 [00:30<00:06,  3.29it/s, loss=1.13, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:16<00:03,  5.83it/s][A
+Validating:  79%|#######9  | 85/107 [00:17<00:04,  4.72it/s][AEpoch 10:  83%|########2 | 102/123 [00:30<00:06,  3.30it/s, loss=1.13, v_num=4]
+Validating:  80%|########  | 86/107 [00:17<00:03,  5.27it/s][A
+Validating:  81%|########1 | 87/107 [00:17<00:03,  5.76it/s][AEpoch 10:  85%|########4 | 104/123 [00:31<00:05,  3.34it/s, loss=1.13, v_num=4]
+Validating:  82%|########2 | 88/107 [00:17<00:03,  6.18it/s][A
+Validating:  83%|########3 | 89/107 [00:18<00:04,  3.99it/s][AEpoch 10:  86%|########6 | 106/123 [00:31<00:05,  3.34it/s, loss=1.13, v_num=4]
+Validating:  84%|########4 | 90/107 [00:18<00:03,  4.69it/s][A
+Validating:  85%|########5 | 91/107 [00:18<00:03,  5.23it/s][AEpoch 10:  88%|########7 | 108/123 [00:31<00:04,  3.38it/s, loss=1.13, v_num=4]
+Validating:  86%|########5 | 92/107 [00:18<00:02,  5.81it/s][A
+Validating:  87%|########6 | 93/107 [00:18<00:02,  4.95it/s][AEpoch 10:  89%|########9 | 110/123 [00:32<00:03,  3.40it/s, loss=1.13, v_num=4]
+Validating:  88%|########7 | 94/107 [00:18<00:02,  5.47it/s][A
+Validating:  89%|########8 | 95/107 [00:18<00:02,  5.49it/s][AEpoch 10:  91%|#########1| 112/123 [00:32<00:03,  3.42it/s, loss=1.13, v_num=4]
+Validating:  90%|########9 | 96/107 [00:19<00:01,  5.97it/s][A
+Validating:  91%|######### | 97/107 [00:19<00:01,  5.73it/s][AEpoch 10:  93%|#########2| 114/123 [00:33<00:02,  3.45it/s, loss=1.13, v_num=4]
+Validating:  92%|#########1| 98/107 [00:19<00:01,  6.21it/s][A
+Validating:  93%|#########2| 99/107 [00:19<00:01,  6.50it/s][AEpoch 10:  94%|#########4| 116/123 [00:33<00:02,  3.48it/s, loss=1.13, v_num=4]
+Validating:  93%|#########3| 100/107 [00:19<00:01,  6.84it/s][A
+Validating:  94%|#########4| 101/107 [00:19<00:00,  6.38it/s][AEpoch 10:  96%|#########5| 118/123 [00:33<00:01,  3.51it/s, loss=1.13, v_num=4]
+Validating:  95%|#########5| 102/107 [00:20<00:00,  6.72it/s][A
+Validating:  96%|#########6| 103/107 [00:20<00:00,  6.91it/s][AEpoch 10:  98%|#########7| 120/123 [00:33<00:00,  3.54it/s, loss=1.13, v_num=4]
+Validating:  97%|#########7| 104/107 [00:20<00:00,  7.18it/s][A
+Validating:  98%|#########8| 105/107 [00:20<00:00,  7.36it/s][AEpoch 10:  99%|#########9| 122/123 [00:34<00:00,  3.57it/s, loss=1.13, v_num=4]
+Validating:  99%|#########9| 106/107 [00:20<00:00,  7.50it/s][A
+Validating: 100%|##########| 107/107 [00:20<00:00,  6.94it/s][AEpoch 10: 100%|##########| 123/123 [00:34<00:00,  3.57it/s, loss=1.13, v_num=4]
+                                                             [AEpoch 10: 100%|##########| 123/123 [00:34<00:00,  3.57it/s, loss=1.13, v_num=4]Epoch 10:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.13, v_num=4]          Epoch 11:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.13, v_num=4]Epoch 11:   1%|          | 1/123 [00:01<03:20,  1.64s/it, loss=1.08, v_num=4]Epoch 11:   2%|1         | 2/123 [00:02<02:27,  1.22s/it, loss=1.08, v_num=4]Epoch 11:   2%|1         | 2/123 [00:02<02:27,  1.22s/it, loss=1.1, v_num=4] Epoch 11:   2%|2         | 3/123 [00:03<02:09,  1.08s/it, loss=1.09, v_num=4]Epoch 11:   3%|3         | 4/123 [00:04<01:59,  1.01s/it, loss=1.09, v_num=4]Epoch 11:   3%|3         | 4/123 [00:04<01:59,  1.01s/it, loss=1.11, v_num=4]Epoch 11:   4%|4         | 5/123 [00:04<01:53,  1.04it/s, loss=1.08, v_num=4]Epoch 11:   5%|4         | 6/123 [00:05<01:49,  1.07it/s, loss=1.08, v_num=4]Epoch 11:   5%|4         | 6/123 [00:05<01:49,  1.07it/s, loss=1.06, v_num=4]Epoch 11:   6%|5         | 7/123 [00:06<01:45,  1.10it/s, loss=1.06, v_num=4]Epoch 11:   7%|6         | 8/123 [00:07<01:43,  1.12it/s, loss=1.06, v_num=4]Epoch 11:   7%|6         | 8/123 [00:07<01:43,  1.12it/s, loss=1.11, v_num=4]Epoch 11:   7%|7         | 9/123 [00:07<01:40,  1.13it/s, loss=1.1, v_num=4] Epoch 11:   8%|8         | 10/123 [00:08<01:38,  1.15it/s, loss=1.1, v_num=4]Epoch 11:   8%|8         | 10/123 [00:08<01:38,  1.15it/s, loss=1.14, v_num=4]Epoch 11:   9%|8         | 11/123 [00:09<01:36,  1.16it/s, loss=1.15, v_num=4]Epoch 11:  10%|9         | 12/123 [00:10<01:35,  1.17it/s, loss=1.15, v_num=4]Epoch 11:  10%|9         | 12/123 [00:10<01:35,  1.17it/s, loss=1.19, v_num=4]Epoch 11:  11%|#         | 13/123 [00:11<01:33,  1.17it/s, loss=1.19, v_num=4]Epoch 11:  11%|#1        | 14/123 [00:11<01:32,  1.18it/s, loss=1.19, v_num=4]Epoch 11:  11%|#1        | 14/123 [00:11<01:32,  1.18it/s, loss=1.18, v_num=4]Epoch 11:  12%|#2        | 15/123 [00:12<01:30,  1.19it/s, loss=1.17, v_num=4]news_newsnight_othello_720x416 not present in data
+ami_is1000a_left_720x576 not present in data
+ami_is1000a_closeup_720x576 not present in data
+Epoch 11:  13%|#3        | 16/123 [00:13<01:30,  1.18it/s, loss=1.17, v_num=4]Epoch 11:  13%|#3        | 16/123 [00:13<01:30,  1.18it/s, loss=1.17, v_num=4]
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:16,  1.29s/it][AEpoch 11:  15%|#4        | 18/123 [00:14<01:26,  1.21it/s, loss=1.17, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:04,  1.63it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:40,  2.54it/s][AEpoch 11:  16%|#6        | 20/123 [00:15<01:17,  1.33it/s, loss=1.17, v_num=4]
+Validating:   4%|3         | 4/107 [00:01<00:38,  2.67it/s][A
+Validating:   5%|4         | 5/107 [00:02<00:30,  3.34it/s][AEpoch 11:  18%|#7        | 22/123 [00:15<01:11,  1.41it/s, loss=1.17, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:24,  4.05it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:21,  4.71it/s][AEpoch 11:  20%|#9        | 24/123 [00:15<01:05,  1.51it/s, loss=1.17, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:21,  4.60it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:19,  5.08it/s][AEpoch 11:  21%|##1       | 26/123 [00:16<01:00,  1.60it/s, loss=1.17, v_num=4]
+Validating:   9%|9         | 10/107 [00:02<00:18,  5.33it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:19,  4.89it/s][AEpoch 11:  23%|##2       | 28/123 [00:16<00:56,  1.68it/s, loss=1.17, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:17,  5.53it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:15,  5.90it/s][AEpoch 11:  24%|##4       | 30/123 [00:16<00:52,  1.77it/s, loss=1.17, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:17,  5.41it/s][A
+Validating:  14%|#4        | 15/107 [00:03<00:17,  5.40it/s][AEpoch 11:  26%|##6       | 32/123 [00:17<00:49,  1.84it/s, loss=1.17, v_num=4]
+Validating:  15%|#4        | 16/107 [00:03<00:15,  5.79it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:14,  6.18it/s][AEpoch 11:  28%|##7       | 34/123 [00:17<00:46,  1.93it/s, loss=1.17, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:14,  6.20it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:16,  5.27it/s][AEpoch 11:  29%|##9       | 36/123 [00:18<00:43,  1.99it/s, loss=1.17, v_num=4]
+Validating:  19%|#8        | 20/107 [00:04<00:15,  5.78it/s][A
+Validating:  20%|#9        | 21/107 [00:04<00:13,  6.20it/s][AEpoch 11:  31%|###       | 38/123 [00:18<00:40,  2.07it/s, loss=1.17, v_num=4]
+Validating:  21%|##        | 22/107 [00:04<00:13,  6.54it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:16,  5.11it/s][AEpoch 11:  33%|###2      | 40/123 [00:18<00:38,  2.13it/s, loss=1.17, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:14,  5.60it/s][A
+Validating:  23%|##3       | 25/107 [00:05<00:13,  6.07it/s][AEpoch 11:  34%|###4      | 42/123 [00:19<00:36,  2.21it/s, loss=1.17, v_num=4]
+Validating:  24%|##4       | 26/107 [00:05<00:14,  5.78it/s][A
+Validating:  25%|##5       | 27/107 [00:05<00:16,  4.92it/s][AEpoch 11:  36%|###5      | 44/123 [00:19<00:34,  2.26it/s, loss=1.17, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:14,  5.53it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:13,  5.95it/s][AEpoch 11:  37%|###7      | 46/123 [00:19<00:33,  2.33it/s, loss=1.17, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:14,  5.15it/s][A
+Validating:  29%|##8       | 31/107 [00:06<00:13,  5.65it/s][AEpoch 11:  39%|###9      | 48/123 [00:20<00:31,  2.38it/s, loss=1.17, v_num=4]
+Validating:  30%|##9       | 32/107 [00:06<00:12,  6.11it/s][A
+Validating:  31%|###       | 33/107 [00:06<00:11,  6.51it/s][AEpoch 11:  41%|####      | 50/123 [00:20<00:29,  2.45it/s, loss=1.17, v_num=4]
+Validating:  32%|###1      | 34/107 [00:07<00:14,  5.19it/s][A
+Validating:  33%|###2      | 35/107 [00:07<00:12,  5.74it/s][AEpoch 11:  42%|####2     | 52/123 [00:20<00:28,  2.50it/s, loss=1.17, v_num=4]
+Validating:  34%|###3      | 36/107 [00:07<00:11,  6.18it/s][A
+Validating:  35%|###4      | 37/107 [00:07<00:10,  6.52it/s][AEpoch 11:  44%|####3     | 54/123 [00:21<00:26,  2.56it/s, loss=1.17, v_num=4]
+Validating:  36%|###5      | 38/107 [00:07<00:12,  5.38it/s][A
+Validating:  36%|###6      | 39/107 [00:07<00:11,  5.81it/s][AEpoch 11:  46%|####5     | 56/123 [00:21<00:25,  2.61it/s, loss=1.17, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:11,  6.09it/s][A
+Validating:  38%|###8      | 41/107 [00:08<00:10,  6.43it/s][AEpoch 11:  47%|####7     | 58/123 [00:21<00:24,  2.66it/s, loss=1.17, v_num=4]
+Validating:  39%|###9      | 42/107 [00:08<00:12,  5.26it/s][A
+Validating:  40%|####      | 43/107 [00:08<00:11,  5.82it/s][AEpoch 11:  49%|####8     | 60/123 [00:22<00:23,  2.71it/s, loss=1.17, v_num=4]
+Validating:  41%|####1     | 44/107 [00:08<00:10,  5.76it/s][A
+Validating:  42%|####2     | 45/107 [00:08<00:10,  5.89it/s][AEpoch 11:  50%|#####     | 62/123 [00:22<00:22,  2.75it/s, loss=1.17, v_num=4]
+Validating:  43%|####2     | 46/107 [00:09<00:11,  5.27it/s][A
+Validating:  44%|####3     | 47/107 [00:09<00:10,  5.67it/s][AEpoch 11:  52%|#####2    | 64/123 [00:22<00:21,  2.80it/s, loss=1.17, v_num=4]
+Validating:  45%|####4     | 48/107 [00:09<00:09,  6.10it/s][A
+Validating:  46%|####5     | 49/107 [00:09<00:09,  6.41it/s][AEpoch 11:  54%|#####3    | 66/123 [00:23<00:20,  2.85it/s, loss=1.17, v_num=4]
+Validating:  47%|####6     | 50/107 [00:09<00:08,  6.57it/s][A
+Validating:  48%|####7     | 51/107 [00:10<00:09,  5.70it/s][AEpoch 11:  55%|#####5    | 68/123 [00:23<00:19,  2.89it/s, loss=1.17, v_num=4]
+Validating:  49%|####8     | 52/107 [00:10<00:09,  6.09it/s][A
+Validating:  50%|####9     | 53/107 [00:10<00:08,  6.43it/s][AEpoch 11:  57%|#####6    | 70/123 [00:23<00:18,  2.94it/s, loss=1.17, v_num=4]
+Validating:  50%|#####     | 54/107 [00:10<00:09,  5.59it/s][A
+Validating:  51%|#####1    | 55/107 [00:10<00:08,  5.87it/s][AEpoch 11:  59%|#####8    | 72/123 [00:24<00:17,  2.98it/s, loss=1.17, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:10<00:08,  6.10it/s][A
+Validating:  53%|#####3    | 57/107 [00:10<00:07,  6.48it/s][AEpoch 11:  60%|######    | 74/123 [00:24<00:16,  3.02it/s, loss=1.17, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:11<00:08,  5.48it/s][A
+Validating:  55%|#####5    | 59/107 [00:11<00:07,  6.00it/s][AEpoch 11:  62%|######1   | 76/123 [00:24<00:15,  3.06it/s, loss=1.17, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:11<00:07,  6.44it/s][A
+Validating:  57%|#####7    | 61/107 [00:11<00:06,  6.71it/s][AEpoch 11:  63%|######3   | 78/123 [00:25<00:14,  3.11it/s, loss=1.17, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:11<00:08,  5.59it/s][A
+Validating:  59%|#####8    | 63/107 [00:12<00:08,  5.36it/s][AEpoch 11:  65%|######5   | 80/123 [00:25<00:13,  3.13it/s, loss=1.17, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:12<00:07,  5.91it/s][A
+Validating:  61%|######    | 65/107 [00:12<00:06,  6.24it/s][AEpoch 11:  67%|######6   | 82/123 [00:25<00:12,  3.17it/s, loss=1.17, v_num=4]
+Validating:  62%|######1   | 66/107 [00:12<00:09,  4.42it/s][A
+Validating:  63%|######2   | 67/107 [00:12<00:07,  5.11it/s][AEpoch 11:  68%|######8   | 84/123 [00:26<00:12,  3.19it/s, loss=1.17, v_num=4]
+Validating:  64%|######3   | 68/107 [00:12<00:06,  5.67it/s][A
+Validating:  64%|######4   | 69/107 [00:13<00:06,  6.17it/s][AEpoch 11:  70%|######9   | 86/123 [00:26<00:11,  3.23it/s, loss=1.17, v_num=4]
+Validating:  65%|######5   | 70/107 [00:13<00:09,  4.03it/s][A
+Validating:  66%|######6   | 71/107 [00:13<00:07,  4.72it/s][AEpoch 11:  72%|#######1  | 88/123 [00:27<00:10,  3.24it/s, loss=1.17, v_num=4]
+Validating:  67%|######7   | 72/107 [00:13<00:06,  5.32it/s][A
+Validating:  68%|######8   | 73/107 [00:13<00:05,  5.87it/s][AEpoch 11:  73%|#######3  | 90/123 [00:27<00:10,  3.28it/s, loss=1.17, v_num=4]
+Validating:  69%|######9   | 74/107 [00:14<00:05,  5.58it/s][A
+Validating:  70%|#######   | 75/107 [00:14<00:05,  5.98it/s][AEpoch 11:  75%|#######4  | 92/123 [00:27<00:09,  3.31it/s, loss=1.17, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:14<00:04,  6.45it/s][A
+Validating:  72%|#######1  | 77/107 [00:14<00:04,  6.16it/s][AEpoch 11:  76%|#######6  | 94/123 [00:28<00:08,  3.35it/s, loss=1.17, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:15<00:07,  3.93it/s][A
+Validating:  74%|#######3  | 79/107 [00:15<00:06,  4.58it/s][AEpoch 11:  78%|#######8  | 96/123 [00:28<00:08,  3.35it/s, loss=1.17, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:15<00:05,  5.22it/s][A
+Validating:  76%|#######5  | 81/107 [00:15<00:04,  5.76it/s][AEpoch 11:  80%|#######9  | 98/123 [00:28<00:07,  3.39it/s, loss=1.17, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:16<00:07,  3.34it/s][A
+Validating:  78%|#######7  | 83/107 [00:16<00:05,  4.02it/s][AEpoch 11:  81%|########1 | 100/123 [00:29<00:06,  3.37it/s, loss=1.17, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:16<00:04,  4.68it/s][A
+Validating:  79%|#######9  | 85/107 [00:16<00:04,  5.28it/s][AEpoch 11:  83%|########2 | 102/123 [00:29<00:06,  3.41it/s, loss=1.17, v_num=4]
+Validating:  80%|########  | 86/107 [00:16<00:05,  3.87it/s][A
+Validating:  81%|########1 | 87/107 [00:17<00:04,  4.14it/s][AEpoch 11:  85%|########4 | 104/123 [00:30<00:05,  3.40it/s, loss=1.17, v_num=4]
+Validating:  82%|########2 | 88/107 [00:17<00:04,  4.69it/s][A
+Validating:  83%|########3 | 89/107 [00:17<00:03,  5.30it/s][AEpoch 11:  86%|########6 | 106/123 [00:30<00:04,  3.44it/s, loss=1.17, v_num=4]
+Validating:  84%|########4 | 90/107 [00:17<00:04,  3.95it/s][A
+Validating:  85%|########5 | 91/107 [00:17<00:03,  4.64it/s][AEpoch 11:  88%|########7 | 108/123 [00:31<00:04,  3.44it/s, loss=1.17, v_num=4]
+Validating:  86%|########5 | 92/107 [00:17<00:02,  5.25it/s][A
+Validating:  87%|########6 | 93/107 [00:18<00:02,  5.75it/s][AEpoch 11:  89%|########9 | 110/123 [00:31<00:03,  3.48it/s, loss=1.17, v_num=4]
+Validating:  88%|########7 | 94/107 [00:18<00:02,  5.08it/s][A
+Validating:  89%|########8 | 95/107 [00:18<00:02,  5.65it/s][AEpoch 11:  91%|#########1| 112/123 [00:32<00:03,  3.50it/s, loss=1.17, v_num=4]
+Validating:  90%|########9 | 96/107 [00:18<00:01,  6.16it/s][A
+Validating:  91%|######### | 97/107 [00:18<00:01,  6.47it/s][AEpoch 11:  93%|#########2| 114/123 [00:32<00:02,  3.53it/s, loss=1.17, v_num=4]
+Validating:  92%|#########1| 98/107 [00:19<00:01,  5.42it/s][A
+Validating:  93%|#########2| 99/107 [00:19<00:01,  5.92it/s][AEpoch 11:  94%|#########4| 116/123 [00:32<00:01,  3.55it/s, loss=1.17, v_num=4]
+Validating:  93%|#########3| 100/107 [00:19<00:01,  6.39it/s][A
+Validating:  94%|#########4| 101/107 [00:19<00:00,  6.74it/s][AEpoch 11:  96%|#########5| 118/123 [00:32<00:01,  3.58it/s, loss=1.17, v_num=4]
+Validating:  95%|#########5| 102/107 [00:19<00:00,  7.00it/s][A
+Validating:  96%|#########6| 103/107 [00:19<00:00,  7.19it/s][AEpoch 11:  98%|#########7| 120/123 [00:33<00:00,  3.62it/s, loss=1.17, v_num=4]
+Validating:  97%|#########7| 104/107 [00:19<00:00,  7.32it/s][A
+Validating:  98%|#########8| 105/107 [00:19<00:00,  7.42it/s][AEpoch 11:  99%|#########9| 122/123 [00:33<00:00,  3.65it/s, loss=1.17, v_num=4]
+Validating:  99%|#########9| 106/107 [00:20<00:00,  7.49it/s][A
+Validating: 100%|##########| 107/107 [00:20<00:00,  7.20it/s][AEpoch 11: 100%|##########| 123/123 [00:33<00:00,  3.64it/s, loss=1.17, v_num=4]
+                                                             [AEpoch 11: 100%|##########| 123/123 [00:33<00:00,  3.64it/s, loss=1.17, v_num=4]Epoch 11:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.17, v_num=4]          Epoch 12:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.17, v_num=4]Epoch 12:   1%|          | 1/123 [00:01<03:40,  1.81s/it, loss=1.19, v_num=4]Epoch 12:   2%|1         | 2/123 [00:02<02:37,  1.30s/it, loss=1.19, v_num=4]Epoch 12:   2%|1         | 2/123 [00:02<02:37,  1.30s/it, loss=1.2, v_num=4] Epoch 12:   2%|2         | 3/123 [00:03<02:15,  1.13s/it, loss=1.22, v_num=4]Epoch 12:   3%|3         | 4/123 [00:04<02:04,  1.05s/it, loss=1.22, v_num=4]Epoch 12:   3%|3         | 4/123 [00:04<02:04,  1.05s/it, loss=1.22, v_num=4]Epoch 12:   4%|4         | 5/123 [00:04<01:57,  1.00it/s, loss=1.25, v_num=4]Epoch 12:   5%|4         | 6/123 [00:05<01:52,  1.04it/s, loss=1.25, v_num=4]Epoch 12:   5%|4         | 6/123 [00:05<01:52,  1.04it/s, loss=1.24, v_num=4]Epoch 12:   6%|5         | 7/123 [00:06<01:48,  1.07it/s, loss=1.29, v_num=4]Epoch 12:   7%|6         | 8/123 [00:07<01:45,  1.09it/s, loss=1.29, v_num=4]Epoch 12:   7%|6         | 8/123 [00:07<01:45,  1.09it/s, loss=1.28, v_num=4]Epoch 12:   7%|7         | 9/123 [00:08<01:42,  1.11it/s, loss=1.29, v_num=4]Epoch 12:   8%|8         | 10/123 [00:08<01:40,  1.13it/s, loss=1.29, v_num=4]Epoch 12:   8%|8         | 10/123 [00:08<01:40,  1.13it/s, loss=1.27, v_num=4]Epoch 12:   9%|8         | 11/123 [00:09<01:38,  1.14it/s, loss=1.31, v_num=4]Epoch 12:  10%|9         | 12/123 [00:10<01:36,  1.15it/s, loss=1.31, v_num=4]Epoch 12:  10%|9         | 12/123 [00:10<01:36,  1.15it/s, loss=1.25, v_num=4]Epoch 12:  11%|#         | 13/123 [00:11<01:34,  1.16it/s, loss=1.27, v_num=4]Epoch 12:  11%|#1        | 14/123 [00:11<01:33,  1.17it/s, loss=1.27, v_num=4]Epoch 12:  11%|#1        | 14/123 [00:11<01:33,  1.17it/s, loss=1.24, v_num=4]Epoch 12:  12%|#2        | 15/123 [00:12<01:31,  1.17it/s, loss=1.23, v_num=4]ami_is1000a_closeup_720x576 not present in data
+ami_is1000a_left_720x576 not present in data
+news_newsnight_othello_720x416 not present in data
+Epoch 12:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.23, v_num=4]Epoch 12:  13%|#3        | 16/123 [00:13<01:31,  1.17it/s, loss=1.2, v_num=4] 
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:23,  1.35s/it][AEpoch 12:  15%|#4        | 18/123 [00:15<01:27,  1.20it/s, loss=1.2, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<01:10,  1.50it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:45,  2.28it/s][AEpoch 12:  16%|#6        | 20/123 [00:15<01:19,  1.30it/s, loss=1.2, v_num=4]
+Validating:   4%|3         | 4/107 [00:01<00:38,  2.64it/s][A
+Validating:   5%|4         | 5/107 [00:02<00:29,  3.48it/s][AEpoch 12:  18%|#7        | 22/123 [00:15<01:12,  1.39it/s, loss=1.2, v_num=4]
+Validating:   6%|5         | 6/107 [00:02<00:23,  4.25it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:20,  4.83it/s][AEpoch 12:  20%|#9        | 24/123 [00:16<01:06,  1.49it/s, loss=1.2, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:21,  4.54it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:18,  5.23it/s][AEpoch 12:  21%|##1       | 26/123 [00:16<01:01,  1.58it/s, loss=1.2, v_num=4]
+Validating:   9%|9         | 10/107 [00:02<00:16,  5.78it/s][A
+Validating:  10%|#         | 11/107 [00:03<00:18,  5.19it/s][AEpoch 12:  23%|##2       | 28/123 [00:16<00:57,  1.66it/s, loss=1.2, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:18,  5.23it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:16,  5.69it/s][AEpoch 12:  24%|##4       | 30/123 [00:17<00:53,  1.75it/s, loss=1.2, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:14,  6.20it/s][A
+Validating:  14%|#4        | 15/107 [00:04<00:23,  3.98it/s][AEpoch 12:  26%|##6       | 32/123 [00:17<00:50,  1.80it/s, loss=1.2, v_num=4]
+Validating:  15%|#4        | 16/107 [00:04<00:19,  4.66it/s][A
+Validating:  16%|#5        | 17/107 [00:04<00:17,  5.29it/s][AEpoch 12:  28%|##7       | 34/123 [00:18<00:47,  1.89it/s, loss=1.2, v_num=4]
+Validating:  17%|#6        | 18/107 [00:04<00:15,  5.86it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:21,  4.08it/s][AEpoch 12:  29%|##9       | 36/123 [00:18<00:44,  1.94it/s, loss=1.2, v_num=4]
+Validating:  19%|#8        | 20/107 [00:04<00:18,  4.74it/s][A
+Validating:  20%|#9        | 21/107 [00:05<00:16,  5.16it/s][AEpoch 12:  31%|###       | 38/123 [00:18<00:42,  2.02it/s, loss=1.2, v_num=4]
+Validating:  21%|##        | 22/107 [00:05<00:15,  5.33it/s][A
+Validating:  21%|##1       | 23/107 [00:05<00:16,  5.11it/s][AEpoch 12:  33%|###2      | 40/123 [00:19<00:39,  2.08it/s, loss=1.2, v_num=4]
+Validating:  22%|##2       | 24/107 [00:05<00:15,  5.25it/s][A
+Validating:  23%|##3       | 25/107 [00:05<00:14,  5.83it/s][AEpoch 12:  34%|###4      | 42/123 [00:19<00:37,  2.15it/s, loss=1.2, v_num=4]
+Validating:  24%|##4       | 26/107 [00:05<00:12,  6.25it/s][A
+Validating:  25%|##5       | 27/107 [00:06<00:14,  5.47it/s][AEpoch 12:  36%|###5      | 44/123 [00:19<00:35,  2.21it/s, loss=1.2, v_num=4]
+Validating:  26%|##6       | 28/107 [00:06<00:13,  5.95it/s][A
+Validating:  27%|##7       | 29/107 [00:06<00:12,  6.27it/s][AEpoch 12:  37%|###7      | 46/123 [00:20<00:33,  2.28it/s, loss=1.2, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:11,  6.57it/s][A
+Validating:  29%|##8       | 31/107 [00:06<00:14,  5.16it/s][AEpoch 12:  39%|###9      | 48/123 [00:20<00:32,  2.33it/s, loss=1.2, v_num=4]
+Validating:  30%|##9       | 32/107 [00:07<00:13,  5.47it/s][A
+Validating:  31%|###       | 33/107 [00:07<00:12,  5.97it/s][AEpoch 12:  41%|####      | 50/123 [00:20<00:30,  2.39it/s, loss=1.2, v_num=4]
+Validating:  32%|###1      | 34/107 [00:07<00:11,  6.45it/s][A
+Validating:  33%|###2      | 35/107 [00:07<00:13,  5.46it/s][AEpoch 12:  42%|####2     | 52/123 [00:21<00:29,  2.44it/s, loss=1.2, v_num=4]
+Validating:  34%|###3      | 36/107 [00:07<00:12,  5.89it/s][A
+Validating:  35%|###4      | 37/107 [00:07<00:11,  6.17it/s][AEpoch 12:  44%|####3     | 54/123 [00:21<00:27,  2.51it/s, loss=1.2, v_num=4]
+Validating:  36%|###5      | 38/107 [00:08<00:11,  6.04it/s][A
+Validating:  36%|###6      | 39/107 [00:08<00:14,  4.64it/s][AEpoch 12:  46%|####5     | 56/123 [00:22<00:26,  2.54it/s, loss=1.2, v_num=4]
+Validating:  37%|###7      | 40/107 [00:08<00:12,  5.18it/s][A
+Validating:  38%|###8      | 41/107 [00:08<00:12,  5.34it/s][AEpoch 12:  47%|####7     | 58/123 [00:22<00:25,  2.59it/s, loss=1.2, v_num=4]
+Validating:  39%|###9      | 42/107 [00:08<00:11,  5.86it/s][A
+Validating:  40%|####      | 43/107 [00:08<00:10,  5.86it/s][AEpoch 12:  49%|####8     | 60/123 [00:22<00:23,  2.65it/s, loss=1.2, v_num=4]
+Validating:  41%|####1     | 44/107 [00:09<00:09,  6.31it/s][A
+Validating:  42%|####2     | 45/107 [00:09<00:09,  6.63it/s][AEpoch 12:  50%|#####     | 62/123 [00:22<00:22,  2.70it/s, loss=1.2, v_num=4]
+Validating:  43%|####2     | 46/107 [00:09<00:08,  6.91it/s][A
+Validating:  44%|####3     | 47/107 [00:09<00:10,  5.68it/s][AEpoch 12:  52%|#####2    | 64/123 [00:23<00:21,  2.74it/s, loss=1.2, v_num=4]
+Validating:  45%|####4     | 48/107 [00:09<00:09,  6.09it/s][A
+Validating:  46%|####5     | 49/107 [00:09<00:08,  6.46it/s][AEpoch 12:  54%|#####3    | 66/123 [00:23<00:20,  2.80it/s, loss=1.2, v_num=4]
+Validating:  47%|####6     | 50/107 [00:10<00:08,  6.72it/s][A
+Validating:  48%|####7     | 51/107 [00:10<00:10,  5.45it/s][AEpoch 12:  55%|#####5    | 68/123 [00:23<00:19,  2.83it/s, loss=1.2, v_num=4]
+Validating:  49%|####8     | 52/107 [00:10<00:09,  5.95it/s][A
+Validating:  50%|####9     | 53/107 [00:10<00:08,  6.39it/s][AEpoch 12:  57%|#####6    | 70/123 [00:24<00:18,  2.89it/s, loss=1.2, v_num=4]
+Validating:  50%|#####     | 54/107 [00:10<00:07,  6.75it/s][A
+Validating:  51%|#####1    | 55/107 [00:10<00:09,  5.66it/s][AEpoch 12:  59%|#####8    | 72/123 [00:24<00:17,  2.92it/s, loss=1.2, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:11<00:08,  6.16it/s][A
+Validating:  53%|#####3    | 57/107 [00:11<00:07,  6.53it/s][AEpoch 12:  60%|######    | 74/123 [00:24<00:16,  2.97it/s, loss=1.2, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:11<00:07,  6.78it/s][A
+Validating:  55%|#####5    | 59/107 [00:11<00:08,  5.47it/s][AEpoch 12:  62%|######1   | 76/123 [00:25<00:15,  3.01it/s, loss=1.2, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:11<00:07,  5.99it/s][A
+Validating:  57%|#####7    | 61/107 [00:11<00:07,  6.41it/s][AEpoch 12:  63%|######3   | 78/123 [00:25<00:14,  3.05it/s, loss=1.2, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:11<00:06,  6.64it/s][A
+Validating:  59%|#####8    | 63/107 [00:12<00:08,  5.41it/s][AEpoch 12:  65%|######5   | 80/123 [00:25<00:13,  3.08it/s, loss=1.2, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:12<00:07,  5.96it/s][A
+Validating:  61%|######    | 65/107 [00:12<00:06,  6.41it/s][AEpoch 12:  67%|######6   | 82/123 [00:26<00:13,  3.13it/s, loss=1.2, v_num=4]
+Validating:  62%|######1   | 66/107 [00:12<00:06,  6.72it/s][A
+Validating:  63%|######2   | 67/107 [00:13<00:09,  4.12it/s][AEpoch 12:  68%|######8   | 84/123 [00:26<00:12,  3.13it/s, loss=1.2, v_num=4]
+Validating:  64%|######3   | 68/107 [00:13<00:08,  4.79it/s][A
+Validating:  64%|######4   | 69/107 [00:13<00:07,  5.39it/s][AEpoch 12:  70%|######9   | 86/123 [00:27<00:11,  3.18it/s, loss=1.2, v_num=4]
+Validating:  65%|######5   | 70/107 [00:13<00:06,  5.93it/s][A
+Validating:  66%|######6   | 71/107 [00:13<00:07,  4.83it/s][AEpoch 12:  72%|#######1  | 88/123 [00:27<00:10,  3.20it/s, loss=1.2, v_num=4]
+Validating:  67%|######7   | 72/107 [00:13<00:06,  5.45it/s][A
+Validating:  68%|######8   | 73/107 [00:14<00:05,  5.95it/s][AEpoch 12:  73%|#######3  | 90/123 [00:27<00:10,  3.24it/s, loss=1.2, v_num=4]
+Validating:  69%|######9   | 74/107 [00:14<00:05,  6.42it/s][A
+Validating:  70%|#######   | 75/107 [00:14<00:06,  4.73it/s][AEpoch 12:  75%|#######4  | 92/123 [00:28<00:09,  3.26it/s, loss=1.2, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:14<00:05,  5.33it/s][A
+Validating:  72%|#######1  | 77/107 [00:14<00:05,  5.89it/s][AEpoch 12:  76%|#######6  | 94/123 [00:28<00:08,  3.30it/s, loss=1.2, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:14<00:04,  6.30it/s][A
+Validating:  74%|#######3  | 79/107 [00:15<00:04,  5.86it/s][AEpoch 12:  78%|#######8  | 96/123 [00:28<00:08,  3.33it/s, loss=1.2, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:15<00:04,  6.32it/s][A
+Validating:  76%|#######5  | 81/107 [00:15<00:03,  6.68it/s][AEpoch 12:  80%|#######9  | 98/123 [00:29<00:07,  3.37it/s, loss=1.2, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:15<00:03,  6.96it/s][A
+Validating:  78%|#######7  | 83/107 [00:15<00:04,  5.27it/s][AEpoch 12:  81%|########1 | 100/123 [00:29<00:06,  3.39it/s, loss=1.2, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:15<00:04,  5.71it/s][A
+Validating:  79%|#######9  | 85/107 [00:16<00:03,  6.09it/s][AEpoch 12:  83%|########2 | 102/123 [00:29<00:06,  3.43it/s, loss=1.2, v_num=4]
+Validating:  80%|########  | 86/107 [00:16<00:03,  6.25it/s][A
+Validating:  81%|########1 | 87/107 [00:16<00:03,  5.08it/s][AEpoch 12:  85%|########4 | 104/123 [00:30<00:05,  3.44it/s, loss=1.2, v_num=4]
+Validating:  82%|########2 | 88/107 [00:16<00:03,  5.27it/s][A
+Validating:  83%|########3 | 89/107 [00:16<00:03,  5.71it/s][AEpoch 12:  86%|########6 | 106/123 [00:30<00:04,  3.47it/s, loss=1.2, v_num=4]
+Validating:  84%|########4 | 90/107 [00:16<00:02,  6.13it/s][A
+Validating:  85%|########5 | 91/107 [00:17<00:03,  4.67it/s][AEpoch 12:  88%|########7 | 108/123 [00:30<00:04,  3.49it/s, loss=1.2, v_num=4]
+Validating:  86%|########5 | 92/107 [00:17<00:03,  4.99it/s][A
+Validating:  87%|########6 | 93/107 [00:17<00:02,  5.56it/s][AEpoch 12:  89%|########9 | 110/123 [00:31<00:03,  3.52it/s, loss=1.2, v_num=4]
+Validating:  88%|########7 | 94/107 [00:17<00:02,  5.99it/s][A
+Validating:  89%|########8 | 95/107 [00:17<00:02,  5.66it/s][AEpoch 12:  91%|#########1| 112/123 [00:31<00:03,  3.54it/s, loss=1.2, v_num=4]
+Validating:  90%|########9 | 96/107 [00:18<00:01,  6.17it/s][A
+Validating:  91%|######### | 97/107 [00:18<00:01,  6.57it/s][AEpoch 12:  93%|#########2| 114/123 [00:31<00:02,  3.58it/s, loss=1.2, v_num=4]
+Validating:  92%|#########1| 98/107 [00:18<00:01,  6.89it/s][A
+Validating:  93%|#########2| 99/107 [00:18<00:01,  4.02it/s][AEpoch 12:  94%|#########4| 116/123 [00:32<00:01,  3.57it/s, loss=1.2, v_num=4]
+Validating:  93%|#########3| 100/107 [00:18<00:01,  4.71it/s][A
+Validating:  94%|#########4| 101/107 [00:19<00:01,  5.34it/s][AEpoch 12:  96%|#########5| 118/123 [00:32<00:01,  3.60it/s, loss=1.2, v_num=4]
+Validating:  95%|#########5| 102/107 [00:19<00:00,  5.88it/s][A
+Validating:  96%|#########6| 103/107 [00:19<00:00,  5.31it/s][AEpoch 12:  98%|#########7| 120/123 [00:33<00:00,  3.62it/s, loss=1.2, v_num=4]
+Validating:  97%|#########7| 104/107 [00:19<00:00,  5.81it/s][A
+Validating:  98%|#########8| 105/107 [00:19<00:00,  6.14it/s][AEpoch 12:  99%|#########9| 122/123 [00:33<00:00,  3.65it/s, loss=1.2, v_num=4]
+Validating:  99%|#########9| 106/107 [00:19<00:00,  6.48it/s][A
+Validating: 100%|##########| 107/107 [00:20<00:00,  6.24it/s][AEpoch 12: 100%|##########| 123/123 [00:35<00:00,  3.46it/s, loss=1.2, v_num=4]
+                                                             [AEpoch 12: 100%|##########| 123/123 [00:35<00:00,  3.46it/s, loss=1.2, v_num=4]Epoch 12:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.2, v_num=4]          Epoch 13:   0%|          | 0/123 [00:00<?, ?it/s, loss=1.2, v_num=4]Epoch 13:   1%|          | 1/123 [00:01<03:22,  1.66s/it, loss=1.17, v_num=4]Epoch 13:   2%|1         | 2/123 [00:02<02:28,  1.22s/it, loss=1.17, v_num=4]Epoch 13:   2%|1         | 2/123 [00:02<02:28,  1.22s/it, loss=1.16, v_num=4]Epoch 13:   2%|2         | 3/123 [00:03<02:09,  1.08s/it, loss=1.2, v_num=4] Epoch 13:   3%|3         | 4/123 [00:04<01:59,  1.01s/it, loss=1.2, v_num=4]Epoch 13:   3%|3         | 4/123 [00:04<02:00,  1.01s/it, loss=1.2, v_num=4]Epoch 13:   4%|4         | 5/123 [00:04<01:53,  1.04it/s, loss=1.21, v_num=4]Epoch 13:   5%|4         | 6/123 [00:05<01:49,  1.07it/s, loss=1.21, v_num=4]Epoch 13:   5%|4         | 6/123 [00:05<01:49,  1.07it/s, loss=1.17, v_num=4]Epoch 13:   6%|5         | 7/123 [00:06<01:45,  1.10it/s, loss=1.16, v_num=4]Epoch 13:   7%|6         | 8/123 [00:07<01:43,  1.12it/s, loss=1.16, v_num=4]Epoch 13:   7%|6         | 8/123 [00:07<01:43,  1.11it/s, loss=1.17, v_num=4]Epoch 13:   7%|7         | 9/123 [00:07<01:40,  1.13it/s, loss=1.17, v_num=4]Epoch 13:   8%|8         | 10/123 [00:08<01:38,  1.15it/s, loss=1.17, v_num=4]Epoch 13:   8%|8         | 10/123 [00:08<01:38,  1.15it/s, loss=1.17, v_num=4]Epoch 13:   9%|8         | 11/123 [00:09<01:36,  1.16it/s, loss=1.14, v_num=4]Epoch 13:  10%|9         | 12/123 [00:10<01:35,  1.17it/s, loss=1.14, v_num=4]Epoch 13:  10%|9         | 12/123 [00:10<01:35,  1.17it/s, loss=1.18, v_num=4]Epoch 13:  11%|#         | 13/123 [00:11<01:33,  1.17it/s, loss=1.15, v_num=4]Epoch 13:  11%|#1        | 14/123 [00:11<01:32,  1.18it/s, loss=1.15, v_num=4]Epoch 13:  11%|#1        | 14/123 [00:11<01:32,  1.18it/s, loss=1.19, v_num=4]Epoch 13:  12%|#2        | 15/123 [00:12<01:30,  1.19it/s, loss=1.15, v_num=4]ami_is1000a_closeup_720x576 not present in data
+ami_is1000a_left_720x576 not present in data
+news_newsnight_othello_720x416 not present in data
+Epoch 13:  13%|#3        | 16/123 [00:13<01:30,  1.18it/s, loss=1.15, v_num=4]Epoch 13:  13%|#3        | 16/123 [00:13<01:30,  1.18it/s, loss=1.15, v_num=4]
+Validating: 0it [00:00, ?it/s][A
+Validating:   0%|          | 0/107 [00:00<?, ?it/s][A
+Validating:   1%|          | 1/107 [00:01<02:03,  1.16s/it][AEpoch 13:  15%|#4        | 18/123 [00:14<01:25,  1.23it/s, loss=1.15, v_num=4]
+Validating:   2%|1         | 2/107 [00:01<00:58,  1.80it/s][A
+Validating:   3%|2         | 3/107 [00:01<00:37,  2.77it/s][AEpoch 13:  16%|#6        | 20/123 [00:14<01:16,  1.34it/s, loss=1.15, v_num=4]
+Validating:   4%|3         | 4/107 [00:01<00:34,  2.99it/s][A
+Validating:   5%|4         | 5/107 [00:01<00:26,  3.79it/s][AEpoch 13:  18%|#7        | 22/123 [00:15<01:10,  1.43it/s, loss=1.15, v_num=4]
+Validating:   6%|5         | 6/107 [00:01<00:22,  4.56it/s][A
+Validating:   7%|6         | 7/107 [00:02<00:19,  5.25it/s][AEpoch 13:  20%|#9        | 24/123 [00:15<01:04,  1.53it/s, loss=1.15, v_num=4]
+Validating:   7%|7         | 8/107 [00:02<00:19,  5.02it/s][A
+Validating:   8%|8         | 9/107 [00:02<00:17,  5.60it/s][AEpoch 13:  21%|##1       | 26/123 [00:15<00:59,  1.63it/s, loss=1.15, v_num=4]
+Validating:   9%|9         | 10/107 [00:02<00:15,  6.07it/s][A
+Validating:  10%|#         | 11/107 [00:02<00:14,  6.45it/s][AEpoch 13:  23%|##2       | 28/123 [00:16<00:55,  1.72it/s, loss=1.15, v_num=4]
+Validating:  11%|#1        | 12/107 [00:03<00:18,  5.22it/s][A
+Validating:  12%|#2        | 13/107 [00:03<00:16,  5.72it/s][AEpoch 13:  24%|##4       | 30/123 [00:16<00:51,  1.80it/s, loss=1.15, v_num=4]
+Validating:  13%|#3        | 14/107 [00:03<00:16,  5.75it/s][A
+Validating:  14%|#4        | 15/107 [00:03<00:15,  5.95it/s][AEpoch 13:  26%|##6       | 32/123 [00:16<00:48,  1.88it/s, loss=1.15, v_num=4]
+Validating:  15%|#4        | 16/107 [00:03<00:14,  6.09it/s][A
+Validating:  16%|#5        | 17/107 [00:03<00:14,  6.20it/s][AEpoch 13:  28%|##7       | 34/123 [00:17<00:45,  1.96it/s, loss=1.15, v_num=4]
+Validating:  17%|#6        | 18/107 [00:03<00:14,  6.21it/s][A
+Validating:  18%|#7        | 19/107 [00:04<00:13,  6.48it/s][AEpoch 13:  29%|##9       | 36/123 [00:17<00:42,  2.05it/s, loss=1.15, v_num=4]
+Validating:  19%|#8        | 20/107 [00:04<00:13,  6.54it/s][A
+Validating:  20%|#9        | 21/107 [00:04<00:16,  5.19it/s][AEpoch 13:  31%|###       | 38/123 [00:18<00:40,  2.11it/s, loss=1.15, v_num=4]
+Validating:  21%|##        | 22/107 [00:04<00:14,  5.71it/s][A
+Validating:  21%|##1       | 23/107 [00:04<00:13,  6.18it/s][AEpoch 13:  33%|###2      | 40/123 [00:18<00:37,  2.19it/s, loss=1.15, v_num=4]
+Validating:  22%|##2       | 24/107 [00:04<00:12,  6.53it/s][A
+Validating:  23%|##3       | 25/107 [00:05<00:15,  5.31it/s][AEpoch 13:  34%|###4      | 42/123 [00:18<00:36,  2.25it/s, loss=1.15, v_num=4]
+Validating:  24%|##4       | 26/107 [00:05<00:14,  5.67it/s][A
+Validating:  25%|##5       | 27/107 [00:05<00:13,  5.77it/s][AEpoch 13:  36%|###5      | 44/123 [00:19<00:34,  2.31it/s, loss=1.15, v_num=4]
+Validating:  26%|##6       | 28/107 [00:05<00:13,  6.03it/s][A
+Validating:  27%|##7       | 29/107 [00:05<00:15,  4.89it/s][AEpoch 13:  37%|###7      | 46/123 [00:19<00:32,  2.36it/s, loss=1.15, v_num=4]
+Validating:  28%|##8       | 30/107 [00:06<00:14,  5.48it/s][A
+Validating:  29%|##8       | 31/107 [00:06<00:13,  5.82it/s][AEpoch 13:  39%|###9      | 48/123 [00:19<00:30,  2.43it/s, loss=1.15, v_num=4]
+Validating:  30%|##9       | 32/107 [00:06<00:12,  6.09it/s][A
+Validating:  31%|###       | 33/107 [00:06<00:13,  5.45it/s][AEpoch 13:  41%|####      | 50/123 [00:20<00:29,  2.49it/s, loss=1.15, v_num=4]
+Validating:  32%|###1      | 34/107 [00:06<00:12,  5.88it/s][A
+Validating:  33%|###2      | 35/107 [00:06<00:11,  6.25it/s][AEpoch 13:  42%|####2     | 52/123 [00:20<00:27,  2.55it/s, loss=1.15, v_num=4]
+Validating:  34%|###3      | 36/107 [00:06<00:10,  6.74it/s][A
+Validating:  35%|###4      | 37/107 [00:07<00:11,  6.11it/s][AEpoch 13:  44%|####3     | 54/123 [00:20<00:26,  2.61it/s, loss=1.15, v_num=4]
+Validating:  36%|###5      | 38/107 [00:07<00:10,  6.48it/s][A
+Validating:  36%|###6      | 39/107 [00:07<00:10,  6.76it/s][AEpoch 13:  46%|####5     | 56/123 [00:20<00:25,  2.67it/s, loss=1.15, v_num=4]
+Validating:  37%|###7      | 40/107 [00:07<00:09,  7.01it/s][A
+Validating:  38%|###8      | 41/107 [00:07<00:10,  6.32it/s][AEpoch 13:  47%|####7     | 58/123 [00:21<00:23,  2.72it/s, loss=1.15, v_num=4]
+Validating:  39%|###9      | 42/107 [00:07<00:09,  6.50it/s][A
+Validating:  40%|####      | 43/107 [00:08<00:09,  6.79it/s][AEpoch 13:  49%|####8     | 60/123 [00:21<00:22,  2.78it/s, loss=1.15, v_num=4]
+Validating:  41%|####1     | 44/107 [00:08<00:08,  7.01it/s][A
+Validating:  42%|####2     | 45/107 [00:08<00:09,  6.44it/s][AEpoch 13:  50%|#####     | 62/123 [00:21<00:21,  2.83it/s, loss=1.15, v_num=4]
+Validating:  43%|####2     | 46/107 [00:08<00:09,  6.22it/s][A
+Validating:  44%|####3     | 47/107 [00:08<00:09,  6.62it/s][AEpoch 13:  52%|#####2    | 64/123 [00:22<00:20,  2.88it/s, loss=1.15, v_num=4]
+Validating:  45%|####4     | 48/107 [00:08<00:08,  6.89it/s][A
+Validating:  46%|####5     | 49/107 [00:08<00:09,  6.32it/s][AEpoch 13:  54%|#####3    | 66/123 [00:22<00:19,  2.93it/s, loss=1.15, v_num=4]
+Validating:  47%|####6     | 50/107 [00:09<00:09,  6.21it/s][A
+Validating:  48%|####7     | 51/107 [00:09<00:08,  6.37it/s][AEpoch 13:  55%|#####5    | 68/123 [00:22<00:18,  2.98it/s, loss=1.15, v_num=4]
+Validating:  49%|####8     | 52/107 [00:09<00:08,  6.39it/s][A
+Validating:  50%|####9     | 53/107 [00:09<00:08,  6.51it/s][AEpoch 13:  57%|#####6    | 70/123 [00:23<00:17,  3.03it/s, loss=1.15, v_num=4]
+Validating:  50%|#####     | 54/107 [00:09<00:09,  5.68it/s][A
+Validating:  51%|#####1    | 55/107 [00:09<00:08,  6.10it/s][AEpoch 13:  59%|#####8    | 72/123 [00:23<00:16,  3.06it/s, loss=1.15, v_num=4]
+Validating:  52%|#####2    | 56/107 [00:10<00:07,  6.45it/s][A
+Validating:  53%|#####3    | 57/107 [00:10<00:08,  5.66it/s][AEpoch 13:  60%|######    | 74/123 [00:23<00:15,  3.10it/s, loss=1.15, v_num=4]
+Validating:  54%|#####4    | 58/107 [00:10<00:08,  6.01it/s][A
+Validating:  55%|#####5    | 59/107 [00:10<00:07,  6.38it/s][AEpoch 13:  62%|######1   | 76/123 [00:24<00:14,  3.15it/s, loss=1.15, v_num=4]
+Validating:  56%|#####6    | 60/107 [00:10<00:07,  6.69it/s][A
+Validating:  57%|#####7    | 61/107 [00:11<00:08,  5.48it/s][AEpoch 13:  63%|######3   | 78/123 [00:24<00:14,  3.18it/s, loss=1.15, v_num=4]
+Validating:  58%|#####7    | 62/107 [00:11<00:07,  6.00it/s][A
+Validating:  59%|#####8    | 63/107 [00:11<00:06,  6.40it/s][AEpoch 13:  65%|######5   | 80/123 [00:24<00:13,  3.23it/s, loss=1.15, v_num=4]
+Validating:  60%|#####9    | 64/107 [00:11<00:06,  6.70it/s][A
+Validating:  61%|######    | 65/107 [00:11<00:07,  5.67it/s][AEpoch 13:  67%|######6   | 82/123 [00:25<00:12,  3.26it/s, loss=1.15, v_num=4]
+Validating:  62%|######1   | 66/107 [00:11<00:06,  5.99it/s][A
+Validating:  63%|######2   | 67/107 [00:11<00:06,  6.44it/s][AEpoch 13:  68%|######8   | 84/123 [00:25<00:11,  3.30it/s, loss=1.15, v_num=4]
+Validating:  64%|######3   | 68/107 [00:12<00:05,  6.77it/s][A
+Validating:  64%|######4   | 69/107 [00:12<00:06,  5.50it/s][AEpoch 13:  70%|######9   | 86/123 [00:25<00:11,  3.33it/s, loss=1.15, v_num=4]
+Validating:  65%|######5   | 70/107 [00:12<00:06,  5.60it/s][A
+Validating:  66%|######6   | 71/107 [00:12<00:06,  5.95it/s][AEpoch 13:  72%|#######1  | 88/123 [00:26<00:10,  3.37it/s, loss=1.15, v_num=4]
+Validating:  67%|######7   | 72/107 [00:12<00:05,  6.03it/s][A
+Validating:  68%|######8   | 73/107 [00:12<00:05,  6.21it/s][AEpoch 13:  73%|#######3  | 90/123 [00:26<00:09,  3.40it/s, loss=1.15, v_num=4]
+Validating:  69%|######9   | 74/107 [00:13<00:06,  5.42it/s][A
+Validating:  70%|#######   | 75/107 [00:13<00:05,  5.45it/s][AEpoch 13:  75%|#######4  | 92/123 [00:26<00:09,  3.42it/s, loss=1.15, v_num=4]
+Validating:  71%|#######1  | 76/107 [00:13<00:05,  5.69it/s][A
+Validating:  72%|#######1  | 77/107 [00:13<00:04,  6.02it/s][AEpoch 13:  76%|#######6  | 94/123 [00:27<00:08,  3.46it/s, loss=1.15, v_num=4]
+Validating:  73%|#######2  | 78/107 [00:13<00:05,  5.31it/s][A
+Validating:  74%|#######3  | 79/107 [00:14<00:04,  5.83it/s][AEpoch 13:  78%|#######8  | 96/123 [00:27<00:07,  3.49it/s, loss=1.15, v_num=4]
+Validating:  75%|#######4  | 80/107 [00:14<00:04,  6.17it/s][A
+Validating:  76%|#######5  | 81/107 [00:14<00:04,  6.13it/s][AEpoch 13:  80%|#######9  | 98/123 [00:27<00:07,  3.52it/s, loss=1.15, v_num=4]
+Validating:  77%|#######6  | 82/107 [00:14<00:04,  5.55it/s][A
+Validating:  78%|#######7  | 83/107 [00:14<00:04,  5.85it/s][AEpoch 13:  81%|########1 | 100/123 [00:28<00:06,  3.54it/s, loss=1.15, v_num=4]
+Validating:  79%|#######8  | 84/107 [00:14<00:03,  6.15it/s][A
+Validating:  79%|#######9  | 85/107 [00:15<00:03,  5.93it/s][AEpoch 13:  83%|########2 | 102/123 [00:28<00:05,  3.57it/s, loss=1.15, v_num=4]
+Validating:  80%|########  | 86/107 [00:15<00:04,  4.79it/s][A
+Validating:  81%|########1 | 87/107 [00:15<00:03,  5.25it/s][AEpoch 13:  85%|########4 | 104/123 [00:28<00:05,  3.59it/s, loss=1.15, v_num=4]
+Validating:  82%|########2 | 88/107 [00:15<00:03,  5.66it/s][A
+Validating:  83%|########3 | 89/107 [00:15<00:03,  5.93it/s][AEpoch 13:  86%|########6 | 106/123 [00:29<00:04,  3.62it/s, loss=1.15, v_num=4]
+Validating:  84%|########4 | 90/107 [00:15<00:02,  5.72it/s][A
+Validating:  85%|########5 | 91/107 [00:16<00:02,  5.82it/s][AEpoch 13:  88%|########7 | 108/123 [00:29<00:04,  3.64it/s, loss=1.15, v_num=4]
+Validating:  86%|########5 | 92/107 [00:16<00:02,  6.13it/s][A
+Validating:  87%|########6 | 93/107 [00:16<00:02,  6.27it/s][AEpoch 13:  89%|########9 | 110/123 [00:29<00:03,  3.67it/s, loss=1.15, v_num=4]
+Validating:  88%|########7 | 94/107 [00:16<00:02,  6.11it/s][A
+Validating:  89%|########8 | 95/107 [00:16<00:01,  6.34it/s][AEpoch 13:  91%|#########1| 112/123 [00:30<00:02,  3.70it/s, loss=1.15, v_num=4]
+Validating:  90%|########9 | 96/107 [00:16<00:01,  6.57it/s][A
+Validating:  91%|######### | 97/107 [00:17<00:01,  6.75it/s][AEpoch 13:  93%|#########2| 114/123 [00:30<00:02,  3.73it/s, loss=1.15, v_num=4]
+Validating:  92%|#########1| 98/107 [00:17<00:01,  5.39it/s][A
+Validating:  93%|#########2| 99/107 [00:17<00:01,  5.63it/s][AEpoch 13:  94%|#########4| 116/123 [00:30<00:01,  3.75it/s, loss=1.15, v_num=4]
+Validating:  93%|#########3| 100/107 [00:17<00:01,  5.69it/s][A
+Validating:  94%|#########4| 101/107 [00:17<00:00,  6.15it/s][AEpoch 13:  96%|#########5| 118/123 [00:31<00:01,  3.77it/s, loss=1.15, v_num=4]
+Validating:  95%|#########5| 102/107 [00:18<00:00,  5.29it/s][A
+Validating:  96%|#########6| 103/107 [00:18<00:00,  5.81it/s][AEpoch 13:  98%|#########7| 120/123 [00:31<00:00,  3.79it/s, loss=1.15, v_num=4]
+Validating:  97%|#########7| 104/107 [00:18<00:00,  6.28it/s][A
+Validating:  98%|#########8| 105/107 [00:18<00:00,  6.63it/s][AEpoch 13:  99%|#########9| 122/123 [00:31<00:00,  3.82it/s, loss=1.15, v_num=4]
+Validating:  99%|#########9| 106/107 [00:18<00:00,  6.91it/s][A
+Validating: 100%|##########| 107/107 [00:18<00:00,  7.28it/s][A

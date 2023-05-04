@@ -1,4 +1,5 @@
 import yaml
+import math
 
 import torch
 import torch.nn.functional as F
@@ -148,7 +149,6 @@ class Decoder(nn.Module):
         z = z.view(z.size(0), z.size(3), z.size(4))
         return z
 
-
 class S3D_Encoder(nn.Module):
     """
     The forward method of the encoder should return 4 feature tensors y0, y1, y2, y3.
@@ -215,3 +215,115 @@ class S3D_Encoder(nn.Module):
         y0 = self.base4(y)
 
         return [y0, y1, y2, y3]
+
+class PositionalEncoding(nn.Module):
+
+	def __init__(self, feature_size, max_len=4):
+		super(PositionalEncoding, self).__init__()
+
+		pe = torch.zeros(max_len, feature_size)
+		position = torch.arange(0, max_len, dtype=torch.float).unsqueeze(1)
+		div_term = torch.exp(torch.arange(0, feature_size, 2).float() * (-math.log(10000.0) / feature_size))
+		pe[:, 0::2] = torch.sin(position * div_term)
+		pe[:, 1::2] = torch.cos(position * div_term)
+		pe = pe.unsqueeze(0).transpose(0, 1)
+		self.register_buffer('pe', pe)
+
+	def forward(self, x):
+		x = x + self.pe
+		return x
+
+class Transformer(nn.Module):
+	def __init__(self, feature_size, hidden_size=256, nhead=4, num_encoder_layers=3, max_len=4):
+		super(Transformer, self).__init__()
+		self.pos_encoder = PositionalEncoding(feature_size, max_len=max_len)
+		encoder_layers = nn.TransformerEncoderLayer(feature_size, nhead, hidden_size)
+		
+		self.transformer_encoder = nn.TransformerEncoder(encoder_layers, num_encoder_layers)
+
+	def forward(self, embeddings):
+		''' embeddings: CxBxCh*H*W '''
+		x = self.pos_encoder(embeddings)
+		x = self.transformer_encoder(x)
+		return x
+
+class SoundNet(nn.Module):
+    def __init__(self):
+        super(SoundNet, self).__init__()
+
+        self.conv1 = nn.Conv2d(1, 16, kernel_size=(64, 1), stride=(2, 1),
+                               padding=(32, 0))
+        self.batchnorm1 = nn.BatchNorm2d(16, eps=1e-5, momentum=0.1)
+        self.relu1 = nn.ReLU(True)
+        self.maxpool1 = nn.MaxPool2d((8, 1), stride=(8, 1))
+
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=(32, 1), stride=(2, 1),
+                               padding=(16, 0))
+        self.batchnorm2 = nn.BatchNorm2d(32, eps=1e-5, momentum=0.1)
+        self.relu2 = nn.ReLU(True)
+        self.maxpool2 = nn.MaxPool2d((8, 1), stride=(8, 1))
+
+        self.conv3 = nn.Conv2d(32, 64, kernel_size=(16, 1), stride=(2, 1),
+                               padding=(8, 0))
+        self.batchnorm3 = nn.BatchNorm2d(64, eps=1e-5, momentum=0.1)
+        self.relu3 = nn.ReLU(True)
+
+        self.conv4 = nn.Conv2d(64, 128, kernel_size=(8, 1), stride=(2, 1),
+                               padding=(4, 0))
+        self.batchnorm4 = nn.BatchNorm2d(128, eps=1e-5, momentum=0.1)
+        self.relu4 = nn.ReLU(True)
+
+        self.conv5 = nn.Conv2d(128, 256, kernel_size=(4, 1), stride=(2, 1),
+                               padding=(2, 0))
+        self.batchnorm5 = nn.BatchNorm2d(256, eps=1e-5, momentum=0.1)
+        self.relu5 = nn.ReLU(True)
+        self.maxpool5 = nn.MaxPool2d((4, 1), stride=(4, 1))
+
+        self.conv6 = nn.Conv2d(256, 512, kernel_size=(4, 1), stride=(2, 1),
+                               padding=(2, 0))
+        self.batchnorm6 = nn.BatchNorm2d(512, eps=1e-5, momentum=0.1)
+        self.relu6 = nn.ReLU(True)
+
+        self.conv7 = nn.Conv2d(512, 1024, kernel_size=(4, 1), stride=(2, 1),
+                               padding=(2, 0))
+        self.batchnorm7 = nn.BatchNorm2d(1024, eps=1e-5, momentum=0.1)
+        self.relu7 = nn.ReLU(True)
+
+        self.conv8_objs = nn.Conv2d(1024, 1000, kernel_size=(8, 1),
+                                    stride=(2, 1))
+        self.conv8_scns = nn.Conv2d(1024, 401, kernel_size=(8, 1),
+                                    stride=(2, 1))
+
+    def forward(self, waveform):
+        x = self.conv1(waveform)
+        x = self.batchnorm1(x)
+        x = self.relu1(x)
+        x = self.maxpool1(x)
+
+        x = self.conv2(x)
+        x = self.batchnorm2(x)
+        x = self.relu2(x)
+        x = self.maxpool2(x)
+
+        x = self.conv3(x)
+        x = self.batchnorm3(x)
+        x = self.relu3(x)
+
+        x = self.conv4(x)
+        x = self.batchnorm4(x)
+        x = self.relu4(x)
+
+        x = self.conv5(x)
+        x = self.batchnorm5(x)
+        x = self.relu5(x)
+        x = self.maxpool5(x)
+
+        x = self.conv6(x)
+        x = self.batchnorm6(x)
+        x = self.relu6(x)
+
+        x = self.conv7(x)
+        x = self.batchnorm7(x)
+        x = self.relu7(x)
+
+        return x

@@ -1,17 +1,10 @@
-import yaml
-
 import torch
 import torch.nn.functional as F
-from torch import nn, optim
-from torch.utils.data import DataLoader
-from torch.utils.data import random_split
 
 # pytorch lightning
 from models.base_system import BaseSaliency
 from models.base_modules import Decoder, S3D_Encoder
 from evaluation.modules import Evaluation_Metric
-import torchmetrics
-
 
 class ViNet(BaseSaliency):
     def __init__(
@@ -56,5 +49,12 @@ class ViNet(BaseSaliency):
         # AUROC_loss = self.loss_module.compute_loss("AUROC", pred_sal, gt_sal)
         cc_loss = self.loss_module.compute_loss("CC", pred_sal, gt_sal)
         # loss = self.loss(pred_sal.reshape((pred_sal.size(0), -1)), gt_sal.reshape((gt_sal.size(0), -1)))
-        self.log_dict({"Loss": loss, "L1 Norm": l1_norm, "cc_loss": cc_loss, "similarity": similarity})
+        self.log_dict(
+            {
+                "Loss": loss,
+                "L1 Norm": l1_norm,
+                "cc_loss": cc_loss,
+                "similarity": similarity,
+            }
+        )
         return loss

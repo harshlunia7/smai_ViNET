@@ -1,10 +1,10 @@
 #! /bin/bash
 #SBATCH -A rafaelgetto
-#SBATCH -n 10
+#SBATCH -n 20
 #SBATCH --partition=long
-#SBATCH --mem-per-cpu=1G
-#SBATCH --gres=gpu:1
-#SBATCH --nodelist=gnode012
+#SBATCH --mem-per-cpu=2G
+#SBATCH --gres=gpu:2
+#SBATCH --nodelist=gnode050
 #SBATCH --time=60:00:00
 
 # conda initialization 
@@ -30,8 +30,8 @@ echo "conda environment activated";
 
 echo "Starting Training";
 python train.py \
---data_directory /ssd_scratch/cvit/rafaelgetto/smai_proj_vinet/DHF1K \
---batch_size 4 \
+--data_directory /ssd_scratch/cvit/rafaelgetto/DHF1K \
+--batch_size 2 \
 --experiment_name ViNet_epoch_100;
 
 # echo "Removing the dataset from ssd_scratch"
