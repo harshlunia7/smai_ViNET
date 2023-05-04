@@ -207,62 +207,75 @@ class S3D_Encoder(nn.Module):
 class SoundNet(nn.Module):
     def __init__(self):
         super(SoundNet, self).__init__()
+  
+        self.conv1 = nn.Conv2d(1, 16, kernel_size=(64, 1), stride=(2, 1),
+                               padding=(32, 0))
+        self.batchnorm1 = nn.BatchNorm2d(16, eps=1e-5, momentum=0.1)
+        self.relu1 = nn.ReLU(True)
+        self.maxpool1 = nn.MaxPool2d((8, 1), stride=(8, 1))
 
-        self.al1 = nn.Sequential(
-            nn.Conv2d(1, 16, kernel_size=(64, 1), stride=(2, 1),padding=(32, 0)),
-            nn.BatchNorm2d(16, eps=1e-5, momentum=0.1),
-            nn.ReLU(True),
-            nn.MaxPool2d((8, 1), stride=(8, 1)),
-        )
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=(32, 1), stride=(2, 1),
+                               padding=(16, 0))
+        self.batchnorm2 = nn.BatchNorm2d(32, eps=1e-5, momentum=0.1)
+        self.relu2 = nn.ReLU(True)
+        self.maxpool2 = nn.MaxPool2d((8, 1), stride=(8, 1))
 
-        self.al2 = nn.Sequential(
-            nn.Conv2d(16, 32, kernel_size=(32, 1), stride=(2, 1),padding=(16, 0)),
-            nn.BatchNorm2d(32, eps=1e-5, momentum=0.1),
-            nn.ReLU(True),
-            nn.MaxPool2d((8, 1), stride=(8, 1)),
-        )
-        
-        self.al3 = nn.Sequential(
-            nn.Conv2d(32, 64, kernel_size=(16, 1), stride=(2, 1),padding=(8, 0)),
-            nn.BatchNorm2d(64, eps=1e-5, momentum=0.1),
-            nn.ReLU(True),
-        )
+        self.conv3 = nn.Conv2d(32, 64, kernel_size=(16, 1), stride=(2, 1),
+                               padding=(8, 0))
+        self.batchnorm3 = nn.BatchNorm2d(64, eps=1e-5, momentum=0.1)
+        self.relu3 = nn.ReLU(True)
 
-        self.al4 = nn.Sequential(
-            nn.Conv2d(64, 128, kernel_size=(8, 1), stride=(2, 1),padding=(4, 0)),
-            nn.BatchNorm2d(128, eps=1e-5, momentum=0.1),
-            nn.ReLU(True),
-        )
+        self.conv4 = nn.Conv2d(64, 128, kernel_size=(8, 1), stride=(2, 1),
+                               padding=(4, 0))
+        self.batchnorm4 = nn.BatchNorm2d(128, eps=1e-5, momentum=0.1)
+        self.relu4 = nn.ReLU(True)
 
-        self.al5 = nn.Sequential(
-            nn.Conv2d(128, 256, kernel_size=(4, 1), stride=(2, 1),padding=(2, 0)),
-            nn.BatchNorm2d(256, eps=1e-5, momentum=0.1),
-            nn.ReLU(True),
-            nn.MaxPool2d((4, 1), stride=(4, 1)),
-        )
+        self.conv5 = nn.Conv2d(128, 256, kernel_size=(4, 1), stride=(2, 1),
+                               padding=(2, 0))
+        self.batchnorm5 = nn.BatchNorm2d(256, eps=1e-5, momentum=0.1)
+        self.relu5 = nn.ReLU(True)
+        self.maxpool5 = nn.MaxPool2d((4, 1), stride=(4, 1))
 
-        self.al6 = nn.Sequential(
-            nn.Conv2d(256, 512, kernel_size=(4, 1), stride=(2, 1),padding=(2, 0)),
-            nn.BatchNorm2d(512, eps=1e-5, momentum=0.1),
-            nn.ReLU(True),
-        )
+        self.conv6 = nn.Conv2d(256, 512, kernel_size=(4, 1), stride=(2, 1),
+                               padding=(2, 0))
+        self.batchnorm6 = nn.BatchNorm2d(512, eps=1e-5, momentum=0.1)
+        self.relu6 = nn.ReLU(True)
 
-        self.al7 = nn.Sequential(
-            nn.Conv2d(512, 1024, kernel_size=(4, 1), stride=(2, 1),padding=(2, 0)),
-            nn.BatchNorm2d(1024, eps=1e-5, momentum=0.1),
-            nn.ReLU(True),
-        )
-
-        self.conv8_objs = nn.Conv2d(1024, 1000, kernel_size=(8, 1),stride=(2, 1))
-        self.conv8_scns = nn.Conv2d(1024, 401, kernel_size=(8, 1),stride=(2, 1))
+        self.conv7 = nn.Conv2d(512, 1024, kernel_size=(4, 1), stride=(2, 1),
+                               padding=(2, 0))
+        self.batchnorm7 = nn.BatchNorm2d(1024, eps=1e-5, momentum=0.1)
+        self.relu7 = nn.ReLU(True)
 
     def forward(self, input_audio):
-        audio_features = self.al1(audio_features)
-        audio_features = self.al2(audio_features)
-        audio_features = self.al3(audio_features)
-        audio_features = self.al4(audio_features)
-        audio_features = self.al5(audio_features)
-        audio_features = self.al6(audio_features)
-        audio_features = self.al7(audio_features)
+        audio_out = self.conv1(input_audio)
+        audio_out = self.batchnorm1(audio_out)
+        audio_out = self.relu1(audio_out)
+        audio_out = self.maaudio_outpool1(audio_out)
 
-        return audio_features
+        audio_out = self.conv2(audio_out)
+        audio_out = self.batchnorm2(audio_out)
+        audio_out = self.relu2(audio_out)
+        audio_out = self.maaudio_outpool2(audio_out)
+
+        audio_out = self.conv3(audio_out)
+        audio_out = self.batchnorm3(audio_out)
+        audio_out = self.relu3(audio_out)
+
+        audio_out = self.conv4(audio_out)
+        audio_out = self.batchnorm4(audio_out)
+        audio_out = self.relu4(audio_out)
+
+        audio_out = self.conv5(audio_out)
+        audio_out = self.batchnorm5(audio_out)
+        audio_out = self.relu5(audio_out)
+        audio_out = self.maaudio_outpool5(audio_out)
+
+        audio_out = self.conv6(audio_out)
+        audio_out = self.batchnorm6(audio_out)
+        audio_out = self.relu6(audio_out)
+
+        audio_out = self.conv7(audio_out)
+        audio_out = self.batchnorm7(audio_out)
+        audio_out = self.relu7(audio_out)
+
+        return audio_out
