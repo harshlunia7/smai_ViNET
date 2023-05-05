@@ -152,116 +152,135 @@ class Decoder(nn.Module):
 
 class S3D_Encoder(nn.Module):
 
-	"""
-	The forward method of the encoder should return 4 feature tensors y0, y1, y2, y3.
-	"""
-	def __init__(self):
-		super(S3D_Encoder, self).__init__()
-		
-		self.base1 = nn.Sequential(
-			SepConv3d(3, 64, kernel_size=7, stride=2, padding=3),
-			nn.MaxPool3d(kernel_size=(1,3,3), stride=(1,2,2), padding=(0,1,1)),
-			BasicConv3d(64, 64, kernel_size=1, stride=1),
-			SepConv3d(64, 192, kernel_size=3, stride=1, padding=1),
-		)
-		self.maxp2 = nn.MaxPool3d(kernel_size=(1,3,3), stride=(1,2,2), padding=(0,1,1))
-		self.base2 = nn.Sequential(
-			Mixed_3b(),
-			Mixed_3c(),
-		)
-		self.maxp3 = nn.MaxPool3d(kernel_size=(3,3,3), stride=(2,2,2), padding=(1,1,1))
-		self.base3 = nn.Sequential(
-			Mixed_4b(),
-			Mixed_4c(),
-			Mixed_4d(),
-			Mixed_4e(),
-			Mixed_4f(),
-		)
-		self.maxt4 = nn.MaxPool3d(kernel_size=(2,1,1), stride=(2,1,1), padding=(0,0,0))
-		self.maxp4 = nn.MaxPool3d(kernel_size=(1,2,2), stride=(1,2,2), padding=(0,0,0))
-		self.base4 = nn.Sequential(
-			Mixed_5b(),
-			Mixed_5c(),
-		)
+    """
+    The forward method of the encoder should return 4 feature tensors y0, y1, y2, y3.
+    """
 
-	def forward(self, x):
-		# print('input', x.shape)
-		y3 = self.base1(x)
-		# print('base1', y3.shape)
-		
-		y = self.maxp2(y3)
-		# print('maxp2', y.shape)
+    def __init__(self):
+        super(S3D_Encoder, self).__init__()
 
-		y2 = self.base2(y)
-		# print('base2', y2.shape)
+        self.base1 = nn.Sequential(
+            SepConv3d(3, 64, kernel_size=7, stride=2, padding=3),
+            nn.MaxPool3d(kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1)),
+            BasicConv3d(64, 64, kernel_size=1, stride=1),
+            SepConv3d(64, 192, kernel_size=3, stride=1, padding=1),
+        )
+        self.maxp2 = nn.MaxPool3d(
+            kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1)
+        )
+        self.base2 = nn.Sequential(
+            Mixed_3b(),
+            Mixed_3c(),
+        )
+        self.maxp3 = nn.MaxPool3d(
+            kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1)
+        )
+        self.base3 = nn.Sequential(
+            Mixed_4b(),
+            Mixed_4c(),
+            Mixed_4d(),
+            Mixed_4e(),
+            Mixed_4f(),
+        )
+        self.maxt4 = nn.MaxPool3d(
+            kernel_size=(2, 1, 1), stride=(2, 1, 1), padding=(0, 0, 0)
+        )
+        self.maxp4 = nn.MaxPool3d(
+            kernel_size=(1, 2, 2), stride=(1, 2, 2), padding=(0, 0, 0)
+        )
+        self.base4 = nn.Sequential(
+            Mixed_5b(),
+            Mixed_5c(),
+        )
 
-		y = self.maxp3(y2)
-		# print('maxp3', y.shape)
+    def forward(self, x):
+        # print('input', x.shape)
+        y3 = self.base1(x)
+        # print('base1', y3.shape)
 
-		y1 = self.base3(y)
-		# print('base3', y1.shape)
+        y = self.maxp2(y3)
+        # print('maxp2', y.shape)
 
-		y = self.maxt4(y1)
-		y = self.maxp4(y)
-		# print('maxt4p4', y.shape)
+        y2 = self.base2(y)
+        # print('base2', y2.shape)
 
-		y0 = self.base4(y)
+        y = self.maxp3(y2)
+        # print('maxp3', y.shape)
 
-		return [y0, y1, y2, y3]
+        y1 = self.base3(y)
+        # print('base3', y1.shape)
+
+        y = self.maxt4(y1)
+        y = self.maxp4(y)
+        # print('maxt4p4', y.shape)
+
+        y0 = self.base4(y)
+
+        return [y0, y1, y2, y3]
 
 
 class SoundNet(nn.Module):
     def __init__(self):
         super(SoundNet, self).__init__()
-  
-        self.conv1 = nn.Conv2d(1, 16, kernel_size=(64, 1), stride=(2, 1),
-                               padding=(32, 0))
+
+        self.conv1 = nn.Conv2d(
+            1, 16, kernel_size=(64, 1), stride=(2, 1), padding=(32, 0)
+        )
         self.batchnorm1 = nn.BatchNorm2d(16, eps=1e-5, momentum=0.1)
         self.relu1 = nn.ReLU(True)
         self.maxpool1 = nn.MaxPool2d((8, 1), stride=(8, 1))
 
-        self.conv2 = nn.Conv2d(16, 32, kernel_size=(32, 1), stride=(2, 1),
-                               padding=(16, 0))
+        self.conv2 = nn.Conv2d(
+            16, 32, kernel_size=(32, 1), stride=(2, 1), padding=(16, 0)
+        )
         self.batchnorm2 = nn.BatchNorm2d(32, eps=1e-5, momentum=0.1)
         self.relu2 = nn.ReLU(True)
         self.maxpool2 = nn.MaxPool2d((8, 1), stride=(8, 1))
 
-        self.conv3 = nn.Conv2d(32, 64, kernel_size=(16, 1), stride=(2, 1),
-                               padding=(8, 0))
+        self.conv3 = nn.Conv2d(
+            32, 64, kernel_size=(16, 1), stride=(2, 1), padding=(8, 0)
+        )
         self.batchnorm3 = nn.BatchNorm2d(64, eps=1e-5, momentum=0.1)
         self.relu3 = nn.ReLU(True)
 
-        self.conv4 = nn.Conv2d(64, 128, kernel_size=(8, 1), stride=(2, 1),
-                               padding=(4, 0))
+        self.conv4 = nn.Conv2d(
+            64, 128, kernel_size=(8, 1), stride=(2, 1), padding=(4, 0)
+        )
         self.batchnorm4 = nn.BatchNorm2d(128, eps=1e-5, momentum=0.1)
         self.relu4 = nn.ReLU(True)
 
-        self.conv5 = nn.Conv2d(128, 256, kernel_size=(4, 1), stride=(2, 1),
-                               padding=(2, 0))
+        self.conv5 = nn.Conv2d(
+            128, 256, kernel_size=(4, 1), stride=(2, 1), padding=(2, 0)
+        )
         self.batchnorm5 = nn.BatchNorm2d(256, eps=1e-5, momentum=0.1)
         self.relu5 = nn.ReLU(True)
         self.maxpool5 = nn.MaxPool2d((4, 1), stride=(4, 1))
 
-        self.conv6 = nn.Conv2d(256, 512, kernel_size=(4, 1), stride=(2, 1),
-                               padding=(2, 0))
+        self.conv6 = nn.Conv2d(
+            256, 512, kernel_size=(4, 1), stride=(2, 1), padding=(2, 0)
+        )
         self.batchnorm6 = nn.BatchNorm2d(512, eps=1e-5, momentum=0.1)
         self.relu6 = nn.ReLU(True)
 
-        self.conv7 = nn.Conv2d(512, 1024, kernel_size=(4, 1), stride=(2, 1),
-                               padding=(2, 0))
+        self.conv7 = nn.Conv2d(
+            512, 1024, kernel_size=(4, 1), stride=(2, 1), padding=(2, 0)
+        )
         self.batchnorm7 = nn.BatchNorm2d(1024, eps=1e-5, momentum=0.1)
         self.relu7 = nn.ReLU(True)
+
+        self.conv8_objs = nn.Conv2d(1024, 1000, kernel_size=(8, 1), stride=(2, 1))
+        self.conv8_scns = nn.Conv2d(1024, 401, kernel_size=(8, 1), stride=(2, 1))
 
     def forward(self, input_audio):
         audio_out = self.conv1(input_audio)
         audio_out = self.batchnorm1(audio_out)
         audio_out = self.relu1(audio_out)
-        audio_out = self.maaudio_outpool1(audio_out)
+        audio_out = self.maxpool1(audio_out)
 
         audio_out = self.conv2(audio_out)
         audio_out = self.batchnorm2(audio_out)
         audio_out = self.relu2(audio_out)
-        audio_out = self.maaudio_outpool2(audio_out)
+        audio_out = self.maxpool2(audio_out)
 
         audio_out = self.conv3(audio_out)
         audio_out = self.batchnorm3(audio_out)
@@ -274,7 +293,7 @@ class SoundNet(nn.Module):
         audio_out = self.conv5(audio_out)
         audio_out = self.batchnorm5(audio_out)
         audio_out = self.relu5(audio_out)
-        audio_out = self.maaudio_outpool5(audio_out)
+        audio_out = self.maxpool5(audio_out)
 
         audio_out = self.conv6(audio_out)
         audio_out = self.batchnorm6(audio_out)
@@ -285,6 +304,7 @@ class SoundNet(nn.Module):
         audio_out = self.relu7(audio_out)
 
         return audio_out
+
 
 class PositionalEncoding(nn.Module):
     def __init__(self, feature_size, max_len=4):

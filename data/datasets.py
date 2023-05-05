@@ -146,6 +146,7 @@ class AudioVideoDataset(Dataset):
         dataset_type="train",
         data_split=-1,
         use_sound=True,
+        add_noise=False,
     ):
         super().__init__()
         self.data_path = data_directory
@@ -153,6 +154,7 @@ class AudioVideoDataset(Dataset):
         self.clip_length = clip_length
         self.dataset_type = dataset_type
         self.use_sound = use_sound
+        self.add_noise = add_noise
         self.data_split = data_split
         self.max_audio_sampling_rate = 22050
         self.min_video_fps = 10
@@ -228,18 +230,26 @@ class AudioVideoDataset(Dataset):
                     ):
                         self.num_frames_per_video.append((video_name, i))
 
-        if use_sound:
+        if self.use_sound:
             if self.dataset_type == "val":
                 self.data_record_filename = self.data_record_filename.replace(
                     "val", "test"
+                )
+            if self.add_noise == False:
+                print("Note:: Using Original Audio Files")
+                audio_or_noise_path = os.path.join(
+                    self.data_path, self.dataset_name, "video_audio"
+                )
+            else:
+                print("Note:: Using Noise Files")
+                audio_or_noise_path = os.path.join(
+                    self.data_path, self.dataset_name, "video_noise"
                 )
             self.audio_metadata = self._collect_video_audio_metadata(
                 data_list_path=os.path.join(
                     self.data_path, self.dataset_name, self.data_record_filename
                 ),
-                audio_path=os.path.join(
-                    self.data_path, self.dataset_name, "video_audio"
-                ),
+                audio_path=audio_or_noise_path,
                 annotation_path=os.path.join(
                     self.data_path, self.dataset_name, "annotations"
                 ),

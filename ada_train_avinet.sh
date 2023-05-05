@@ -33,23 +33,24 @@ python train.py \
 --data_directory /ssd_scratch/cvit/rafaelgetto/ \
 --dataset DIEM \
 --split -1 \
---use_sound \
---use_transformer \
+--use_sound True \
+--add_noise True \
+--use_transformer True \
 --batch_size 2 \
 --load_weight ViNet_Logs/ViNet_Logs_ViNet_epoch_100/version_0/checkpoints/epoch\=105-step\=15899.ckpt \
 --fusing_method bilinear \
 --experiment_name AViNet_epoch_105_bilinear;
 
-python train.py \
---data_directory /ssd_scratch/cvit/rafaelgetto/ \
---dataset DIEM \
---split -1 \
---use_sound \
---use_transformer \
---batch_size 2 \
---load_weight ViNet_Logs/ViNet_Logs_ViNet_epoch_100/version_0/checkpoints/epoch\=105-step\=15899.ckpt \
---fusing_method concat \
---experiment_name AViNet_epoch_105_concat;
+# python train.py \
+# --data_directory /ssd_scratch/cvit/rafaelgetto/ \
+# --dataset DIEM \
+# --split -1 \
+# --use_sound \
+# --use_transformer \
+# --batch_size 2 \
+# --load_weight ViNet_Logs/ViNet_Logs_ViNet_epoch_100/version_0/checkpoints/epoch\=105-step\=15899.ckpt \
+# --fusing_method concat \
+# --experiment_name AViNet_epoch_105_concat;
 
 # echo "Removing the dataset from ssd_scratch"
 # rm -rf /ssd_scratch/cvit/rafaelgetto/parseq_gujarati;

@@ -19,6 +19,7 @@ class SaliencyDataModule(pl.LightningDataModule):
         split=-1,
         clip_step=1,
         use_sound=True,
+        add_noise=False,
         batch_size=32,
         num_workers=2,
     ):
@@ -30,6 +31,7 @@ class SaliencyDataModule(pl.LightningDataModule):
         self.multi_frame = multi_frame
         self.split = split
         self.use_sound = use_sound
+        self.add_noise = add_noise
         self.clip_step = clip_step
         self.batch_size = batch_size
         self.num_workers = num_workers
@@ -56,6 +58,7 @@ class SaliencyDataModule(pl.LightningDataModule):
                     dataset_type="train",
                     data_split=self.split,
                     use_sound=self.use_sound,
+                    add_noise=self.add_noise,
                 )
         return self._train_dataset
 
@@ -78,6 +81,7 @@ class SaliencyDataModule(pl.LightningDataModule):
                     dataset_type="val",
                     data_split=self.split,
                     use_sound=self.use_sound,
+                    add_noise=self.add_noise,
                 )
         return self._val_dataset
 

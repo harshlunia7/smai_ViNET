@@ -31,8 +31,11 @@ echo "conda environment activated";
 echo "Starting Training";
 python train.py \
 --data_directory /ssd_scratch/cvit/rafaelgetto/DHF1K \
+--dataset DHF1K \
+--split -1 \
 --batch_size 2 \
---experiment_name ViNet_epoch_100;
+--load_encoder_weights True \
+--experiment_name ViNet_early_stopping;
 
 # echo "Removing the dataset from ssd_scratch"
 # rm -rf /ssd_scratch/cvit/rafaelgetto/parseq_gujarati;
