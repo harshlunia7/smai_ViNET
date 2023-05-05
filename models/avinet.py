@@ -42,7 +42,7 @@ class AViNet(BaseSaliency):
             self.transformer_in_channel = 512
             self.num_encoder_layers = 3
             self.nhead = 4
-            self.transformer_max_length = 4*7*12+3
+            self.transformer_max_length = 4 * 7 * 12 + 3
             self.conv_in_out_channel = 512
 
         self.visual_model = ViNet(
@@ -81,7 +81,7 @@ class AViNet(BaseSaliency):
             max_len=self.transformer_max_length,
         )
 
-        self.audio_encoder.load_state_dict(torch.load('./soundnet8_final.pth'))
+        self.audio_encoder.load_state_dict(torch.load("./soundnet8_final.pth"))
         print("Loaded SoundNet Weights")
         for param in self.audio_encoder.parameters():
             param.requires_grad = True
@@ -151,10 +151,27 @@ class AViNet(BaseSaliency):
         return self.visual_model.decoder(final_out, y1, y2, y3)
 
     def training_step(self, batch, batch_idx):
-        return self._common_step(batch, batch_idx)
+        loss_dict = self._common_step(batch, batch_idx)
+        self.log_dict(
+            {
+                "Train_Loss": loss_dict["Loss"],
+                "Train_L1_Norm": loss_dict["L1_Norm"],
+                "Train_cc_loss": loss_dict["cc_loss"],
+                "Train_similarity": loss_dict["similarity"],
+            }
+        )
+        return loss_dict["Loss"]
 
     def validation_step(self, batch, batch_idx):
-        return self._common_step(batch, batch_idx)
+        loss_dict = self._common_step(batch, batch_idx)
+        self.log_dict(
+            {
+                "val_Loss": loss_dict["Loss"],
+                "val_L1_Norm": loss_dict["L1_Norm"],
+                "val_cc_loss": loss_dict["cc_loss"],
+                "val_similarity": loss_dict["similarity"],
+            }
+        )
 
     def _common_step(self, batch, batch_idx):
         img_clips, gt_sal, audio_features = batch
@@ -169,12 +186,9 @@ class AViNet(BaseSaliency):
         similarity = self.loss_module.compute_loss("similarity", pred_sal, gt_sal)
         cc_loss = self.loss_module.compute_loss("CC", pred_sal, gt_sal)
 
-        self.log_dict(
-            {
-                "Loss": loss,
-                "L1 Norm": l1_norm,
-                "cc_loss": cc_loss,
-                "similarity": similarity,
-            }
-        )
-        return loss
+        return {
+            "Loss": loss,
+            "L1_Norm": l1_norm,
+            "cc_loss": cc_loss,
+            "similarity": similarity,
+        }

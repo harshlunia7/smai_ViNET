@@ -6,6 +6,7 @@ from models.base_system import BaseSaliency
 from models.base_modules import Decoder, S3D_Encoder
 from evaluation.modules import Evaluation_Metric
 
+
 class ViNet(BaseSaliency):
     def __init__(
         self, learning_rate, batch_size, use_upsample=True, num_hier=3, num_clips=32

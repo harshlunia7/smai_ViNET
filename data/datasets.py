@@ -173,9 +173,7 @@ class AudioVideoDataset(Dataset):
         else:
             self.data_record_filename = f"{self.dataset_name}_list_{self.dataset_type}_{self.data_split}_fps.txt"
         if self.dataset_type == "val":
-            self.data_record_filename = self.data_record_filename.replace(
-                "val", "test"
-            )
+            self.data_record_filename = self.data_record_filename.replace("val", "test")
         # Get the video names
         with open(
             os.path.join(self.data_path, self.dataset_name, self.data_record_filename),
@@ -280,9 +278,7 @@ class AudioVideoDataset(Dataset):
                 print(f"Audio file {audio_wav_path} does not exist!")
                 continue
 
-            [audiowav, audio_sample_rate] = torchaudio.load(
-                audio_wav_path
-            )
+            [audiowav, audio_sample_rate] = torchaudio.load(audio_wav_path)
             audiowav = audiowav * (2**-23)
 
             audio_sample_per_video_frame = audio_sample_rate / float(video_fps[i])
@@ -429,7 +425,8 @@ class AudioVideoDataset(Dataset):
         gt = np.array(
             Image.open(
                 os.path.join(
-                    annotation_path, f"eyeMap_{str(start_idx+self.clip_length).zfill(5)}.jpg"
+                    annotation_path,
+                    f"eyeMap_{str(start_idx+self.clip_length).zfill(5)}.jpg",
                 )
             ).convert("L")
         )
@@ -440,13 +437,13 @@ class AudioVideoDataset(Dataset):
 
         if np.max(gt) > 1.0:
             gt = gt / 255.0
-        assert gt.max() != 0, (str(start_idx+self.clip_length).zfill(5), video_name)
+        assert gt.max() != 0, (str(start_idx + self.clip_length).zfill(5), video_name)
         # try:
         #     assert gt.max() != 0, (str(start_idx+self.clip_length).zfill(5), video_name)
         # except:
         #     # gt += 2 * math.exp(-10)
-            
-            # print(str(start_idx+self.clip_length).zfill(5), video_name)
+
+        # print(str(start_idx+self.clip_length).zfill(5), video_name)
         if self.use_sound:
             return clip_img, gt, audio_feature
         return clip_img, gt

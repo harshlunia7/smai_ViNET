@@ -52,11 +52,11 @@ parser.add_argument("--frame_no", default="last", type=str)
 parser.add_argument("--load_weight", default="None", type=str)
 parser.add_argument("--fusing_method", default="concat", type=str)
 parser.add_argument("--num_hier", default=3, type=int)
-parser.add_argument("--load_encoder_weights", default=True, type=bool)
+parser.add_argument("--load_encoder_weights", default=False, type=bool)
 parser.add_argument("--alternate", default=1, type=int)
 parser.add_argument("--split", default=-1, type=int)
-parser.add_argument('--use_sound',default=False, type=bool)
-parser.add_argument('--use_transformer',default=False, type=bool)
+parser.add_argument("--use_sound", default=False, type=bool)
+parser.add_argument("--use_transformer", default=False, type=bool)
 
 args = parser.parse_args()
 print(args)
@@ -68,6 +68,7 @@ dm = SaliencyDataModule(
     clip_length=args.clip_size,
     batch_size=args.batch_size,
     num_workers=args.no_workers,
+    use_sound=args.use_sound,
 )
 if args.use_sound == False:
     model = ViNet(
@@ -85,7 +86,7 @@ else:
         batch_size=args.batch_size,
         learning_rate=args.lr,
         fusing_method=args.fusing_method,
-        use_transformer=bool(args.use_transformer)
+        use_transformer=bool(args.use_transformer),
     )
 
 
@@ -127,9 +128,19 @@ if args.load_encoder_weights and args.use_sound == False:
         model.backbone_encoder.load_state_dict(model_dict)
     else:
         print("weight file?")
-elif args.use_sound == True and args.load_weight!="None":
-    model.visual_model.load_from_checkpoint(checkpoint_path=args.load_weight, batch_size=args.batch_size, learning_rate=args.lr)
-
-# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-trainer = pl.Trainer(accelerator="gpu", devices="auto", logger=logger, strategy="ddp", max_epochs=105)
+elif args.use_sound == True and args.load_weight != "None":
+    model.visual_model.load_from_checkpoint(
+        checkpoint_path=args.load_weight,
+        batch_size=args.batch_size,
+        learning_rate=args.lr,
+    )
+elif args.use_sound == False and args.load_weight != "None":
+    model.load_from_checkpoint(
+        checkpoint_path=args.load_weight,
+        batch_size=args.batch_size,
+        learning_rate=args.lr,
+    )
+trainer = pl.Trainer(
+    accelerator="gpu", devices="auto", logger=logger, strategy="ddp", max_epochs=105
+)
 trainer.fit(model, dm)
