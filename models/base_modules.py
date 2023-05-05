@@ -9,6 +9,8 @@ from torch.utils.data import random_split
 # pytorch lightning
 import pytorch_lightning as pl
 
+from models.base_modules_utils import *
+
 
 class Decoder(nn.Module):
     def __init__(self, use_upsample=True, num_hier=3, num_clips=32):
@@ -126,13 +128,16 @@ class Decoder(nn.Module):
                 dc = yaml_data["CLIP_SIZE_48"]
         return dc
 
-    def forward(self, y0, y1=torch.Tensor(), y2=torch.Tensor(), y3=torch.Tensor()):
+    def forward(self, y0, y1, y2, y3):
         z = self.decoder_subblock_1(y0)
-        z = torch.cat([z, y1], dim=2)
+        if self.num_hier >= 1:
+            z = torch.cat([z, y1], dim=2)
         z = self.decoder_subblock_2(z)
-        z = torch.cat([z, y2], dim=2)
+        if self.num_hier >= 2:
+            z = torch.cat([z, y2], dim=2)
         z = self.decoder_subblock_3(z)
-        z = torch.cat([z, y3], dim=2)
+        if self.num_hier >= 3:
+            z = torch.cat([z, y3], dim=2)
         z = self.decoder_subblock_4(z)
         z = self.decoder_subblock_5(z)
         if self.num_hier != 3 or (

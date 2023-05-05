@@ -92,7 +92,7 @@ class DHF1KDataset(Dataset):
                 - (self.clip_step * self.clip_length)
                 + 1,
             )
-        elif self.mode == "val":
+        elif self.dataset_type == "val":
             (video_name, start_idx) = self.num_frames_per_video[idx]
 
         video_frames = os.path.join(self.data_path, video_name, "images")
@@ -117,8 +117,9 @@ class DHF1KDataset(Dataset):
             )
             gt = gt.astype("float")
 
-            if self.dataset_type == "train":
-                gt = cv2.resize(gt, (384, 224))
+            # if self.dataset_type == "train":
+            gt = cv2.resize(gt, (384, 224))
+            # gt = gt.resize((384, 224))
 
             if np.max(gt) > 1.0:
                 gt = gt / 255.0
