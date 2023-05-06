@@ -28,29 +28,31 @@ echo "conda environment activated";
 # rm /ssd_scratch/cvit/rafaelgetto/smai_proj_vinet/small_dhf1k.tar.gz;
 # echo "Removed tar file from ssd_scratch"
 
-echo "Starting Training for DIEM with sound bilinear";
+echo "Starting Training for DIEM with noise bilinear";
 python train.py \
 --data_directory /ssd_scratch/cvit/rafaelgetto/ \
 --dataset DIEM \
 --split -1 \
 --load_weight ViNet_Logs/ViNet_Logs_ViNet_early_stopping/version_0/checkpoints/epoch\=64-step\=9749-val_Loss\=1.2245-val_cc_loss\=0.5153-val_similarity\=0.4076.ckpt \
 --use_sound True \
+--add_noise True \
 --fusing_method bilinear \
 --use_transformer True \
 --batch_size 2 \
---experiment_name AViNet_bilinear_sound_earlystopping;
+--experiment_name AViNet_bilinear_noise_earlystopping;
 
-echo "Starting Training for DIEM with sound concat";
+echo "Starting Training for DIEM with noise concat";
 python train.py \
 --data_directory /ssd_scratch/cvit/rafaelgetto/ \
 --dataset DIEM \
 --split -1 \
 --load_weight ViNet_Logs/ViNet_Logs_ViNet_early_stopping/version_0/checkpoints/epoch\=64-step\=9749-val_Loss\=1.2245-val_cc_loss\=0.5153-val_similarity\=0.4076.ckpt \
 --use_sound True \
+--add_noise True \
 --fusing_method concat \
 --use_transformer True \
 --batch_size 2 \
---experiment_name AViNet_concat_sound_earlystopping;
+--experiment_name AViNet_concat_noise_earlystopping;
 
 # python train.py \
 # --data_directory /ssd_scratch/cvit/rafaelgetto/ \

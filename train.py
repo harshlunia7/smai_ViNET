@@ -103,7 +103,7 @@ S3D_weight_file = "./S3D_kinetics400.pt"
 if (
     args.load_encoder_weights == True
     and args.use_sound == False
-    and args.load_weight == None
+    and args.load_weight == "None"
 ):
     # First time visual model training (DHF1K)
     print(
@@ -165,7 +165,7 @@ elif (
         batch_size=args.batch_size,
         learning_rate=args.lr,
     )
-early_stopping = EarlyStopping("val_Loss", patience=6)
+early_stopping = EarlyStopping("val_Loss", patience=80)
 checkpoint = ModelCheckpoint(
     monitor="val_Loss",
     mode="min",
