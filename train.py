@@ -70,6 +70,7 @@ data_module = SaliencyDataModule(
     dataset_name=args.dataset,
     root_data_dir=args.data_directory,
     clip_length=args.clip_size,
+    split=args.split,
     batch_size=args.batch_size,
     num_workers=args.no_workers,
     use_sound=args.use_sound,
@@ -148,7 +149,7 @@ elif args.use_sound == True and args.load_weight != "None":
     print(
         "Note:: audio-visual model training with ONLY VISUAL part of model pretrained"
     )
-    model.visual_model.load_from_checkpoint(
+    model.visual_model = model.visual_model.load_from_checkpoint(
         checkpoint_path=args.load_weight,
         batch_size=args.batch_size,
         learning_rate=args.lr,
@@ -160,12 +161,12 @@ elif (
 ):
     # When neither sound or noise is added but trained on an audio visual dataset
     print("Note:: audio-visual model training with WHOLE model pretrained")
-    model.load_from_checkpoint(
+    model = model.load_from_checkpoint(
         checkpoint_path=args.load_weight,
         batch_size=args.batch_size,
         learning_rate=args.lr,
     )
-early_stopping = EarlyStopping("val_Loss", patience=80)
+early_stopping = EarlyStopping("val_Loss", patience=50)
 checkpoint = ModelCheckpoint(
     monitor="val_Loss",
     mode="min",

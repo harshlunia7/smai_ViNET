@@ -5,8 +5,8 @@ import soundfile as sf
 import os
 import glob
 
-data_dir = "/ssd_scratch/cvit/rafaelgetto/DIEM/video_audio"
-out_dir = "/ssd_scratch/cvit/rafaelgetto/DIEM/video_noise"
+data_dir = "/ssd_scratch/cvit/rafaelgetto/AVAD/video_audio"
+out_dir = "/ssd_scratch/cvit/rafaelgetto/AVAD/video_noise"
 video_names = os.listdir(data_dir)
 PSNR_target = -30
 

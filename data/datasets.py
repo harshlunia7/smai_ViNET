@@ -149,6 +149,7 @@ class AudioVideoDataset(Dataset):
         add_noise=False,
     ):
         super().__init__()
+        print("Note:: Initializing Dataset for ", dataset_name, dataset_type, data_directory)
         self.data_path = data_directory
         self.dataset_name = dataset_name
         self.clip_length = clip_length
@@ -167,7 +168,6 @@ class AudioVideoDataset(Dataset):
                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
             ]
         )
-
         if self.data_split == -1:
             self.data_record_filename = (
                 f"{self.dataset_name}_list_{self.dataset_type}_fps.txt"

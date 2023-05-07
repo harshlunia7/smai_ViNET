@@ -8,7 +8,7 @@ from data.datasets import DHF1KDataset, AudioVideoDataset
 
 
 class SaliencyDataModule(pl.LightningDataModule):
-    VISUAL_DATASET = ["DHF1K", "DIEM"]
+    VISUAL_DATASET = ["DHF1K", "DIEM", "AVAD"]
 
     def __init__(
         self,
@@ -50,11 +50,11 @@ class SaliencyDataModule(pl.LightningDataModule):
                     dataset_type="train",
                     clip_step=self.clip_step,
                 )
-            elif self.dataset_name == self.VISUAL_DATASET[1]:
+            elif self.dataset_name in self.VISUAL_DATASET[1:]:
                 self._train_dataset = AudioVideoDataset(
                     data_directory=self.root_data_dir,
                     clip_length=self.clip_length,
-                    dataset_name=self.VISUAL_DATASET[1],
+                    dataset_name=self.dataset_name,
                     dataset_type="train",
                     data_split=self.split,
                     use_sound=self.use_sound,
@@ -73,11 +73,11 @@ class SaliencyDataModule(pl.LightningDataModule):
                     dataset_type="val",
                     clip_step=self.clip_step,
                 )
-            elif self.dataset_name == self.VISUAL_DATASET[1]:
+            elif self.dataset_name in self.VISUAL_DATASET[1:]:
                 self._val_dataset = AudioVideoDataset(
                     data_directory=self.root_data_dir,
                     clip_length=self.clip_length,
-                    dataset_name=self.VISUAL_DATASET[1],
+                    dataset_name=self.dataset_name,
                     dataset_type="val",
                     data_split=self.split,
                     use_sound=self.use_sound,
