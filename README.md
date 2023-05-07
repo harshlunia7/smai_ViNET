@@ -1,5 +1,5 @@
 ## Code Repo Structure
-
+`
 ├── README.md
 ├── S3D_kinetics400.pt
 ├── ada_train_avinet.sh
@@ -34,6 +34,7 @@
 ├── train.py - Train script
 ├── train_test.sh
 └── zero_maps.txt
+`
 
 ## Train commands are in respective SBATCH files (Files starting with ada_)
 
